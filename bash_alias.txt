@@ -1,0 +1,14 @@
+alias e="exit"
+alias c="clear"
+
+alias ll="ls -al"
+
+alias 1.="cd .."
+alias 2.="1.; 1."
+alias 3.="1.;2."
+
+alias ag="sudo apt-get"
+alias agi="ag install"
+alias agu="ag update"
+alias agr="ag remove –purge"
+
