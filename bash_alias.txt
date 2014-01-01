@@ -12,3 +12,7 @@ alias agi="ag install"
 alias agu="ag update"
 alias agr="ag remove –purge"
 
+# Düşünülen aliaslar
+# alias gitc="git commit"
+# alias gita="git add"
+# alias gitp="git push -u origin master"
