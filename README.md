@@ -13,3 +13,4 @@ git ve git ayarları
 vim ve vimrc
 python ide
 java ve scala ide
+midnight commander
