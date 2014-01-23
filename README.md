@@ -14,3 +14,4 @@ vim ve vimrc
 python ide
 java ve scala ide
 midnight commander
+easy_install ve pip
