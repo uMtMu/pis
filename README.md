@@ -8,10 +8,10 @@ sudo yetkisi
 internet erişimi
 
 İlgili başlıklar:
-bash alias
-git ve git ayarları
-vim ve vimrc
-python ide
-java ve scala ide
-midnight commander
-easy_install ve pip
+bash alias,
+git ve git ayarları,
+vim ve vimrc,
+python ide,
+java ve scala ide,
+midnight commander,
+easy_install ve pip,
