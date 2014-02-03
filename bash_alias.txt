@@ -12,6 +12,8 @@ alias agi="ag install"
 alias agu="ag update"
 alias agr="ag remove –purge"
 
+alias sv="sudo vim"
+
 # Düşünülen aliaslar
 # alias gitc="git commit"
 # alias gita="git add"
