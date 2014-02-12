@@ -1,15 +1,16 @@
 # 140101 uMt
 
 # Bash alias
+cat bash_alias.txt >> /etc/bash.bashrc
+
+# Setups
 
 
 # Vim, vimrc
 
 
 # Git, git config
-
-
-# Vim, vimrc
+./git.sh
 
 
 # Python ide
