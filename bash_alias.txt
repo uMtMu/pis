@@ -10,7 +10,7 @@ alias 3.="1.;2."
 alias ag="sudo apt-get"
 alias agi="ag install"
 alias agu="ag update"
-alias agr="ag remove –purge"
+alias agr="ag remove --purge"
 
 alias sv="sudo vim"
 
