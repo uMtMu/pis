@@ -15,6 +15,9 @@ alias agr="ag remove --purge"
 alias sv="sudo vim"
 
 # Düşünülen aliaslar
-# alias gitc="git commit"
-# alias gita="git add"
-# alias gitp="git push -u origin master"
+alias gitc="git commit"
+alias gita="git add"
+alias gitp="git push -u origin master"
+
+alias ~haskell='cd ~/Projeler/haskell'
+alias ~python='cd ~/Projeler/python'
