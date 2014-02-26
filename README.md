@@ -9,6 +9,7 @@ internet erişimi
 
 İlgili başlıklar:
 bash alias,
+build-essential, python-dev,
 git ve git ayarları,
 vim ve vimrc,
 python ide,
