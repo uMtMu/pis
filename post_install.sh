@@ -4,20 +4,36 @@
 cat bash_alias.txt >> /etc/bash.bashrc
 
 # Setups siniflara ayrilablir
-uygulamalar=('build-essential' 'mutt' 'w3m' 'newsbauter')
+uygulamalar=('build-essential' 'python-dev' 'mutt' 'w3m' 'newsbauter')
 
-yukle(){
+yukle_apt(){
   sudo apt-get install -y -q $1
 }
 
+cok_yukle(){
+  # Disaridan gelen dizinin içeride kullanılması
+  # http://stackoverflow.com/questions/1063347/passing-arrays-as-parameters-in-bash
+  declare -a uygulama_listesi=("${!1}")
+  # Dizi üzerinde gezinme
+  # http://www.cyberciti.biz/faq/bash-for-loop-array/
+  for i in "${uygulama_listesi[@]}"
+    do
+      yukle $i
+    done
+}
+
+
 # Dongu ile uygulamalari kur
+# Dizinin parametre olarak gönderilmesi
+cok_yukle uygulamalar[@]
+
 
 # Vim, vimrc
-yukle("vim")
+yukle_apt "vim"
 cat vim_settings.txt >> /usr/share/.vimrc
 
 git=("git" "git-flow")
-# Dongu ile giti kur
+cok_yukle git[@]
 # Git, git config
 ./git.sh
 
