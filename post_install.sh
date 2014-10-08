@@ -22,7 +22,6 @@ cok_yukle(){
     done
 }
 
-
 # Dongu ile uygulamalari kur
 # Dizinin parametre olarak gönderilmesi
 cok_yukle uygulamalar[@]
@@ -38,6 +37,10 @@ cok_yukle git[@]
 ./git.sh
 
 # easy_install ve pip kurulacak
+# varsayılan python sürümü için yükler
+yukle_apt "easy_install"
+yukle_apt "pip"
+
 # Python ide
 # indir
 # kur
