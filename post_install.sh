@@ -4,7 +4,7 @@
 cat bash_alias.txt >> /etc/bash.bashrc
 
 # Setups siniflara ayrilablir
-uygulamalar=('build-essential' 'python-dev' 'mutt' 'w3m' 'newsbauter')
+uygulamalar=('build-essential' 'python-dev' 'mutt' 'w3m' 'newsbauter' 'wget')
 
 yukle_apt(){
   sudo apt-get install -y -q $1
@@ -44,7 +44,8 @@ yukle_apt "pip"
 # Python ide
 # indir
 # kur
-
+wget http://download.jetbrains.com/python/pycharm-community-3.4.1.tar.gz
+tar xzf pycharm-community-3.4.1.tar.gz 
 
 # Java & Scale environment, ide
 # eclipse?
