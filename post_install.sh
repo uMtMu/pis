@@ -4,7 +4,7 @@
 cat bash_alias.txt >> /etc/bash.bashrc
 
 # Setups siniflara ayrilablir
-uygulamalar=('build-essential' 'python-dev' 'mutt' 'w3m' 'newsbauter' 'wget')
+uygulamalar=('build-essential' 'python-dev' 'mutt' 'w3m' 'newsbauter' 'wget' 'mc' 'mpg123')
 
 yukle_apt(){
   sudo apt-get install -y -q $1
