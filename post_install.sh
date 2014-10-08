@@ -43,9 +43,16 @@ yukle_apt "pip"
 
 # Python ide
 # indir
-# kur
+# aç
 wget http://download.jetbrains.com/python/pycharm-community-3.4.1.tar.gz
 tar xzf pycharm-community-3.4.1.tar.gz 
+mv pycharm-community-3.4.1 ~/.
+rm pycharm-community-3.4.1.tar.gz  
 
-# Java & Scale environment, ide
-# eclipse?
+# Eclipse java ide
+# indir
+# aç
+wget https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/luna/SR1/eclipse-java-luna-SR1-linux-gtk-x86_64.tar.gz
+tar xzf eclipse-java-luna-SR1-linux-gtk-x86_64.tar.gz
+mv eclipse-java-luna-SR1-linux-gtk-x86_64
+rm eclipse-java-luna-SR1-linux-gtk-x86_64.tar.gz
