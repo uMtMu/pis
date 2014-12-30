@@ -1,4 +1,9 @@
+#! /bin/bash
 # 140101 uMt
+
+
+sudo apt-get update
+sudo apt-get upgrade -y -q
 
 # Bash alias
 cat bash_alias.txt >> /etc/bash.bashrc
@@ -18,7 +23,7 @@ cok_yukle(){
   # http://www.cyberciti.biz/faq/bash-for-loop-array/
   for i in "${uygulama_listesi[@]}"
     do
-      yukle $i
+      yukle_apt $i
     done
 }
 
@@ -39,7 +44,7 @@ cok_yukle git[@]
 # easy_install ve pip kurulacak
 # varsayılan python sürümü için yükler
 yukle_apt "easy_install"
-yukle_apt "pip"
+yukle_apt "python-pip"
 
 # Python ide
 # indir
@@ -52,6 +57,7 @@ yukle_apt "pip"
 wget -q -O - http://archive.getdeb.net/getdeb-archive.key | sudo apt-key add -
 sudo sh -c 'echo "deb http://archive.getdeb.net/ubuntu trusty-getdeb apps" >> /etc/apt/sources.list.d/getdeb.list'
 sudo apt-get update
+sudo yukle_apt pycharm
 
 # Eclipse java ide
 # indir
