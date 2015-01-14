@@ -1,4 +1,9 @@
+#! /bin/bash
 # 140101 uMt
+
+
+sudo apt-get update
+sudo apt-get upgrade -y -q
 
 # Bash alias
 cat bash_alias.txt >> /etc/bash.bashrc
@@ -18,7 +23,7 @@ cok_yukle(){
   # http://www.cyberciti.biz/faq/bash-for-loop-array/
   for i in "${uygulama_listesi[@]}"
     do
-      yukle $i
+      yukle_apt $i
     done
 }
 
@@ -39,20 +44,25 @@ cok_yukle git[@]
 # easy_install ve pip kurulacak
 # varsayılan python sürümü için yükler
 yukle_apt "easy_install"
-yukle_apt "pip"
+yukle_apt "python-pip"
 
 # Python ide
 # indir
 # aç
-wget http://download.jetbrains.com/python/pycharm-community-3.4.1.tar.gz
-tar xzf pycharm-community-3.4.1.tar.gz 
-mv pycharm-community-3.4.1 ~/.
-rm pycharm-community-3.4.1.tar.gz  
+# wget http://download.jetbrains.com/python/pycharm-community-3.4.1.tar.gz
+# tar xzf pycharm-community-3.4.1.tar.gz 
+# mv pycharm-community-3.4.1 ~/.
+# rm pycharm-community-3.4.1.tar.gz 
+
+wget -q -O - http://archive.getdeb.net/getdeb-archive.key | sudo apt-key add -
+sudo sh -c 'echo "deb http://archive.getdeb.net/ubuntu trusty-getdeb apps" >> /etc/apt/sources.list.d/getdeb.list'
+sudo apt-get update
+sudo yukle_apt pycharm
 
 # Eclipse java ide
 # indir
 # aç
-wget https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/luna/SR1/eclipse-java-luna-SR1-linux-gtk-x86_64.tar.gz
-tar xzf eclipse-java-luna-SR1-linux-gtk-x86_64.tar.gz
-mv eclipse-java-luna-SR1-linux-gtk-x86_64 ~/.
-rm eclipse-java-luna-SR1-linux-gtk-x86_64.tar.gz
+# wget https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/luna/SR1/eclipse-java-luna-SR1-linux-gtk-x86_64.tar.gz
+# tar xzf eclipse-java-luna-SR1-linux-gtk-x86_64.tar.gz
+# mv eclipse-java-luna-SR1-linux-gtk-x86_64 ~/.
+# rm eclipse-java-luna-SR1-linux-gtk-x86_64.tar.gz
