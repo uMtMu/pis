@@ -15,7 +15,7 @@ alias agr="ag remove --purge"
 alias sv="sudo vim"
 
 # Düşünülen aliaslar
-alias gitc="git commit -m"
+alias gitc="git commit -a -m"
 alias gita="git add"
 alias gitp="git push -u origin master"
 
