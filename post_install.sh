@@ -9,7 +9,7 @@ sudo apt-get upgrade -y -q
 cat bash_alias.txt >> /etc/bash.bashrc
 
 # Setups siniflara ayrilablir
-uygulamalar=('build-essential' 'python-dev' 'default-jdk' 'terminator''bpython' 'mutt' 'w3m' 'newsbauter' 'wget' 'mc' 'mpg123')
+uygulamalar=('build-essential' 'python-dev' 'default-jdk' 'terminator' 'guake' 'chromium-browser' 'pepperflashplugin-nonfree' 'bpython' 'mutt' 'w3m' 'newsbauter' 'wget' 'mc' 'mpg123')
 
 yukle_apt(){
   sudo apt-get install -y -q $1
@@ -30,7 +30,7 @@ cok_yukle(){
 # Dongu ile uygulamalari kur
 # Dizinin parametre olarak gönderilmesi
 cok_yukle uygulamalar[@]
-
+update-pepperflashplugin-nonfree --install
 
 # Vim, vimrc
 yukle_apt "vim"
