@@ -18,6 +18,8 @@ alias sv="sudo vim"
 alias gitc="git commit -a -m"
 alias gita="git add"
 alias gitp="git push -u origin master"
+alias gits="git status"
 
 alias ~haskell='cd ~/Projeler/haskell'
 alias ~python='cd ~/Projeler/python'
+alias tez='cd ~/Projeler/pansharping-py'
