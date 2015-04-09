@@ -11,6 +11,7 @@ alias ag="sudo apt-get"
 alias agi="ag install"
 alias agu="ag update"
 alias agr="ag remove --purge"
+agi_log() { { date; echo apt-get install "$@" output; apt-get install "$@";} > /home/umt/"$@"$(date "+_%Y%m%d_%h%s").log  ;}
 
 alias sv="sudo vim"
 
