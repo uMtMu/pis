@@ -1,12 +1,13 @@
 #! /bin/bash
 # 140101 uMt
 
+# Ubuntu güncellemelerini yükle
+./update.sh
 
-sudo apt-get update
-sudo apt-get upgrade -y -q
+#sudo apt-get update
+#sudo apt-get upgrade -y -q
 
-# Bash alias
-cat bash_alias.txt >> /etc/bash.bashrc
+
 
 # Setups siniflara ayrilablir
 uygulamalar=('build-essential' 'python-dev' 'default-jdk' 'terminator' 'guake' 'chromium-browser' 'pepperflashplugin-nonfree' 'bpython' 'mutt' 'w3m' 'newsbauter' 'wget' 'mc' 'mpg123')
@@ -31,6 +32,9 @@ cok_yukle(){
 # Dizinin parametre olarak gönderilmesi
 cok_yukle uygulamalar[@]
 update-pepperflashplugin-nonfree --install
+
+# Bash alias
+cat bash_alias.txt >> /etc/bash.bashrc
 
 # Vim, vimrc
 yukle_apt "vim"

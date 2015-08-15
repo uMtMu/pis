@@ -15,6 +15,7 @@ alias agr="ag remove --purge"
 agi_log() { { date; echo apt-get install "$@" output; sudo apt-get install "$@";} | tee /home/umt/install_log/"$@"$(date "+_%F_%H%M")_$UID.log  ;}
 
 alias sv="sudo vim"
+alias emacs='emacs -nw'
 
 # Düşünülen aliaslar
 alias gitc="git commit -a -m"
@@ -25,3 +26,6 @@ alias gits="git status"
 alias ~haskell='cd ~/Projeler/haskell'
 alias ~python='cd ~/Projeler/python'
 alias tez='cd ~/Projeler/pansharping-py'
+
+alias vUp='amixer set Master 5%+'
+alias vDown='amixer set Master 5%-'
