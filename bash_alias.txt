@@ -27,5 +27,5 @@ alias ~haskell='cd ~/Projeler/haskell'
 alias ~python='cd ~/Projeler/python'
 alias tez='cd ~/Projeler/pansharping-py'
 
-alias vUp='amixer set Master 5%+'
-alias vDown='amixer set Master 5%-'
+alias vUp='amixer set Master 5%+ | grep "Front Left:" | awk '{print $5}'
+alias vDown='amixer set Master 5%- | grep "Front Left:" | awk '{print $5}'

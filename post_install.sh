@@ -4,8 +4,8 @@
 # Ubuntu güncellemelerini yükle
 ./update.sh
 
-#sudo apt-get update
-#sudo apt-get upgrade -y -q
+sudo apt-get update
+sudo apt-get upgrade -y -q
 
 
 
