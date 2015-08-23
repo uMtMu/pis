@@ -33,6 +33,11 @@ cok_yukle(){
 cok_yukle uygulamalar[@]
 update-pepperflashplugin-nonfree --install
 
+yukle_apt "rtorrent"
+mkdir ~/rDownloads
+mkdir ~/rSession
+cat rtorrent.rc > ~/.rtorrent.rc
+
 # Bash alias
 cat bash_alias.txt >> /etc/bash.bashrc
 
