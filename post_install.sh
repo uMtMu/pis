@@ -43,7 +43,7 @@ cat bash_alias.txt >> /etc/bash.bashrc
 
 # Vim, vimrc
 yukle_apt "vim"
-cat vim_settings.txt >> /usr/share/.vimrc
+cat vim.txt >> /usr/share/.vimrc
 
 git=("git" "git-flow")
 cok_yukle git[@]

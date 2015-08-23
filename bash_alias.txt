@@ -12,7 +12,16 @@ alias agi="ag install"
 alias agu="ag update"
 alias agr="ag remove --purge"
 
-agi_log() { { date; echo apt-get install "$@" output; sudo apt-get install "$@";} | tee /home/umt/install_log/"$@"$(date "+_%F_%H%M")_$UID.log  ;}
+agil() 
+{
+    if [ "$#" -ne 0 ];
+    then
+        mkdir -p $HOME/install_log
+        ( date; echo apt-get install "$@"; sudo apt-get install "$@";) | tee /home/umt/install_log/"$@"$(date "+_%F_%H%M")_$UID.log  ;
+    else
+        echo "Yükleyeyim ama neyi?"
+    fi
+}
 
 alias sv="sudo vim"
 alias emacs='emacs -nw'
