@@ -35,7 +35,9 @@ set autoindent      " Copy indent from current line when starting a new line
 
 set mouse=a         " Enable the use of the mouse.
 
-set cursorline      " Highlight cursorline
+" Highlight cursorline
+" Normally only white line below char, but with below line bg darkred, fg white
+hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white      
 
 colorscheme elflord
 
