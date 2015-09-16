@@ -35,6 +35,10 @@ set autoindent      " Copy indent from current line when starting a new line
 
 set mouse=a         " Enable the use of the mouse.
 
+set cursorline      " Highlight cursorline
+
+colorscheme elflord
+
 filetype plugin indent on
 syntax on
 
