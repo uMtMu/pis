@@ -1,7 +1,10 @@
+PS1=”\[\033[38;5;9m\]\u\[$(tput sgr0)\]\[\033[38;5;10m\]@\[$(tput sgr0)\]\[\033[38;5;9m\]\h\[$(tput sgr0)\]\[\033[38;5;6m\][\w]\[$(tput sgr0)\]\[\033[38;5;15m\] \A \\$ \[$(tput sgr0)\]”
 alias e="exit"
 alias c="clear"
 
 alias ll="ls -al"
+
+alias grep="grep --color"
 
 alias 1.="cd .."
 alias 2.="1.; 1."
