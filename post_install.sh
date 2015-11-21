@@ -45,6 +45,13 @@ cat bash_alias.txt >> /etc/bash.bashrc
 yukle_apt "vim"
 cat vim.txt >> /usr/share/.vimrc
 
+i3wm=("i3wm" "i3lock" "i3status")
+cok_yukle i3wm[@]
+# i3wm, i3config
+# ÖZELLİKLE ÜSTÜNE YAZIYORUM
+cat i3config.txt > ~/.i3/config
+
+
 git=("git" "git-flow")
 cok_yukle git[@]
 # Git, git config
