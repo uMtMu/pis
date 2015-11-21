@@ -1,0 +1,3 @@
+i3 featue
+- i3wm için gerekli paketler yüklenecek
+- i3config dosyası olması gereken yere yazılacak
