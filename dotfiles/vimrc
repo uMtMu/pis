@@ -35,12 +35,14 @@ set autoindent      " Copy indent from current line when starting a new line
 
 set mouse=a         " Enable the use of the mouse.
 
-" Highlight cursorline
-" Normally only white line below char, but with below line bg darkred, fg white
-hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white      
-
-colorscheme elflord
-
+" use ghc functionality for haskell files
+au Bufenter *.hs compiler ghc
+let g:haddock_browser = "maxthon"
+let g:haddock_docdir = "/home/umt/.ghc_docs/haddock"
 filetype plugin indent on
 syntax on
+
+call pathogen#infect()
+call pathogen#helptags()
+
 

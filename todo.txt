@@ -1,3 +1,18 @@
 i3 featue
 - i3wm için gerekli paketler yüklenecek
 - i3config dosyası olması gereken yere yazılacak
+
+dotfiles
+- dotfiles klasörü oluşturuldu
+- dotfiles klasöre taşınacak
+	vim
+	emacs
+	i3
+	git ??
+	rtorrent
+- taşınan dotfiles ile ilgili kodlar eklenecek/düzeltilecek
+
+
+gelecek planları
+- menü
+- yüklenen dosyaları ile ilgili YARDIM dosyası

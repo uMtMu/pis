@@ -1,0 +1,46 @@
+
+# This is an example resource file for rTorrent. Copy to
+# ~/.rtorrent.rc and enable/modify the options as needed. Remember to
+# uncomment the options you wish to enable.
+
+# Maximum and minimum number of peers to connect to per torrent.
+min_peers = 1
+max_peers = 100
+
+# Same as above but for seeding completed torrents (-1 = same as downloading)
+min_peers_seed = 1
+max_peers_seed = 50
+
+# Maximum number of uploads single torrent may use
+max_uploads = 10
+
+# Maximum number of simultaneous downloads
+max_downloads_global = 10
+# Maximum number of simultaneous uploads
+max_uploads_global = 20
+
+# Global upload and download rate in KiB. "0" for unlimited.
+download_rate = 0
+upload_rate = 300
+
+# Default directory to save the downloaded torrents.
+directory = ~/rDownloads
+
+# Default session directory. Make sure you don't run multiple instance
+# of rtorrent using the same session directory. Perhaps using a
+# relative path?
+session = ~/.rSessions
+
+# Close torrents when diskspace is low.
+schedule = low_diskspace,5,60,close_low_diskspace=2000M
+
+# Periodically save session data
+schedule = session_save,240,300,session_save=
+
+# Start opening ports at a random position within the port range.
+port_random = yes
+
+# Sort the main view by ratio
+view.sort_current = main,greater=d.get_ratio=
+view.sort_new = main,less=d.get_ratio=
+view.sort = main

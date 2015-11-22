@@ -35,6 +35,7 @@ update-pepperflashplugin-nonfree --install
 
 yukle_apt "rtorrent"
 mkdir ~/rDownloads
+<<<<<<< HEAD
 mkdir ~/rSession
 cat rtorrent.rc > ~/.rtorrent.rc
 
@@ -44,12 +45,24 @@ cat bash_alias.txt >> /etc/bash.bashrc
 # Vim, vimrc
 yukle_apt "vim"
 cat vim.txt >> /usr/share/.vimrc
+=======
+mkdir ~/.rSession
+cat dotfiles/rtorrent.rc > ~/.rtorrent.rc
+
+# Vim, vimrc
+yukle_apt "vim"
+cat dotfiles/vimrc >> ~/.vimrc
+
+# Emacs
+yukle_apt "emacs"
+cat dotfiles/emacs >> ~/.emacs
+>>>>>>> feature/dotfiles
 
 i3wm=("i3wm" "i3lock" "i3status")
 cok_yukle i3wm[@]
 # i3wm, i3config
 # ÖZELLİKLE ÜSTÜNE YAZIYORUM
-cat i3config.txt > ~/.i3/config
+cat dotfiles/i3config > ~/.i3/config
 
 
 git=("git" "git-flow")
