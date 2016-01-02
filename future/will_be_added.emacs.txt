@@ -1,0 +1,9 @@
+(if (file-exists-p "z:/")
+  (progn
+    (add-hook 'after-init-hook 'org-mobile-pull)
+    (add-hook 'kill-emacs-hook 'org-mobile-push)
+    )
+   (message "WebDav sunucusuna bağlanılamadı...")
+)
+
+;; based install for emacs elpy (look at emacs.sh)

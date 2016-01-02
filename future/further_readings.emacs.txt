@@ -1,0 +1,55 @@
+Determine OS
+
+Here's how to find out what operating system emacs is running on.
+
+;; check OS type
+(cond
+ ((string-equal system-type "windows-nt") ; Microsoft Windows
+  (progn
+    (message "Microsoft Windows") )
+  )
+ ((string-equal system-type "darwin")   ; Mac OS X
+  (progn
+    (message "Mac OS X")
+    )
+  )
+ ((string-equal system-type "gnu/linux") ; linux
+  (progn
+    (message "Linux") )
+  )
+ )
+ 
+ Determine Emacs Version
+
+;; full emacs version number
+emacs-version ; sample value: "25.0.50.1"
+
+;; emacs major version number. ⁖ value is 24 if GNU Emacs 24.3.1
+emacs-major-version
+
+;; emacs minor version number. ⁖ value is 3 if GNU Emacs 24.3.1
+emacs-minor-version
+;; sample use.
+;; when calling “list-colors-display”, make result sorted by hue.
+(when (>= emacs-major-version 24) (setq list-colors-sort 'hsv ) )
+
+
+There are also these functions for checking version string:
+
+version=
+version<
+version<=
+;; check emacs version
+(if (version< emacs-version "24.4")
+    (progn (message "is before 24.4"))
+  (progn (message "is 24.4 or after")))
+  
+  
+  
+;; check emacs version
+(if (or 
+     (and (>= emacs-major-version 24) 
+          (>= emacs-minor-version 4))
+     (>= emacs-major-version 25))
+    (progn (message "is 24.4 or after"))
+  (progn (message "is before 24.4")))
