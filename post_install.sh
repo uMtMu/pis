@@ -10,7 +10,15 @@ sudo apt-get upgrade -y -q
 
 
 # Setups siniflara ayrilablir
-uygulamalar=('build-essential' 'python-dev' 'default-jdk' 'terminator' 'guake' 'chromium-browser' 'pepperflashplugin-nonfree' 'bpython' 'mutt' 'w3m' 'newsbauter' 'wget' 'mc' 'mpg123')
+# programming
+# build-essential python-dev default-jdk bpython
+# terminal
+# terminator quake mc
+# internet
+# chromium-browser pepperflashplugin-nonfree mutt w3m newsbauter wget
+# media
+# mpg123 feh(masa üstü arka planı için) 
+uygulamalar=('build-essential' 'python-dev' 'default-jdk' 'terminator' 'guake' 'chromium-browser' 'pepperflashplugin-nonfree' 'bpython' 'mutt' 'w3m' 'newsbauter' 'wget' 'mc' 'mpg123' 'feh')
 
 yukle_apt(){
   sudo apt-get install -y -q $1
@@ -35,7 +43,6 @@ update-pepperflashplugin-nonfree --install
 
 yukle_apt "rtorrent"
 mkdir ~/rDownloads
-<<<<<<< HEAD
 mkdir ~/rSession
 cat rtorrent.rc > ~/.rtorrent.rc
 
@@ -45,7 +52,6 @@ cat bash_alias.txt >> /etc/bash.bashrc
 # Vim, vimrc
 yukle_apt "vim"
 cat vim.txt >> /usr/share/.vimrc
-=======
 mkdir ~/.rSession
 cat dotfiles/rtorrent.rc > ~/.rtorrent.rc
 
@@ -56,19 +62,22 @@ cat dotfiles/vimrc >> ~/.vimrc
 # Emacs
 yukle_apt "emacs"
 cat dotfiles/emacs >> ~/.emacs
->>>>>>> feature/dotfiles
 
+# i3
 i3wm=("i3wm" "i3lock" "i3status")
 cok_yukle i3wm[@]
 # i3wm, i3config
 # ÖZELLİKLE ÜSTÜNE YAZIYORUM
 cat dotfiles/i3config > ~/.i3/config
 
-
+#git
 git=("git" "git-flow")
 cok_yukle git[@]
 # Git, git config
 ./git.sh
+
+# feh for background image, i am open for alternative methods 
+cat dotfiles/fehbg > ~/.fehbg
 
 # easy_install ve pip kurulacak
 # varsayılan python sürümü için yükler
