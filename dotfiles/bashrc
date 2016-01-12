@@ -1,0 +1,50 @@
+PS1=”\[\033[38;5;9m\]\u\[$(tput sgr0)\]\[\033[38;5;10m\]@\[$(tput sgr0)\]\[\033[38;5;9m\]\h\[$(tput sgr0)\]\[\033[38;5;6m\][\w]\[$(tput sgr0)\]\[\033[38;5;15m\] \A \\$ \[$(tput sgr0)\]”
+alias e="exit"
+alias c="clear"
+
+alias ll="ls -al"
+
+alias grep="grep --color"
+
+alias 1.="cd .."
+alias 2.="1.; 1."
+alias 3.="1.;2."
+
+alias ag="sudo apt-get"
+alias agi="ag install"
+alias agu="ag update"
+alias agr="ag remove --purge"
+
+agil() 
+{
+    if [ "$#" -ne 0 ];
+    then
+        mkdir -p $HOME/install_log
+        ( date; echo apt-get install "$@"; sudo apt-get install "$@";) | tee /home/umt/install_log/"$@"$(date "+_%F_%H%M")_$UID.log  ;
+    else
+        echo "Yükleyeyim ama neyi?"
+    fi
+}
+
+alias sv="sudo vim"
+alias emacs='emacs -nw'
+
+# Düşünülen aliaslar
+alias gitc="git commit -a -m"
+alias gita="git add"
+alias gitp="git push -u origin master"
+alias gits="git status"
+
+alias ~haskell='cd ~/Projeler/haskell'
+alias ~python='cd ~/Projeler/python'
+alias tez='cd ~/Projeler/pansharping-py'
+
+vUp() 
+{ 
+	amixer set Master 5%+ | grep "Front Left:" | awk '{print "Volume:" $5}'
+}
+
+vDown()
+{
+	amixer set Master 5%- | grep "Front Left:" | awk '{print "Volume:" $5}'
+}
