@@ -53,3 +53,7 @@ version<=
      (>= emacs-major-version 25))
     (progn (message "is 24.4 or after"))
   (progn (message "is before 24.4")))
+  
+  
+  
+  ;; https://github.com/magnars/.emacs.d
