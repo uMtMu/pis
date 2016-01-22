@@ -29,8 +29,7 @@
 Return a list of installed packages or nil for every skipped package."
   (mapcar
    (lambda (package)
-     ;; (package-installed-p 'evil)
-     (if (package-installed-p package)
+      (if (package-installed-p package)
          nil
        (if (y-or-n-p (format "Package %s is missing. Install it? " package))
            (package-install package)
@@ -42,7 +41,7 @@ Return a list of installed packages or nil for every skipped package."
 (or (file-exists-p package-user-dir)
     (package-refresh-contents))
 
-(ensure-package-installed 'iedit 'magit) ;  --> (nil nil) if iedit and magit are already installed
+(ensure-package-installed 'undo-tree 'neotree) ;  --> (nil nil) if iedit and magit are already installed
 
 ;; activate installed packages
 (package-initialize)
@@ -52,6 +51,19 @@ Return a list of installed packages or nil for every skipped package."
 ;;************************************************************************
 
 (global-undo-tree-mode)
+
+;;;;************************************************************************
+;;;;				 Swimmers
+;;;;************************************************************************
+;;(add-to-list 'load-path "~/.emacs.d/")
+;;(load "swimmers.el")
+;;(require 'swimmers)
+
+;;************************************************************************
+;;				 Neotree
+;;************************************************************************
+(require 'neotree)
+(global-set-key [f8] 'neotree-toggle)
 
 ;;************************************************************************
 ;;                                Org-Mode
