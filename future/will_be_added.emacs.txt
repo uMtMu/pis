@@ -6,4 +6,4 @@
    (message "WebDav sunucusuna bağlanılamadı...")
 )
 
-;; based install for emacs elpy (look at emacs.sh)
+;; based install for emacs elpy (look at emacs/emacs.sh)
