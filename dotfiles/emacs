@@ -78,73 +78,58 @@ Return a list of installed packages or nil for every skipped package."
 (require 'org-install)
 (require 'org-mobile)
 
-(add-to-list 'auto-mode-alist '("/.org/'" . org-mode))
-
-(define-key global-map "\C-cl" 'org-store-loink)
-(define-key global-map "\C-ca" 'org-agenda)
-(setq org-log-done t)
-(setq org-directory "~/.org")
-(setq org-agenda-files (list "~/.org/is.org"
-			     "~/.org/kisisel.org"
-			     "~/.org/gunluk.org"
-			     "~/.org/pc.org"
-			     "~/.org/notlar.org"
-))
-
-(setq org-default-notes-file "~/.org/notlar.org")
 (cond
  ((string-equal system-type "windows-nt") ; Microsoft Windows
   (progn
-    (message "Microsoft Windows")
-	(add-to-list 'auto-mode-alist '("c:/emacs/org/'" . org-mode))
-	(setq org-directory "c:/emacs/org")
-	(setq org-agenda-files (list "c:/emacs/org/is.org"
-								 "c:/emacs/org/kisisel.org"
-								 "c:/emacs/org/gunluk.org"
-								 "c:/emacs/org/pc.org"
-								 "c:/emacs/org/notlar.org"
-								 ))
-	(setq org-default-notes-file "c:/emacs/org/notlar.org")
-	
-	(setq org-publish-project-alist
-		  '(("site"
-			 :base-directory "c:/emacs/umtmu.github.io"
-			 :publishing-directory "c:/emacs/umtmu.github.io"
-			 :section-numbers nil
-			 :table-of-contents nil
-			 :publishing-function org-html-publish-to-html
-			 )))
-	)
-  )
-
- ((string-equal system-type "gnu/linux") ; linux
+    (defvar orgdir "c:/org/")))
+ ((string-equal system-type "gnu/linux") ; GNU/Linux
   (progn
-	(message "Linux") 
-	(add-to-list 'auto-mode-alist '("~/.org/'" . org-mode))
-	(setq org-directory "~/.org")
-	(setq org-agenda-files (list "~/.org/is.org"
-								 "~/.org/kisisel.org"
-								 "~/.org/gunluk.org"
-								 "~/.org/pc.org"
-								 "~/.org/notlar.org"
-								 ))
-	(setq org-default-notes-file "~/.org/notlar.org")
-	
-	(setq org-publish-project-alist
-		  '(("site"
-			 :base-directory "~/Projeler/umtmu.github.io"
-			 :publishing-directory "~/Projeler/umtmu.github.io"
-			 :section-numbers nil
-			 :table-of-contents nil
-			 :publishing-function org-html-publish-to-html
-			 )))
-	)
-  )
+    (defvar orgdir "~/.org/")))
  )
+ 
+(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
+(setq org-log-done t)
+(setq org-directory orgdir)
+(setq org-agenda-files (list (concat orgdir "/is.org")
+			     (concat orgdir "/kisisel.org")
+			     (concat orgdir "/gunluk.org")
+			     (concat orgdir "/pc.org")
+			     (concat orgdir "/notlar.org")
+))
+
+(setq org-default-notes-file (concat orgdir "/notlar.org"))
 (define-key global-map "\C-cc" 'org-capture)
 
 (setq org-refile-targets '((org-agenda-files . (:maxlevel . 6))))
+
+(cond
+ ((string-equal system-type "windows-nt") ; Microsoft Windows
+  (progn
+    (setq org-publish-project-alist
+	  '(("site"
+	     :base-directory (concat orgdir "/blog")
+	     :publishing-directory (concat orgdir "/blog")
+	     :section-numbers nil
+	     :table-of-contents nil
+	     :publishing-function org-html-publish-to-html
+	     )))
+    ))
+ ((string-equal system-type "gnu/linux") ; GNU/Linux
+  (progn
+    (setq org-publish-project-alist
+	  '(("site"
+	     :base-directory "~/Projeler/umtmu.github.io"
+	     :publishing-directory "~/Projeler/umtmu.github.io"
+	     :section-numbers nil
+	     :table-of-contents nil
+	     :publishing-function org-html-publish-to-html
+	     )))
+    ))
+ )
+
 
 ;; Org-mode günlüğü de içeriyor.
 (setq org-agenda-include-diary t)
