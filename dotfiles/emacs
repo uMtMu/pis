@@ -84,7 +84,7 @@ Return a list of installed packages or nil for every skipped package."
     (defvar orgdir "c:/org/")))
  ((string-equal system-type "gnu/linux") ; GNU/Linux
   (progn
-    (defvar orgdir "~/.org/")))
+    (defvar orgdir "~/Dropbox/org/")))
  )
  
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
