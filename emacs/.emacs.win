@@ -6,6 +6,16 @@
 (line-number-mode 1)
 (column-number-mode 1)
 (display-battery-mode 1)
+(cua-mode 1)
+
+(global-set-key (kbd "C-s") 'save-buffer)
+(global-set-key (kbd "C-o") 'find-file)
+
+;; easy keys to split window. Key based on ErgoEmacs keybinding
+(global-set-key (kbd "M-3") 'split-window-right) ; expand current pane
+(global-set-key (kbd "M-4") 'split-window-below) ; split pane top/bottom
+(global-set-key (kbd "M-2") 'delete-window) ; close current pane
+(global-set-key (kbd "M-s") 'other-window) ; cursor to other pane
 
 (setq tab-width 4)
 (defalias 'yes-or-no-p 'y-or-n-p)
