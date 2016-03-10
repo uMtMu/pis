@@ -6,16 +6,6 @@
 (line-number-mode 1)
 (column-number-mode 1)
 (display-battery-mode 1)
-(cua-mode 1)
-
-(global-set-key (kbd "C-s") 'save-buffer)
-(global-set-key (kbd "C-o") 'find-file)
-
-;; easy keys to split window. Key based on ErgoEmacs keybinding
-(global-set-key (kbd "M-3") 'split-window-right) ; expand current pane
-(global-set-key (kbd "M-4") 'split-window-below) ; split pane top/bottom
-(global-set-key (kbd "M-2") 'delete-window) ; close current pane
-(global-set-key (kbd "M-s") 'other-window) ; cursor to other pane
 
 (setq tab-width 4)
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -63,6 +53,13 @@ Return a list of installed packages or nil for every skipped package."
 (package-initialize)
 
 ;;************************************************************************
+;;				   ibuffer
+;;************************************************************************
+
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+(autoload 'ibuffer "ibuffer" "List buffers." t)
+
+;;************************************************************************
 ;;				   Undo-tree
 ;;************************************************************************
 
@@ -87,6 +84,9 @@ Return a list of installed packages or nil for every skipped package."
 (require 'org)
 (require 'org-install)
 (require 'org-mobile)
+;;(require 'org-remember)				  
+;;(require 'remember)
+;;(org-remember-insinuate)
 
 (cond
  ((string-equal system-type "windows-nt") ; Microsoft Windows
@@ -152,6 +152,21 @@ Return a list of installed packages or nil for every skipped package."
 
 ;; Org-mode günlüğü de içeriyor.
 (setq org-agenda-include-diary t)
+
+;; "|"'nin solu yapılacak/eylem bekleyen, sağı yapılmayacak/eylem beklemeyen
+;; parantez içindeki ilk harf CcCt kombinasyonundan sonraki kısayolu
+;; ! otomatik olarak saatin ekleneceği
+;; @ mesaj yazmanı istiyor
+;; /! Tam anlamadım. Aşağıdakini oku anlarsan sil
+;; The setting for WAIT is even more special: the ‘!’ after the slash means
+;; that in addition to the note taken when entering the state, a timestamp
+;; should be recorded when leaving the WAIT state, if and only if the target
+;; state does not configure logging for entering it. So it has no effect when
+;; switching from WAIT to DONE, because DONE is configured to record a timestamp
+;; only. But when switching from WAIT back to TODO, the ‘/!’ in the WAIT setting
+;; now triggers a timestamp even though TODO has no logging configured.
+(setq org-todo-keywords
+       '((sequence "TODO(t)" "WAIT(w@/!)" "REVIVED(r@/!)" "|" "DONE(d!)" "CANCELED(c@)")))
 
 ;;************************************************************************
 ;;				   Org-Mobile
