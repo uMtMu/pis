@@ -347,5 +347,15 @@ Return a list of installed packages or nil for every skipped package."
           (set-window-buffer (next-window) next-win-buffer)
           (select-window first-win)
           (if this-win-2nd (other-window 1))))))
+
 (global-set-key [f9] 'toggle-window-split)
 
+
+;;************************************************************************
+;;                            GIT
+;;************************************************************************
+;; GIT windows makinada terminalden değil popup üzerinde kullanıcı/parola
+;; istiyor
+(if (string-equal system-type "windows-nt")
+    (setenv "GIT_ASKPASS" "git-gui--askpass")
+  )
