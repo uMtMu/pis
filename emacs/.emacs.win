@@ -46,7 +46,7 @@ Return a list of installed packages or nil for every skipped package."
 (or (file-exists-p package-user-dir)
     (package-refresh-contents))
 
-(ensure-package-installed 'undo-tree 'neotree) ;  --> (nil nil) if iedit and magit are already installed
+(ensure-package-installed 'undo-tree 'neotree 'org-alert) ;  --> (nil nil) if iedit and magit are already installed
 
 
 ;; activate installed packages
@@ -84,9 +84,7 @@ Return a list of installed packages or nil for every skipped package."
 (require 'org)
 (require 'org-install)
 (require 'org-mobile)
-;;(require 'org-remember)				  
-;;(require 'remember)
-;;(org-remember-insinuate)
+
 
 (cond
  ((string-equal system-type "windows-nt") ; Microsoft Windows
@@ -166,13 +164,18 @@ Return a list of installed packages or nil for every skipped package."
 ;; only. But when switching from WAIT back to TODO, the ‘/!’ in the WAIT setting
 ;; now triggers a timestamp even though TODO has no logging configured.
 (setq org-todo-keywords
-       '((sequence "TODO(t)" "WAIT(w@/!)" "REVIVED(r@/!)" "|" "DONE(d!)" "CANCELED(c@)")))
+       '((sequence "TODO(t)" "WAIT(w@/!)" "REVIVED(r@/!)" "|" "DONE(d!)"
+		   "CANCELED(c@)")))
 
 ;;************************************************************************
 ;;				   Org-Mobile
 ;;************************************************************************
 
-
+;;************************************************************************
+;;				   Org-Alert
+;;************************************************************************
+(require 'org-alert)
+(setq alert-default-style 'libnotify)
 
 ;;************************************************************************
 ;;				Auto-Completion
