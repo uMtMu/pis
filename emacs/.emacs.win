@@ -166,7 +166,7 @@ Return a list of installed packages or nil for every skipped package."
 (setq org-todo-keywords
        '((sequence "TODO(t)" "WAIT(w@/!)" "REVIVED(r@/!)" "|" "DONE(d!)"
 		   "CANCELED(c@)")))
-
+;; TODO -> DONE as for TIME
 (setq org-log-done 'time)
 
 ;;************************************************************************
