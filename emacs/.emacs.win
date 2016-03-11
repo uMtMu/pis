@@ -167,6 +167,8 @@ Return a list of installed packages or nil for every skipped package."
        '((sequence "TODO(t)" "WAIT(w@/!)" "REVIVED(r@/!)" "|" "DONE(d!)"
 		   "CANCELED(c@)")))
 
+(setq org-log-done 'time)
+
 ;;************************************************************************
 ;;				   Org-Mobile
 ;;************************************************************************
