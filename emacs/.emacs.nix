@@ -17,7 +17,10 @@
 (when (>= emacs-major-version 24)
   (require 'package)
   (package-initialize)
-  (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+  (add-to-list 'package-archives
+	       '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+  (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+
   )
 
 (show-paren-mode 1)
@@ -46,10 +49,17 @@ Return a list of installed packages or nil for every skipped package."
 (or (file-exists-p package-user-dir)
     (package-refresh-contents))
 
-(ensure-package-installed 'undo-tree 'neotree 'elpy) ;  --> (nil nil) if iedit and magit are already installed
+(ensure-package-installed 'undo-tree 'neotree 'elpy 'smex 'ido-ubiquitous 'ido-vertical-mode) ;  --> (nil nil) if iedit and magit are already installed
 
 ;; activate installed packages
 (package-initialize)
+
+;;************************************************************************
+;;				   ibuffer
+;;************************************************************************
+
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+(autoload 'ibuffer "ibuffer" "List buffers." t)
 
 ;;************************************************************************
 ;;				   Undo-tree
@@ -81,7 +91,13 @@ Return a list of installed packages or nil for every skipped package."
 (cond
  ((string-equal system-type "windows-nt") ; Microsoft Windows
   (progn
-    (defvar orgdir "c:/org/")))
+    ;;(defvar orgdir "c:/org/")))
+    ;; (defvar orgdir "c:/Users/Paytr05/Desktop/")
+    ;; (defvar orgdir (concat "c:" (getenv "HOMEPATH") "\\Documents\\org"))
+    (defvar orgdir (concat "c:" (getenv "HOMEPATH") "\\Dropbox\\org"))
+    (defvar blogdir (concat "c:" (getenv "HOMEPATH") "\\Desktop"))
+    )
+  )
  ((string-equal system-type "gnu/linux") ; GNU/Linux
   (progn
     (defvar orgdir "~/Dropbox/org/")))
@@ -90,6 +106,7 @@ Return a list of installed packages or nil for every skipped package."
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 
 (define-key global-map "\C-cl" 'org-store-link)
+(global-set-key (kbd "C-c C-s") 'calendar)
 (define-key global-map "\C-ca" 'org-agenda)
 (setq org-log-done t)
 (setq org-directory orgdir)
@@ -135,6 +152,23 @@ Return a list of installed packages or nil for every skipped package."
 (setq org-agenda-include-diary t)
 
 ;;(setq org-agenda-diary-file (concat orgdir "/diary.org"))
+;; "|"'nin solu yapılacak/eylem bekleyen, sağı yapılmayacak/eylem beklemeyen
+;; parantez içindeki ilk harf CcCt kombinasyonundan sonraki kısayolu
+;; ! otomatik olarak saatin ekleneceği
+;; @ mesaj yazmanı istiyor
+;; /! Tam anlamadım. Aşağıdakini oku anlarsan sil
+;; The setting for WAIT is even more special: the ‘!’ after the slash means
+;; that in addition to the note taken when entering the state, a timestamp
+;; should be recorded when leaving the WAIT state, if and only if the target
+;; state does not configure logging for entering it. So it has no effect when
+;; switching from WAIT to DONE, because DONE is configured to record a timestamp
+;; only. But when switching from WAIT back to TODO, the ‘/!’ in the WAIT setting
+;; now triggers a timestamp even though TODO has no logging configured.
+(setq org-todo-keywords
+       '((sequence "TODO(t)" "WAIT(w@/!)" "REVIVED(r@/!)" "|" "DONE(d!)"
+		   "CANCELED(c@)")))
+;; TODO -> DONE as for TIME
+(setq org-log-done 'time)
 
 ;;************************************************************************
 ;;                            Org-Mobile
@@ -161,9 +195,36 @@ Return a list of installed packages or nil for every skipped package."
 ;;                            Auto-Completion
 ;;************************************************************************
 
-(ido-mode)
+(ido-mode 1)
+(ido-everywhere 1)
 (setq org-completion-use-ido t)
 
+(require 'ido-vertical-mode)
+;; Color codes can be used to customize
+(set-face-attribute 'ido-vertical-first-match-face nil
+                    :background nil
+                    :foreground nil)
+(set-face-attribute 'ido-vertical-only-match-face nil
+                    :background nil
+                    :foreground nil)
+(set-face-attribute 'ido-vertical-match-face nil
+                    :background nil
+                    :foreground nil)
+(ido-vertical-mode 1)
+
+;; optionally
+(setq ido-use-faces nil)
+
+(ido-vertical-mode 1)
+(setq ido-vertical-define-keys 'C-n-and-C-p-only)
+
+(require 'ido-ubiquitous)
+(ido-ubiquitous-mode 1)
+
+
+(require 'smex) ; Not needed if you use package.el
+(smex-initialize) ; Can be omitted. This might cause a (minimal) delay
+                  ; when Smex is auto-initialized on its first run.
 
 ;;************************************************************************
 ;;                               Auto-Fill
@@ -277,3 +338,53 @@ Return a list of installed packages or nil for every skipped package."
 (autoload 'php-mode "php-mode" "Major mode for editing php code" t)
 (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
 (add-to-list 'auto-mode-alist '("\\.inc$" . php-mode))
+
+;;************************************************************************
+;;                            Winner-Mode
+;;************************************************************************
+;; With C-x left and C-x right buttons you can switch between window layouts
+;; Usefull with newsticker :D
+(when (fboundp 'winner-mode)
+  (winner-mode 1))
+
+
+;;************************************************************************
+;;                            Dikey Yatay Pencere
+;;************************************************************************
+;; Deneme sürecindeki kod
+(defun toggle-window-split ()
+  (interactive)
+  (if (= (count-windows) 2)
+      (let* ((this-win-buffer (window-buffer))
+             (next-win-buffer (window-buffer (next-window)))
+             (this-win-edges (window-edges (selected-window)))
+             (next-win-edges (window-edges (next-window)))
+             (this-win-2nd (not (and (<= (car this-win-edges)
+                                         (car next-win-edges))
+                                     (<= (cadr this-win-edges)
+                                         (cadr next-win-edges)))))
+             (splitter
+              (if (= (car this-win-edges)
+                     (car (window-edges (next-window))))
+                  'split-window-horizontally
+                'split-window-vertically)))
+        (delete-other-windows)
+        (let ((first-win (selected-window)))
+          (funcall splitter)
+          (if this-win-2nd (other-window 1))
+          (set-window-buffer (selected-window) this-win-buffer)
+          (set-window-buffer (next-window) next-win-buffer)
+          (select-window first-win)
+          (if this-win-2nd (other-window 1))))))
+
+(global-set-key [f9] 'toggle-window-split)
+
+
+;;************************************************************************
+;;                            GIT
+;;************************************************************************
+;; GIT windows makinada terminalden değil popup üzerinde kullanıcı/parola
+;; istiyor
+(if (string-equal system-type "windows-nt")
+    (setenv "GIT_ASKPASS" "git-gui--askpass")
+  )
