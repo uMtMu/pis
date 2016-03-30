@@ -7,6 +7,7 @@
 (column-number-mode 1)
 (display-battery-mode 1)
 
+
 (setq tab-width 4)
 (defalias 'yes-or-no-p 'y-or-n-p)
 (prefer-coding-system 'utf-8)
@@ -16,9 +17,12 @@
 (when (>= emacs-major-version 24)
   (require 'package)
   (package-initialize)
-  (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+  (add-to-list 'package-archives
+	       '("melpa-stable" . "https://stable.melpa.org/packages/") t)
   (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+
   )
+
 (show-paren-mode 1)
 
 (setq tramp-default-method "ssh")
@@ -46,7 +50,6 @@ Return a list of installed packages or nil for every skipped package."
     (package-refresh-contents))
 
 (ensure-package-installed 'undo-tree 'neotree 'elpy 'smex 'ido-ubiquitous 'ido-vertical-mode) ;  --> (nil nil) if iedit and magit are already installed
-
 
 ;; activate installed packages
 (package-initialize)
@@ -84,6 +87,7 @@ Return a list of installed packages or nil for every skipped package."
 (require 'org)
 (require 'org-install)
 (require 'org-mobile)
+
 (cond
  ((string-equal system-type "windows-nt") ; Microsoft Windows
   (progn
@@ -123,8 +127,8 @@ Return a list of installed packages or nil for every skipped package."
   (progn
     (setq org-publish-project-alist
 	  '(("site"
-	     :base-directory ,(concat blogdir "/blog")
-	     :publishing-directory ,(concat blogdir "/blog")
+	     :base-directory (concat orgdir "/blog")
+	     :publishing-directory (concat orgdir "/blog")
 	     :section-numbers nil
 	     :table-of-contents nil
 	     :publishing-function org-html-publish-to-html
@@ -138,7 +142,7 @@ Return a list of installed packages or nil for every skipped package."
 	     :publishing-directory "~/Projeler/umtmu.github.io"
 	     :section-numbers nil
 	     :table-of-contents nil
-	     :publishing-function org-html-publish-to-html
+	     :publishing-function org-publish-org-to-html
 	     )))
     ))
  )
@@ -147,7 +151,6 @@ Return a list of installed packages or nil for every skipped package."
 ;; Org-mode günlüğü de içeriyor.
 (setq org-agenda-include-diary t)
 
-(setq diary-file (concat orgdir "/diary"))
 ;;(setq org-agenda-diary-file (concat orgdir "/diary.org"))
 ;; "|"'nin solu yapılacak/eylem bekleyen, sağı yapılmayacak/eylem beklemeyen
 ;; parantez içindeki ilk harf CcCt kombinasyonundan sonraki kısayolu
@@ -167,15 +170,16 @@ Return a list of installed packages or nil for every skipped package."
 ;; TODO -> DONE as for TIME
 (setq org-log-done 'time)
 
+(setq org-capture-templates
+      '(("t" "Todo" entry (file+headline (concat orgdir "gtd.org") "Tasks")
+	 "* TODO %?\n  %i\n  %a")
+        ("j" "Journal" entry (file+datetree (concat orgdir "journal.org")
+	 "* %?\nEntered on %U\n  %i\n  %a")))
+)
 ;;************************************************************************
 ;;                            Org-Mobile
 ;;************************************************************************
 
-;;************************************************************************
-;;				   Org-Alert
-;;************************************************************************
-(require 'org-alert)
-(setq alert-default-style 'mode-line)
 (defun webdav_sync()
   (interactive)
   (shell-command "sync")
@@ -197,9 +201,9 @@ Return a list of installed packages or nil for every skipped package."
 ;;                            Auto-Completion
 ;;************************************************************************
 
-(ido-mode 1)
 (ido-everywhere 1)
 (setq org-completion-use-ido t)
+(ido-mode 1)
 
 (require 'ido-vertical-mode)
 ;; Color codes can be used to customize
@@ -212,7 +216,6 @@ Return a list of installed packages or nil for every skipped package."
 (set-face-attribute 'ido-vertical-match-face nil
                     :background nil
                     :foreground nil)
-(ido-vertical-mode 1)
 
 ;; optionally
 (setq ido-use-faces nil)
@@ -223,14 +226,22 @@ Return a list of installed packages or nil for every skipped package."
 (require 'ido-ubiquitous)
 (ido-ubiquitous-mode 1)
 
+;;************************************************************************
+;;                               Smex
+;;************************************************************************
 
 (require 'smex) ; Not needed if you use package.el
 (smex-initialize) ; Can be omitted. This might cause a (minimal) delay
                   ; when Smex is auto-initialized on its first run.
 
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+;; This is your old M-x.
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+
 ;;************************************************************************
 ;;                               Auto-Fill
-;;************************************************************************
+;;************************************************************************w
 
 (setq-default fill-column 80)
 (setq auto-fill-mode t)
@@ -319,63 +330,14 @@ Return a list of installed packages or nil for every skipped package."
 ;;                               Tema
 ;;************************************************************************
 
-;;************************************************************************
-;;                               Tema
-;;************************************************************************
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ansi-color-faces-vector
-   [default default default italic underline success warning error])
  '(ansi-color-names-vector
    ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#e090d7" "#8cc4ff" "#eeeeec"])
- '(compilation-message-face (quote default))
- '(custom-enabled-themes (quote (tango-dark)))
- '(custom-safe-themes
-   (quote
-    ("71ecffba18621354a1be303687f33b84788e13f40141580fa81e7840752d31bf" default)))
- '(fci-rule-color "#3E3D31")
- '(highlight-changes-colors (quote ("#FD5FF0" "#AE81FF")))
- '(highlight-tail-colors
-   (quote
-    (("#3E3D31" . 0)
-     ("#67930F" . 20)
-     ("#349B8D" . 30)
-     ("#21889B" . 50)
-     ("#968B26" . 60)
-     ("#A45E0A" . 70)
-     ("#A41F99" . 85)
-     ("#3E3D31" . 100))))
- '(magit-diff-use-overlays nil)
- '(pos-tip-background-color "#A6E22E")
- '(pos-tip-foreground-color "#272822")
- '(vc-annotate-background nil)
- '(vc-annotate-color-map
-   (quote
-    ((20 . "#F92672")
-     (40 . "#CF4F1F")
-     (60 . "#C26C0F")
-     (80 . "#E6DB74")
-     (100 . "#AB8C00")
-     (120 . "#A18F00")
-     (140 . "#989200")
-     (160 . "#8E9500")
-     (180 . "#A6E22E")
-     (200 . "#729A1E")
-     (220 . "#609C3C")
-     (240 . "#4E9D5B")
-     (260 . "#3C9F79")
-     (280 . "#A1EFE4")
-     (300 . "#299BA6")
-     (320 . "#2896B5")
-     (340 . "#2790C3")
-     (360 . "#66D9EF"))))
- '(vc-annotate-very-old-color nil)
- '(weechat-color-list
-   (unspecified "#272822" "#3E3D31" "#A20C41" "#F92672" "#67930F" "#A6E22E" "#968B26" "#E6DB74" "#21889B" "#66D9EF" "#A41F99" "#FD5FF0" "#349B8D" "#A1EFE4" "#F8F8F2" "#F8F8F0")))
+ '(custom-enabled-themes (quote (deeper-blue))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -439,3 +401,4 @@ Return a list of installed packages or nil for every skipped package."
 (if (string-equal system-type "windows-nt")
     (setenv "GIT_ASKPASS" "git-gui--askpass")
   )
+
