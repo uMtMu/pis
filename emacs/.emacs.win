@@ -16,7 +16,7 @@
 (when (>= emacs-major-version 24)
   (require 'package)
   (package-initialize)
-  (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+  (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
   (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
   )
 (show-paren-mode 1)
@@ -45,7 +45,7 @@ Return a list of installed packages or nil for every skipped package."
 (or (file-exists-p package-user-dir)
     (package-refresh-contents))
 
-(ensure-package-installed 'undo-tree 'neotree 'org-alert) ;  --> (nil nil) if iedit and magit are already installed
+(ensure-package-installed 'undo-tree 'neotree 'elpy 'smex 'ido-ubiquitous 'ido-vertical-mode) ;  --> (nil nil) if iedit and magit are already installed
 
 
 ;; activate installed packages
@@ -124,7 +124,7 @@ Return a list of installed packages or nil for every skipped package."
  ((string-equal system-type "windows-nt") ; Microsoft Windows
   (progn
     (setq org-publish-project-alist
-	  `(("site"
+	  '(("site"
 	     :base-directory ,(concat blogdir "/blog")
 	     :publishing-directory ,(concat blogdir "/blog")
 	     :section-numbers nil
@@ -135,7 +135,7 @@ Return a list of installed packages or nil for every skipped package."
  ((string-equal system-type "gnu/linux") ; GNU/Linux
   (progn
     (setq org-publish-project-alist
-	  `(("site"
+	  '(("site"
 	     :base-directory "~/Projeler/umtmu.github.io"
 	     :publishing-directory "~/Projeler/umtmu.github.io"
 	     :section-numbers nil
@@ -145,11 +145,14 @@ Return a list of installed packages or nil for every skipped package."
     ))
  )
 
-(setq org-agenda-diary-file (concat orgdir "\\diary.org"))
+;;(setq org-agenda-diary-file (concat orgdir "\\diary.org"))
 
 ;; Org-mode günlüğü de içeriyor.
 (setq org-agenda-include-diary t)
 
+(setq diary-file (concat orgdir "/diary"))
+
+;;(setq org-agenda-diary-file (concat orgdir "/diary.org"))
 ;; "|"'nin solu yapılacak/eylem bekleyen, sağı yapılmayacak/eylem beklemeyen
 ;; parantez içindeki ilk harf CcCt kombinasyonundan sonraki kısayolu
 ;; ! otomatik olarak saatin ekleneceği
@@ -168,6 +171,12 @@ Return a list of installed packages or nil for every skipped package."
 ;; TODO -> DONE as for TIME
 (setq org-log-done 'time)
 
+(setq org-capture-templates
+      '(("t" "Todo" entry (file+headline (concat orgdir "gtd.org") "Tasks")
+	 "* TODO %? %^G\n  %i\n  %a")
+        ("j" "Journal" entry (file+datetree (concat orgdir "journal.org")
+	 "* %?  %^G\nEntered on %U\n  %i\n  %a")))
+)
 ;;************************************************************************
 ;;				   Org-Mobile
 ;;************************************************************************
@@ -176,15 +185,42 @@ Return a list of installed packages or nil for every skipped package."
 ;;				   Org-Alert
 ;;************************************************************************
 (require 'org-alert)
-(setq alert-default-style 'libnotify)
+(setq alert-default-style 'mode-line)
 
 ;;************************************************************************
 ;;				Auto-Completion
 ;;************************************************************************
 
-(ido-mode)
+(ido-mode 1)
+(ido-everywhere 1)
 (setq org-completion-use-ido t)
 
+(require 'ido-vertical-mode)
+;; Color codes can be used to customize
+(set-face-attribute 'ido-vertical-first-match-face nil
+                    :background nil
+                    :foreground nil)
+(set-face-attribute 'ido-vertical-only-match-face nil
+                    :background nil
+                    :foreground nil)
+(set-face-attribute 'ido-vertical-match-face nil
+                    :background nil
+                    :foreground nil)
+(ido-vertical-mode 1)
+
+;; optionally
+(setq ido-use-faces nil)
+
+(ido-vertical-mode 1)
+(setq ido-vertical-define-keys 'C-n-and-C-p-only)
+
+(require 'ido-ubiquitous)
+(ido-ubiquitous-mode 1)
+
+
+(require 'smex) ; Not needed if you use package.el
+(smex-initialize) ; Can be omitted. This might cause a (minimal) delay
+                  ; when Smex is auto-initialized on its first run.
 
 ;;************************************************************************
 ;;				   Auto-Fill
