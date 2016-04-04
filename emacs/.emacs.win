@@ -172,10 +172,14 @@ Return a list of installed packages or nil for every skipped package."
 (setq org-log-done 'time)
 
 (setq org-capture-templates
-      '(("t" "Todo" entry (file+headline (concat orgdir "gtd.org") "Tasks")
-	 "* TODO %? %^G\n  %i\n  %a")
-        ("j" "Journal" entry (file+datetree (concat orgdir "journal.org")
-	 "* %?  %^G\nEntered on %U\n  %i\n  %a")))
+      '(
+		("t" "Todo" entry
+		 (file+headline (concat orgdir "/notlar.org") "Tasks") "* TODO %? %^G\n  %i\n  %a")
+        ("j" "Journal" entry
+		 (file+datetree (concat orgdir "/journal.org") "Journal")	"* %?  %^G\nEntered on %U\n  %i\n  %a")
+		("r" "Read" entry
+		 (file+headline (concat orgdir "/notlar.org") "Readings") "* TODO %c\n  %a")
+		)
 )
 ;;************************************************************************
 ;;				   Org-Mobile
