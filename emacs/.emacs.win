@@ -47,7 +47,6 @@ Return a list of installed packages or nil for every skipped package."
 
 (ensure-package-installed 'undo-tree 'neotree 'elpy 'smex 'ido-ubiquitous 'ido-vertical-mode) ;  --> (nil nil) if iedit and magit are already installed
 
-
 ;; activate installed packages
 (package-initialize)
 
@@ -63,7 +62,6 @@ Return a list of installed packages or nil for every skipped package."
 ;;************************************************************************
 
 (global-undo-tree-mode)
-
 ;;************************************************************************
 ;;				 Swimmers
 ;;************************************************************************
@@ -84,7 +82,6 @@ Return a list of installed packages or nil for every skipped package."
 (require 'org-install)
 (require 'org-mobile)
 
-
 (cond
  ((string-equal system-type "windows-nt") ; Microsoft Windows
   (progn
@@ -101,7 +98,6 @@ Return a list of installed packages or nil for every skipped package."
  )
 
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
-
 
 (define-key global-map "\C-cl" 'org-store-link)
 (global-set-key (kbd "C-c C-s") 'calendar)
@@ -125,8 +121,8 @@ Return a list of installed packages or nil for every skipped package."
   (progn
     (setq org-publish-project-alist
 	  '(("site"
-	     :base-directory ,(concat blogdir "/blog")
-	     :publishing-directory ,(concat blogdir "/blog")
+	     :base-directory (concat blogdir "/blog")
+	     :publishing-directory (concat blogdir "/blog")
 	     :section-numbers nil
 	     :table-of-contents nil
 	     :publishing-function org-html-publish-to-html
@@ -185,15 +181,33 @@ Return a list of installed packages or nil for every skipped package."
 ;;				   Org-Mobile
 ;;************************************************************************
 
-;;************************************************************************
-;;				   Org-Alert
-;;************************************************************************
-(require 'org-alert)
-(setq alert-default-style 'mode-line)
+ (when (string-equal system-type "gnu/linux") ; GNU/Linux
+  (progn
+(defun webdav_sync()
+  (interactive)
+  (shell-command "sync")
+)
+))
+;; Set to <your Dropbox root directory>/MobileOrg.
+;(setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
+(setq org-mobile-directory "/mnt/webdav/org")
+(setq org-mobile-inbox-for-pull "~/.frommobileorg")
+(if (file-exists-p org-mobile-directory)
+    (progn
+      (add-hook 'after-init-hook 'org-mobile-pull)
+      (add-hook 'kill-emacs-hook 'org-mobile-push)
+      (add-hook 'kill-emacs-hook 'webdav_sync)
+      )
+    (message "WebDav sunucusuna bağlanılamadı....")
+)
+;;;;************************************************************************
+;;;;				   Org-Alert
+;;;;************************************************************************
+;;(require 'org-alert)
+;;(setq alert-default-style 'mode-line)
 
 ;;************************************************************************
 ;;				Auto-Completion
-;;************************************************************************
 
 (ido-mode 1)
 (ido-everywhere 1)
@@ -210,7 +224,6 @@ Return a list of installed packages or nil for every skipped package."
 (set-face-attribute 'ido-vertical-match-face nil
                     :background nil
                     :foreground nil)
-(ido-vertical-mode 1)
 
 ;; optionally
 (setq ido-use-faces nil)
@@ -221,10 +234,18 @@ Return a list of installed packages or nil for every skipped package."
 (require 'ido-ubiquitous)
 (ido-ubiquitous-mode 1)
 
+;;************************************************************************
+;;                               Smex
+;;************************************************************************
 
 (require 'smex) ; Not needed if you use package.el
 (smex-initialize) ; Can be omitted. This might cause a (minimal) delay
                   ; when Smex is auto-initialized on its first run.
+
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+;; This is your old M-x.
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
 ;;************************************************************************
 ;;				   Auto-Fill
@@ -235,15 +256,22 @@ Return a list of installed packages or nil for every skipped package."
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 (setq-default auto-fill-function 'do-auto-fill)
 
+;;;;************************************************************************
+;;;;                                  W3M
+;;;;************************************************************************
+;;
+;;(add-to-list 'load-path "~/.elisp/emacs-w3m/")
+;;(require 'w3m-load)
+;;
 ;;************************************************************************
 ;;    			          Newsticker
 ;;************************************************************************
 ;;
 ;;(require 'newsticker)
 ;;
-;;;;; W3M HTML renderer isn't essential, but it's pretty useful.
-;;;;(require 'w3m)
-;;;;(setq newsticker-html-renderer 'w3m-region)
+;;; W3M HTML renderer isn't essential, but it's pretty useful.
+;;(require 'w3m)
+;;(setq newsticker-html-renderer 'w3m-region)
 ;;
 ;;; We want our feeds pulled every 10 minutes.
 ;;(setq newsticker-retrieval-interval 600)
@@ -272,9 +300,18 @@ Return a list of installed packages or nil for every skipped package."
 ;;; Optionally bind a shortcut for your new RSS reader.
 ;;(global-set-key (kbd "C-c r") 'newsticker-treeview)
 ;;
-;;;; Don't forget to start it!
+;;; Don't forget to start it!
 ;;(newsticker-start)
-
+;;
+;;;;************************************************************************
+;;;;                          EMMS Media Player
+;;;;************************************************************************
+;;
+;;
+;;(add-to-list 'load-path "~/.elisp/emms/lisp")
+;;(require 'emms-setup)
+;;(emms-standard)
+;;(emms-default-players)
 
 ;;************************************************************************
 ;;                                  W3M
@@ -282,6 +319,29 @@ Return a list of installed packages or nil for every skipped package."
 
 ;;(add-to-list 'load-path "~/.elisp/emacs-w3m/")
 ;;(require 'w3m-load)
+;;************************************************************************
+;;                               El-Py
+;;************************************************************************
+
+(package-initialize)
+(elpy-enable)
+;; Fixing a key binding bug in elpy
+(define-key yas-minor-mode-map (kbd "C-c k") 'yas-expand)
+;; Fixing another key binding bug in iedit mode
+(define-key global-map (kbd "C-c o") 'iedit-mode)
+(setenv "PYTHONPATH” “/usr/bin/python")
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(elpy-project-root-finder-functions (quote (elpy-project-find-python-root elpy-project-find-hg-root elpy-project-find-svn-root))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
 
 ;;************************************************************************
 ;;                               Tema
