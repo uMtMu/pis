@@ -29,7 +29,7 @@
 (defvar swim-delay .1
   "The delay between frames of the swimming pool animation.")
 
-(defvar swimming-pool-colour "cyan"
+(defvar swimming-pool-colour "black"
   "The colour to draw for the water.")
 
 (defvar swimmers-begin-hook nil
@@ -88,7 +88,7 @@ the end of the line."
 			(let ((i 0))
 			  (while (setq i (string-match "[><+]" row i))
 			    (put-text-property i (1+ i)
-					       'face (cons 'foreground-color "red")
+					       'face (cons 'foreground-color "lightgreen")
 					       row)
 			    (setq i (1+ i))))
 			)
