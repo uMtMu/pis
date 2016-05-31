@@ -6,6 +6,7 @@
 (line-number-mode 1)
 (column-number-mode 1)
 (display-battery-mode 1)
+(delete-selection-mode 1)
 
 (setq tab-width 4)
 (defalias 'yes-or-no-p 'y-or-n-p)

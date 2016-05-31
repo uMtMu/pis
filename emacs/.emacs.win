@@ -6,6 +6,7 @@
 (line-number-mode 1)
 (column-number-mode 1)
 (display-battery-mode 1)
+(delete-selection-mode 1)
 
 (setq tab-width 4)
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -463,3 +464,20 @@ Return a list of installed packages or nil for every skipped package."
 (if (string-equal system-type "windows-nt")
     (setenv "GIT_ASKPASS" "git-gui--askpass")
   )
+
+;;************************************************************************
+;;                            Move Lines Up And Down
+;;************************************************************************
+(defun move-line-up ()
+  (interactive)
+  (transpose-lines 1)
+  (forward-line -2))
+
+(defun move-line-down ()
+  (interactive)
+  (forward-line 1)
+  (transpose-lines 1)
+  (forward-line -1))
+
+(global-set-key (kbd "M-<up>") 'move-line-up)
+(global-set-key (kbd "M-<down>") 'move-line-down)
