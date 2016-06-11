@@ -45,7 +45,7 @@ Return a list of installed packages or nil for every skipped package."
 (or (file-exists-p package-user-dir)
     (package-refresh-contents))
 
-(ensure-package-installed 'undo-tree 'neotree 'elpy 'smex 'ido-ubiquitous 'ido-vertical-mode) ;  --> (nil nil) if iedit and magit are already installed
+(ensure-package-installed 'undo-tree 'neotree 'elpy 'smex 'ido-ubiquitous 'ido-vertical-mode 'powerline) ;  --> (nil nil) if iedit and magit are already installed
 
 ;; activate installed packages
 (package-initialize)
