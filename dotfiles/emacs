@@ -177,18 +177,18 @@ Return a list of installed packages or nil for every skipped package."
 	 (file+headline (concat orgdir "/notlar.org") "Readings") "* TODO %c\n  %a")
 	)
       )
-)
 ;;************************************************************************
 ;;                            Org-Mobile
 ;;************************************************************************
 
  (when (string-equal system-type "gnu/linux") ; GNU/Linux
   (progn
-(defun webdav_sync()
-  (interactive)
-  (shell-command "sync")
+    (defun webdav_sync()
+      (interactive)
+      (shell-command "sync")
+      )
+    )
 )
-))
 ;; Set to <your Dropbox root directory>/MobileOrg.
 ;(setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
 (setq org-mobile-directory "/mnt/webdav/org")
