@@ -110,6 +110,7 @@ Return a list of installed packages or nil for every skipped package."
 			     (concat orgdir "/gunluk.org")
 			     (concat orgdir "/pc.org")
 			     (concat orgdir "/notlar.org")
+			     (concat orgdir "/izlenecekler.org")
 ))
 
 (setq org-default-notes-file (concat orgdir "/notlar.org"))
