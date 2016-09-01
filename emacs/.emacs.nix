@@ -1,12 +1,25 @@
 (setq inhibit-startup-message t)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
+(scroll-bar-mode -1)
+
+;;(set-default 'cursor-type 'hbar)
+(show-paren-mode 1)
+;;(global-hl-line-mode)
 
 (display-time-mode 1)
 (line-number-mode 1)
 (column-number-mode 1)
 (display-battery-mode 1)
 (delete-selection-mode 1)
+
+(setq tab-width 4)
+(defalias 'yes-or-no-p 'y-or-n-p)
+(prefer-coding-system 'utf-8)
+
+
+(winner-mode t)
+(windmove-default-keybindings)
 
 (setq tab-width 4)
 (defalias 'yes-or-no-p 'y-or-n-p)
