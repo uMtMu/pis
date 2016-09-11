@@ -1,4 +1,11 @@
+PAGER="/usr/bin/less"
+
 PS1="\[\033[38;5;9m\]\u\[$(tput sgr0)\]\[\033[38;5;10m\]@\[$(tput sgr0)\]\[\033[38;5;9m\]\h\[$(tput sgr0)\]\[\033[38;5;6m\][\w]\[$(tput sgr0)\]\[\033[38;5;15m\] \A \\$ \n-> \[$(tput sgr0)\]"
+
+alias rm="rm -i"
+alias mv="mv -i"
+alias cp="cp -i"
+
 alias e="exit"
 alias c="clear"
 
@@ -12,8 +19,9 @@ alias 3.="1.;2."
 
 alias ag="sudo apt-get"
 alias agi="ag install"
-alias agu="ag update"
+alias agu="ag update && ag -u upgrade"
 alias agr="ag remove --purge"
+alias acs="apt-cache search"
 
 agil() 
 {
@@ -48,3 +56,14 @@ vDown()
 {
 	amixer set Master 5%- | grep "Front Left:" | awk '{print "Volume:" $5}'
 }
+
+wUp()
+{
+    nmcli nm wifi on && echo "Wireless opened"
+}
+
+wDown()
+{
+    nmcli nm wifi off && echo "Wireless closed"
+}
+
