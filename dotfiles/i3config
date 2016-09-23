@@ -152,3 +152,5 @@ bindsym $mod+l exec i3lock
 
 exec_always --no-startup-id xrandr --output VGA1 --mode 1920x1080
 exec_always --no-startup-id xrandr --output LVDS1 --mode 1366x768 --right-of VGA1
+
+exec "dropbox start"

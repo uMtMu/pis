@@ -34,15 +34,5 @@ set autoindent      " Copy indent from current line when starting a new line
                     " command).
 
 set mouse=a         " Enable the use of the mouse.
-
-" use ghc functionality for haskell files
-au Bufenter *.hs compiler ghc
-let g:haddock_browser = "maxthon"
-let g:haddock_docdir = "/home/umt/.ghc_docs/haddock"
 filetype plugin indent on
 syntax on
-
-call pathogen#infect()
-call pathogen#helptags()
-
-

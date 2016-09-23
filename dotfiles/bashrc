@@ -49,12 +49,12 @@ alias tez='cd ~/Projeler/pansharping-py'
 
 vUp() 
 { 
-	amixer set Master 5%+ | grep "Front Left:" | awk '{print "Volume:" $5}'
+	amixer set Master 5%+ | grep "%" | awk '{print "Volume:" $4}'
 }
 
 vDown()
 {
-	amixer set Master 5%- | grep "Front Left:" | awk '{print "Volume:" $5}'
+	amixer set Master 5%- | grep "%" | awk '{print "Volume:" $4}'
 }
 
 wUp()
