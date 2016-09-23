@@ -3,14 +3,20 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 
-(set-default 'cursor-type 'hbar)
 (show-paren-mode 1)
-(global-hl-line-mode)
 
 (display-time-mode 1)
-(line-number-mode)
-(column-number-mode)
+(global-linum-mode 1)
+(column-number-mode 1)
 (display-battery-mode 1)
+(delete-selection-mode 1)
+
+;; Unique Buffer Names
+(require 'uniquify)
+
+;; Save last cursor place for buffer
+(require 'saveplace)
+(setq-default save-place t)
 
 (winner-mode t)
 (windmove-default-keybindings)
@@ -27,9 +33,14 @@
   (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
   (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
   (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+  (add-to-list 'package-archives '("elpy"  . "http://jorgenschaefer.github.io/packages/") t)
   )
 
 (setq tramp-default-method "ssh")
+
+(require 'saveplace)
+(setq-default save-place t)
+
 
 ;;************************************************************************
 ;;				 Package Check
@@ -54,12 +65,18 @@ Return a list of installed packages or nil for every skipped package."
     (package-refresh-contents))
 
 (ensure-package-installed 'undo-tree 'neotree 'elpy 'smex 'ido-ubiquitous
-						  'ido-vertical-mode 'powerline 'smart-mode-line
-						  'smart-mode-line-powerline-theme 'auto-complete) ;  --> (nil nil) if
+			  'ido-vertical-mode 'powerline 'smart-mode-line
+			  'auto-complete 'python-django 'htmlize) ;  --> (nil nil) if
 										;  iedit and magit are already installed
 
 ;; activate installed packages
 (package-initialize)
+
+;;************************************************************************
+;;			      python Django
+;;************************************************************************
+
+(global-set-key (kbd "C-x j") 'python-django-open-project)
 
 ;;************************************************************************
 ;;				   ibuffer
@@ -73,13 +90,6 @@ Return a list of installed packages or nil for every skipped package."
 ;;************************************************************************
 
 (global-undo-tree-mode)
-;;************************************************************************
-;;				 Swimmers
-;;************************************************************************
-(add-to-list 'load-path "~/.emacs.d/swimmers")
-(load "swimmers.el")
-(require 'swimmers)
-(setq swimmers-timer (run-with-idle-timer 60 t 'swimming))
 ;;************************************************************************
 ;;				 NeoTree
 ;;************************************************************************
@@ -128,6 +138,7 @@ Return a list of installed packages or nil for every skipped package."
 
 (setq org-refile-targets '((org-agenda-files . (:maxlevel . 6))))
 
+(require 'org-publish)
 (cond
  ((string-equal system-type "windows-nt") ; Microsoft Windows
   (progn
@@ -146,8 +157,6 @@ Return a list of installed packages or nil for every skipped package."
 	  '(("site"
 	     :base-directory "~/Projeler/umtmu.github.io"
 	     :publishing-directory "~/Projeler/umtmu.github.io"
-	     :section-numbers nil
-	     :table-of-contents nil
 	     :publishing-function org-publish-org-to-html
 	     )))
     ))
@@ -344,11 +353,12 @@ Return a list of installed packages or nil for every skipped package."
 
 (package-initialize)
 (elpy-enable)
+(elpy-use-ipython)
 ;; Fixing a key binding bug in elpy
 (define-key yas-minor-mode-map (kbd "C-c k") 'yas-expand)
 ;; Fixing another key binding bug in iedit mode
 (define-key global-map (kbd "C-c o") 'iedit-mode)
-(setenv "PYTHONPATH” “/usr/bin/python")
+(setenv "PYTHONPATH" "/usr/bin/python")
 
  
 
@@ -451,15 +461,27 @@ Return a list of installed packages or nil for every skipped package."
  '(ansi-color-faces-vector [default default default italic underline success warning error])
  '(ansi-color-names-vector ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#e090d7" "#8cc4ff" "#eeeeec"])
  '(compilation-message-face (quote default))
- '(custom-enabled-themes (quote (tango-dark)))
- '(custom-safe-themes (quote ("405b0ac2ac4667c5dab77b36e3dd87a603ea4717914e30fcf334983f79cfd87e" "a802c77b818597cc90e10d56e5b66945c57776f036482a033866f5f506257bca" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "71ecffba18621354a1be303687f33b84788e13f40141580fa81e7840752d31bf" default)))
+ '(custom-enabled-themes (quote (deeper-blue)))
+ '(custom-safe-themes (quote ("c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "b9e9ba5aeedcc5ba8be99f1cc9301f6679912910ff92fdf7980929c2fc83ab4d" "98cc377af705c0f2133bb6d340bf0becd08944a588804ee655809da5d8140de6" "5dc0ae2d193460de979a463b907b4b2c6d2c9c4657b2e9e66b8898d2592e3de5" "84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" "405b0ac2ac4667c5dab77b36e3dd87a603ea4717914e30fcf334983f79cfd87e" "a802c77b818597cc90e10d56e5b66945c57776f036482a033866f5f506257bca" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "71ecffba18621354a1be303687f33b84788e13f40141580fa81e7840752d31bf" default)))
  '(elpy-project-root-finder-functions (quote (elpy-project-find-python-root elpy-project-find-hg-root elpy-project-find-svn-root)))
  '(fci-rule-color "#3E3D31")
  '(highlight-changes-colors (quote ("#FD5FF0" "#AE81FF")))
  '(highlight-tail-colors (quote (("#3E3D31" . 0) ("#67930F" . 20) ("#349B8D" . 30) ("#21889B" . 50) ("#968B26" . 60) ("#A45E0A" . 70) ("#A41F99" . 85) ("#3E3D31" . 100))))
+ '(hl-sexp-background-color "#1c1f26")
  '(magit-diff-use-overlays nil)
+ '(org-agenda-files (quote ("/home/umt/Dropbox/org/kisisel.org" "/home/umt/Dropbox/org/gunluk.org" "/home/umt/Dropbox/org/notlar.org" "/home/umt/Dropbox/org/izlenecekler.org")))
  '(pos-tip-background-color "#A6E22E")
  '(pos-tip-foreground-color "#272822")
+ '(safe-local-variable-values (quote ((python-shell-completion-string-code . "';'.join(get_ipython().Completer.all_completions('''%s'''))
+") (python-shell-completion-module-string-code . "';'.join(module_completion('''%s'''))
+") (python-shell-completion-setup-code . "from IPython.core.completerlib import module_completion") (python-shell-interpreter-args . "manage.py shell") (python-shell-interpreter . "python"))))
+ '(sml/mode-width (if (eq (powerline-current-separator) (quote arrow)) (quote right) (quote full)))
+ '(sml/pos-id-separator (quote ("" (:propertize " " face powerline-active1) (:eval (propertize " " (quote display) (funcall (intern (format "powerline-%s-%s" (powerline-current-separator) (car powerline-default-separator-dir))) (quote powerline-active1) (quote powerline-active2)))) (:propertize " " face powerline-active2))))
+ '(sml/pos-minor-modes-separator (quote ("" (:propertize " " face powerline-active1) (:eval (propertize " " (quote display) (funcall (intern (format "powerline-%s-%s" (powerline-current-separator) (cdr powerline-default-separator-dir))) (quote powerline-active1) (quote sml/global)))) (:propertize " " face sml/global))))
+ '(sml/pre-id-separator (quote ("" (:propertize " " face sml/global) (:eval (propertize " " (quote display) (funcall (intern (format "powerline-%s-%s" (powerline-current-separator) (car powerline-default-separator-dir))) (quote sml/global) (quote powerline-active1)))) (:propertize " " face powerline-active1))))
+ '(sml/pre-minor-modes-separator (quote ("" (:propertize " " face powerline-active2) (:eval (propertize " " (quote display) (funcall (intern (format "powerline-%s-%s" (powerline-current-separator) (cdr powerline-default-separator-dir))) (quote powerline-active2) (quote powerline-active1)))) (:propertize " " face powerline-active1))))
+ '(sml/pre-modes-separator (propertize " " (quote face) (quote sml/modes)))
+ '(uniquify-buffer-name-style (quote post-forward-angle-brackets) nil (uniquify))
  '(vc-annotate-background nil)
  '(vc-annotate-color-map (quote ((20 . "#F92672") (40 . "#CF4F1F") (60 . "#C26C0F") (80 . "#E6DB74") (100 . "#AB8C00") (120 . "#A18F00") (140 . "#989200") (160 . "#8E9500") (180 . "#A6E22E") (200 . "#729A1E") (220 . "#609C3C") (240 . "#4E9D5B") (260 . "#3C9F79") (280 . "#A1EFE4") (300 . "#299BA6") (320 . "#2896B5") (340 . "#2790C3") (360 . "#66D9EF"))))
  '(vc-annotate-very-old-color nil)
@@ -472,7 +494,17 @@ Return a list of installed packages or nil for every skipped package."
  '(mode-line ((t (:foreground "#030303" :background "#bdbdbd" :box nil))))
  '(mode-line-inactive ((t (:foreground "#f9f9f9" :background "#666666" :box nil)))))
 
-(nlinum-mode)
 
 
 (global-set-key (kbd "C->") 'ace-jump-mode)
+
+;;************************************************************************
+;;                        active Babel languages
+;;************************************************************************
+
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '(
+   (sh . t)
+    )
+ )
