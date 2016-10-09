@@ -359,7 +359,7 @@ Return a list of installed packages or nil for every skipped package."
 ;; Fixing another key binding bug in iedit mode
 (define-key global-map (kbd "C-c o") 'iedit-mode)
 (setenv "PYTHONPATH" "/usr/bin/python")
-
+(add-hook 'python-mode-hook 'jedi:setup)
  
 
 ;;************************************************************************
@@ -508,3 +508,4 @@ Return a list of installed packages or nil for every skipped package."
    (sh . t)
     )
  )
+
