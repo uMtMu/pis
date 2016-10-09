@@ -57,6 +57,21 @@ vDown()
 	amixer set Master 5%- | grep "%" | awk '{print "Volume:" $4}'
 }
 
+vFull()
+{
+	amixer set Master 100% > /dev/null && echo "Volume is FULL"
+}
+
+vHalf()
+{
+	amixer set Master 50% > /dev/null && echo "Volume is HALF"
+}
+
+vMute()
+{
+	amixer set Master 0% > /dev/null && echo "Volume is MUTE"
+}
+
 wUp()
 {
     nmcli nm wifi on && echo "Wireless opened"
