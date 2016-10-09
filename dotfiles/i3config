@@ -154,3 +154,6 @@ exec_always --no-startup-id xrandr --output VGA1 --mode 1920x1080
 exec_always --no-startup-id xrandr --output LVDS1 --mode 1366x768 --right-of VGA1
 
 exec "dropbox start"
+
+exec --no-startup-id i3-msg 'workspace 1; exec emacs'
+exec --no-startup-id i3-msg 'workspace 2; exec terminator'
