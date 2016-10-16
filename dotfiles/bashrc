@@ -17,10 +17,12 @@ alias 1.="cd .."
 alias 2.="1.; 1."
 alias 3.="1.;2."
 
+alias alert_sound="mpg123 ~/.red_alert.mp3 >> /dev/null 2>&1"
+
 alias ag="sudo apt-get"
-alias agi="ag install"
-alias agu="ag update && ag -u upgrade"
-alias agr="ag remove --purge"
+alias agi="ag install && alert_sound"
+alias agu="ag update && ag -u upgrade && alert_sound"
+alias agr="ag remove --purge && alert_sound"
 alias acs="apt-cache search"
 
 agil() 
@@ -37,15 +39,14 @@ agil()
 alias sv="sudo vim"
 alias emacs='emacs -nw'
 
-# Düşünülen aliaslar
 alias gitc="git commit -a -m"
 alias gita="git add"
 alias gitp="git push -u origin master"
 alias gits="git status"
-
-alias ~haskell='cd ~/Projeler/haskell'
-alias ~python='cd ~/Projeler/python'
-alias tez='cd ~/Projeler/pansharping-py'
+gitgs()
+{
+    find /home/ -name ".git" 2> /dev/null | sed 's/\/.git/\//g' | awk '{print "-------------------------\n\033[1;32mGit Repo:\033[0m " $1;system("git --git-dir="$1".git --work-tree="$1" status")}'
+}
 
 vUp() 
 { 
