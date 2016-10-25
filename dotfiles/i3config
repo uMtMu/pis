@@ -18,7 +18,8 @@ font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # clear in small sizes. However, if you need a lot of unicode glyphs or
 # right-to-left text rendering, you should instead use pango for rendering and
 # chose a FreeType font, such as:
-# font pango:DejaVu Sans Mono 10
+#font pango:DejaVu Sans Mono 10, Awesome 8
+font pango:Awesome 8
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -30,7 +31,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec dmenu_run -sb 'orange red'
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -86,29 +87,34 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+set $workspace1 "1: Emacs"
+set $workspace2 "2: Terminals "
+set $workspace3 "3: Browser "
+set $workspace10 "10: Spotify " 
+
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
+bindsym $mod+1 workspace $workspace1
+bindsym $mod+2 workspace $workspace2
+bindsym $mod+3 workspace $workspace3
 bindsym $mod+4 workspace 4
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+0 workspace $workspace10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+1 move container to workspace $workspace1
+bindsym $mod+Shift+2 move container to workspace $workspace2
+bindsym $mod+Shift+3 move container to workspace $workspace3
 bindsym $mod+Shift+4 move container to workspace 4
 bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+0 move container to workspace $workspace10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -142,12 +148,37 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
+
+set $bg-color    	    #2f343f
+set $inactive-bg-color	    #2f343f
+set $text-color  	    #f3f4f5
+set $inactive-text-color    #676e7d
+set $urgent-bg-color  	    #e53935
+
+#window colors
+#			border			background		text			indicator
+client.focused		$bg-color		$bg-color		$text-color		#00ff00
+client.unfocused	$ianactive-bg-color	$inactive-bg-color	$inactive-text-color	#00ff00
+client.focused_inactive	$ianactive-bg-color	$inactive-bg-color	$inactive-text-color	#00ff00
+client.urgent		$urgent-bg-color	$urgent-bg-color	$text-color		#00ff00
+
+hide_edge_borders both
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
+        status_command i3status -c ~/.i3status.conf
+	colors {
+	       background $bg-color
+	       separator #757575
+	       #			border			background		text
+	       focused_workspace	$bg-color		$bg-color		$text-color
+	       inactive_workspace	$ianactive-bg-color	$inactive-bg-color	$inactive-text-color
+	       urgent_workspace		$urgent-bg-color	$urgent-bg-color	$text-color
+	}	
 }
-bindsym $mod+l exec i3lock
+
+bindsym $mod+l exec i3lock --color "$bg-color"
 
 
 exec_always --no-startup-id xrandr --output VGA1 --mode 1920x1080
@@ -155,7 +186,11 @@ exec_always --no-startup-id xrandr --output LVDS1 --mode 1366x768 --right-of VGA
 
 exec "dropbox start"
 
-exec --no-startup-id i3-msg 'workspace 1; exec emacs'
-exec --no-startup-id i3-msg 'workspace 2; exec terminator'
+exec --no-startup-id i3-msg 'workspace $workspace1; exec emacs'
+exec --no-startup-id i3-msg 'workspace $workspace2; exec terminator'
+exec --no-startup-id i3-msg 'workspace $workspace3; exec google-chrome'
 
-exec --no-startup-id feh --bg-scale ~/Pictures/zen.jpg
+assign [class="google-chrome"] $workspace3 
+#assign [class="spotify"] $workspace10
+
+exec_always --no-startup-id feh --bg-scale ~/Pictures/zen.jpg
