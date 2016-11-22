@@ -194,3 +194,5 @@ assign [class="google-chrome"] $workspace3
 #assign [class="spotify"] $workspace10
 
 exec_always --no-startup-id feh --bg-scale ~/Pictures/zen.jpg
+
+workspace_layout tabbed
