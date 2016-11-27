@@ -1,5 +1,7 @@
 PAGER="/usr/bin/less"
 
+LC_ALL=C
+
 PS1="\[\033[38;5;9m\]\u\[$(tput sgr0)\]\[\033[38;5;10m\]@\[$(tput sgr0)\]\[\033[38;5;9m\]\h\[$(tput sgr0)\]\[\033[38;5;6m\][\w]\[$(tput sgr0)\]\[\033[38;5;15m\] \A \\$ \n-> \[$(tput sgr0)\]"
 
 alias rm="rm -i"
@@ -19,10 +21,10 @@ alias 3.="1.;2."
 
 alias alert_sound="mpg123 ~/.red_alert.mp3 >> /dev/null 2>&1"
 
-alias ag="sudo apt-get"
-alias agi="ag install && alert_sound"
-alias agu="ag update && ag -u upgrade && alert_sound"
-alias agr="ag remove --purge && alert_sound"
+alias sag="sudo apt-get"
+alias agi="sag install"
+alias agu="sag update && ag -u upgrade"
+alias agr="sag remove --purge"
 alias acs="apt-cache search"
 
 agil() 
