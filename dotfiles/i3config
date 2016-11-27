@@ -89,14 +89,15 @@ bindsym $mod+a focus parent
 
 set $workspace1 "1: Emacs"
 set $workspace2 "2: Terminals "
-set $workspace3 "3: Browser "
+set $workspace3 "3: Web Browser "
+set $workspace4 "4: File Browser "
 set $workspace10 "10: Spotify " 
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
 bindsym $mod+2 workspace $workspace2
 bindsym $mod+3 workspace $workspace3
-bindsym $mod+4 workspace 4
+bindsym $mod+4 workspace $workspace4
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
@@ -108,7 +109,7 @@ bindsym $mod+0 workspace $workspace10
 bindsym $mod+Shift+1 move container to workspace $workspace1
 bindsym $mod+Shift+2 move container to workspace $workspace2
 bindsym $mod+Shift+3 move container to workspace $workspace3
-bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+4 move container to workspace $workspace4
 bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7
@@ -190,8 +191,9 @@ exec --no-startup-id i3-msg 'workspace $workspace1; exec emacs'
 exec --no-startup-id i3-msg 'workspace $workspace2; exec terminator'
 exec --no-startup-id i3-msg 'workspace $workspace3; exec google-chrome'
 
-assign [class="google-chrome"] $workspace3 
-#assign [class="spotify"] $workspace10
+assign [class="Google-chrome"] $workspace3
+assign [class="Thunar"] $workspace4
+#assign [class="Spotify"] $workspace10
 
 exec_always --no-startup-id feh --bg-scale ~/Pictures/zen.jpg
 
