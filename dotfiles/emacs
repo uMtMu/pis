@@ -1,5 +1,7 @@
 (setq inhibit-startup-message t)
 
+(set-default-font "Droid Sans Mono 9")
+
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
@@ -68,7 +70,7 @@ Return a list of installed packages or nil for every skipped package."
 (ensure-package-installed 'undo-tree 'neotree 'elpy 'smex 'ido-ubiquitous 
 			  'ido-vertical-mode 'powerline 'smart-mode-line
 			  'auto-complete 'python-django 'htmlize 
-			  'switch-window 'ace-jump-mode) ;  --> (nil nil) if
+			  'switch-window 'ace-jump-mode 'evil 'ag) ;  --> (nil nil) if
 										;  iedit and magit are already installed
 
 ;; activate installed packages
@@ -293,53 +295,58 @@ Return a list of installed packages or nil for every skipped package."
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 (setq-default auto-fill-function 'do-auto-fill)
 
-;;;;************************************************************************
-;;;;                                  W3M
-;;;;************************************************************************
-;;
-;;(add-to-list 'load-path "~/.elisp/emacs-w3m/")
-;;(require 'w3m-load)
-;;
 ;;************************************************************************
 ;;                              Newsticker 
 ;;************************************************************************
-;;
-;;(require 'newsticker)
-;;
-;;; W3M HTML renderer isn't essential, but it's pretty useful.
-;;(require 'w3m)
-;;(setq newsticker-html-renderer 'w3m-region)
-;;
-;;; We want our feeds pulled every 10 minutes.
-;;(setq newsticker-retrieval-interval 600)
-;;
-;;; Setup the feeds. We'll have a look at these in just a second.
-;;(setq newsticker-url-list-defaults nil)
-;;(setq newsticker-url-list
-;;      '(
-;;	("Hacker News"
-;;         "http://feeds.feedburner.com/hacker-news-feed-50?format=xml"
-;;         nil nil nil)
-;;	("Python Planet"
-;;	 "http://planetpython.org/rss20.xml"
-;;	 nil nil nil)
-;;	("Cumhuriyet - Dünya"
-;;	 "http://www.cumhuriyet.com.tr/rss/5.xml"
-;;	 nil nil nil)
-;;	("Planet Emacsen"
-;;	 "http://planet.emacsen.org/atom.xml"
-;;	 nil nil nil)
-;;	("Cumhuriyet - Türkiye"
-;;	 "http://www.cumhuriyet.com.tr/rss/4.xml"
-;;	 nil nil nil)
-;;      )
-;;)
-;;; Optionally bind a shortcut for your new RSS reader.
-;;(global-set-key (kbd "C-c r") 'newsticker-treeview)
-;;
-;;; Don't forget to start it!
-;;(newsticker-start)
-;;
+
+(require 'newsticker)
+
+;; W3M HTML renderer isn't essential, but it's pretty useful.
+(require 'w3m)
+(setq newsticker-html-renderer 'w3m-region)
+
+;; We want our feeds pulled every 10 minutes.
+(setq newsticker-retrieval-interval 600)
+
+;; Setup the feeds. We'll have a look at these in just a second.
+(setq newsticker-url-list-defaults nil)
+(setq newsticker-url-list
+      '(
+	 ("Hacker News"
+         "http://feeds.feedburner.com/hacker-news-feed-50?format=xml"
+         nil nil nil)
+	 ("Python Planet"
+	 "http://planetpython.org/rss20.xml"
+	 nil nil nil)
+
+	 ("Cumhuriyet - Dünya"
+	 "http://www.cumhuriyet.com.tr/rss/5.xml"
+	 nil nil nil)
+	 ("Planet Emacsen"
+	 "http://planet.emacsen.org/atom.xml"
+	 nil nil nil)
+	 ("Cumhuriyet - Türkiye"
+	 "http://www.cumhuriyet.com.tr/rss/4.xml"
+	 nil nil nil)
+	 ("CNN-Turk"		
+	 "http://www.cnnturk.com/feed/rss/news"
+	 nil nil nil)
+	 ("Odatv" 
+	 "http://odatv.com/rss.php"
+	 nil nil nil)
+     )
+;;	 ("Dipnottv"
+;;	  "http://www.dipnot.tv/feed"
+;;	 nil nil nil
+;;	 )
+	  
+)
+;; Optionally bind a shortcut for your new RSS reader.
+(global-set-key (kbd "C-c r") 'newsticker-treeview)
+
+;; Don't forget to start it!
+(newsticker-start)
+
 ;;;;************************************************************************
 ;;;;                          EMMS Media Player
 ;;;;************************************************************************
@@ -504,12 +511,12 @@ Return a list of installed packages or nil for every skipped package."
  '(mode-line ((t (:foreground "#030303" :background "#bdbdbd" :box nil))))
  '(mode-line-inactive ((t (:foreground "#f9f9f9" :background "#666666" :box nil)))))
 
-;;************************************************************************
-;;                        Ace Jump
-;;************************************************************************
-
-(require 'ace-jump-mode)
-(global-set-key (kbd "C-c SPC") 'ace-jump-mode)
+;;;;************************************************************************
+;;;;                        Ace Jump
+;;;;************************************************************************
+;;
+;;(require 'ace-jump-mode)
+;;(global-set-key (kbd "C-c SPC") 'ace-jump-mode)
 
 ;;************************************************************************
 ;;                        active Babel languages
@@ -522,4 +529,25 @@ Return a list of installed packages or nil for every skipped package."
     )
  )
 
-(set-default-font "Droid Sans Mono 9")
+
+;;************************************************************************
+;;                       Evil Mode 
+;;************************************************************************
+(require 'evil)
+(evil-mode 1)
+
+
+;;************************************************************************
+;;                        Silver Searcher
+;;************************************************************************
+
+(require 'ag)
+
+;;************************************************************************
+;;                        Make windmove work in org-mode
+;;************************************************************************
+
+(add-hook 'org-shiftup-final-hook 'windmove-up)
+(add-hook 'org-shiftleft-final-hook 'windmove-left)
+(add-hook 'org-shiftdown-final-hook 'windmove-down)
+(add-hook 'org-shiftright-final-hook 'windmove-right)
