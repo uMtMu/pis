@@ -295,57 +295,58 @@ Return a list of installed packages or nil for every skipped package."
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 (setq-default auto-fill-function 'do-auto-fill)
 
-;;************************************************************************
-;;                              Newsticker 
-;;************************************************************************
+;;;;************************************************************************
+;;;;                              Newsticker 
+;;;;************************************************************************
+;;
+;;(require 'newsticker)
+;;
+;;;; W3M HTML renderer isn't essential, but it's pretty useful.
+;;(require 'w3m)
+;;(setq newsticker-html-renderer 'w3m-region)
+;;
+;;;; We want our feeds pulled every 10 minutes.
+;;(setq newsticker-retrieval-interval 600)
+;;
+;;;; Setup the feeds. We'll have a look at these in just a second.
+;;(setq newsticker-url-list-defaults nil)
+;;(setq newsticker-url-list
+;;      '(
+;;	 ("Hacker News"
+;;         "http://feeds.feedburner.com/hacker-news-feed-50?format=xml"
+;;         nil nil nil)
+;;	 ("Python Planet"
+;;	 "http://planetpython.org/rss20.xml"
+;;	 nil nil nil)
+;;
+;;	 ("Cumhuriyet - Dünya"
+;;	 "http://www.cumhuriyet.com.tr/rss/5.xml"
+;;	 nil nil nil)
+;;	 ("Planet Emacsen"
+;;	 "http://planet.emacsen.org/atom.xml"
+;;	 nil nil nil)
+;;	 ("Cumhuriyet - Türkiye"
+;;	 "http://www.cumhuriyet.com.tr/rss/4.xml"
+;;	 nil nil nil)
+;;	 ("CNN-Turk"		
+;;	 "http://www.cnnturk.com/feed/rss/news"
+;;	 nil nil nil)
+;;	 ("Odatv" 
+;;	 "http://odatv.com/rss.php"
+;;	 nil nil nil)
+;;     )
+;;;;	 ("Dipnottv"
+;;;;	  "http://www.dipnot.tv/feed"
+;;;;	 nil nil nil
+;;;;	 )
+;;	  
+;;)
+;;;; Optionally bind a shortcut for your new RSS reader.
+;;(global-set-key (kbd "C-c r") 'newsticker-treeview)
+;;
+;;;; Don't forget to start it!
+;;(newsticker-start)
 
-(require 'newsticker)
-
-;; W3M HTML renderer isn't essential, but it's pretty useful.
-(require 'w3m)
-(setq newsticker-html-renderer 'w3m-region)
-
-;; We want our feeds pulled every 10 minutes.
-(setq newsticker-retrieval-interval 600)
-
-;; Setup the feeds. We'll have a look at these in just a second.
-(setq newsticker-url-list-defaults nil)
-(setq newsticker-url-list
-      '(
-	 ("Hacker News"
-         "http://feeds.feedburner.com/hacker-news-feed-50?format=xml"
-         nil nil nil)
-	 ("Python Planet"
-	 "http://planetpython.org/rss20.xml"
-	 nil nil nil)
-
-	 ("Cumhuriyet - Dünya"
-	 "http://www.cumhuriyet.com.tr/rss/5.xml"
-	 nil nil nil)
-	 ("Planet Emacsen"
-	 "http://planet.emacsen.org/atom.xml"
-	 nil nil nil)
-	 ("Cumhuriyet - Türkiye"
-	 "http://www.cumhuriyet.com.tr/rss/4.xml"
-	 nil nil nil)
-	 ("CNN-Turk"		
-	 "http://www.cnnturk.com/feed/rss/news"
-	 nil nil nil)
-	 ("Odatv" 
-	 "http://odatv.com/rss.php"
-	 nil nil nil)
-     )
-;;	 ("Dipnottv"
-;;	  "http://www.dipnot.tv/feed"
-;;	 nil nil nil
-;;	 )
-	  
-)
-;; Optionally bind a shortcut for your new RSS reader.
-(global-set-key (kbd "C-c r") 'newsticker-treeview)
-
-;; Don't forget to start it!
-(newsticker-start)
 
 ;;;;************************************************************************
 ;;;;                          EMMS Media Player
@@ -529,19 +530,13 @@ Return a list of installed packages or nil for every skipped package."
     )
  )
 
-
-;;************************************************************************
-;;                       Evil Mode 
-;;************************************************************************
-(require 'evil)
-(evil-mode 1)
-
-
 ;;************************************************************************
 ;;                        Silver Searcher
 ;;************************************************************************
 
 (require 'ag)
+(setq ag-highlight-search t)
+(global-set-key (kbd "C-c SPC") 'ag-project)
 
 ;;************************************************************************
 ;;                        Make windmove work in org-mode
@@ -551,3 +546,11 @@ Return a list of installed packages or nil for every skipped package."
 (add-hook 'org-shiftleft-final-hook 'windmove-left)
 (add-hook 'org-shiftdown-final-hook 'windmove-down)
 (add-hook 'org-shiftright-final-hook 'windmove-right)
+
+
+;;************************************************************************
+;;                        Evil-Mode
+;;************************************************************************
+
+(require 'evil)
+(evil-mode 1)
