@@ -1,4 +1,9 @@
 PAGER="/usr/bin/less"
+BROWSER="/usr/bi/w3m"
+EDITOR="/usr/local/bin/vim"
+#RTV_EDITOR="$EDITOR"
+#RTV_URLVIEWER="/usr/bin/urlscan"
+
 
 LC_ALL=C
 
@@ -37,6 +42,9 @@ agil()
         echo "Yükleyeyim ama neyi?"
     fi
 }
+
+alias ~ruby="cd ~/Proje/ruby/abd_sunny/"
+alias ~blog="cd ~/Proje/umtmu.github.io/"
 
 alias sv="sudo vim"
 alias emacs='emacs -nw'
