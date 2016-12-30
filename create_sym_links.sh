@@ -10,3 +10,5 @@ do
         ln -s "$(pwd)/dotfiles/$file" "$HOME/.$file"
     fi
 done
+
+ln -s "$(pwd)/bg_rnd.sh" "$HOME/.bg_rnd.sh"
