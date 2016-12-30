@@ -94,3 +94,22 @@ wDown()
     nmcli nm wifi off && echo "Wireless closed"
 }
 
+bUp()
+{
+    xbacklight -inc 10
+}
+
+bDown()
+{
+    xbacklight -dec 10
+}
+
+45alert()
+{
+	sleep 45m && mpg123 ~/.24.mp3  > /dev/null 2>&1 &
+}
+
+15alert()
+{
+	sleep 15m && mpg123 ~/.24.mp3  > /dev/null 2>&1 &
+}
