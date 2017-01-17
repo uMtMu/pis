@@ -8,11 +8,16 @@
       sentence-end-double-space nil     		 ; No double space
 )
 
+(setq inhibit-startup-message t)
+
+(global-hl-line-mode 1)
+(cua-mode 1)
+
 (global-hl-line-mode 1)
 (cua-mode 1)
 (menu-bar-mode -1)
 (set-default-font "Droid Sans Mono 9")
-(tool-bar-mode -1)							
+(tool-bar-mode -1)
 (scroll-bar-mode -1)
 (show-paren-mode 1)
 (display-time-mode 1)
@@ -20,183 +25,39 @@
 (column-number-mode 1)
 (display-battery-mode 1)
 (delete-selection-mode 1)
+(setq indent-tabs-mode nil)
+
+;; Unique Buffer Names
+(require 'uniquify)
+
+;; Save last cursor place for buffer
+(require 'saveplace)
+(setq-default save-place t)
+
+(winner-mode t)
+(windmove-default-keybindings)
+
 (setq tab-width 4)
+(setq python-indent 4)
 (defalias 'yes-or-no-p 'y-or-n-p)
 (prefer-coding-system 'utf-8)
 
 (require 'package)
 
 (when (>= emacs-major-version 24)
+  (require 'package)
   (package-initialize)
-  (add-to-list 'package-archives '("melpa-stable" .
-  "https://stable.melpa.org/packages/") t) 
+  (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
   (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
   (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
-  (add-to-list 'package-archives '("elpy"  .
-  "http://jorgenschaefer.github.io/packages/") t)
-   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/") t)	
+  (add-to-list 'package-archives '("elpy"  . "http://jorgenschaefer.github.io/packages/") t)
+  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/") t)	
   )
-
-(setq package-enable-at-startup nil)
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-
-(eval-when-compile
-  (require 'use-package))
-
-;; Unique Buffer Names
-(use-package uniquify)
-
-
-;; With C-x left and C-x right buttons you can switch between window layouts
-;; Usefull with newsticker :D
-(winner-mode t)
-(windmove-default-keybindings)
-
-(when (fboundp 'winner-mode)
-  (winner-mode 1))
 
 (setq tramp-default-method "ssh")
 
-(use-package saveplace
-:config (setq-default save-place t)
-)
-
-(use-package undo-tree
-:ensure t
-:init (global-undo-tree-mode)
-)
-
-(use-package neotree
-:ensure t
-:bind (([f8] . neo-toggle))
-)
-
-(use-package elpy
-:ensure t
-:bind
-		(
-				("C-c k" . yas-expand)
-				("C-c o" . iedit-mode)
-		)
-:init
-(setenv "PYTHONPATH" "/usr/bin/python")
-(add-hook 'python-mode-hook 'jedi:setup)
-:config 
-(elpy-enable)
-(elpy-use-ipython)
-)
-
-(use-package smex
-:ensure t
-:init
-(smex-initialize)
-:bind
-		(
-				("M-x" . smex)
-				("M-X" . smex-major-mode-commands)
-				("C-c C-c M-x" . execute-extended-command)
-		)
-)
-
-(use-package fill-column-indicator
-:config
-(setq fci-rule-width 1)
-(setq fci-rule-color "gray")
-(define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
-(global-fci-mode 1)		
-)
-
-(use-package python-django
-:ensure t
-:bind
-		(
-				("C-x j" . python-django-open-project)
-		)
-)
-
-
-(global-set-key (kbd "C-x C-b") 'ibuffer)
-(autoload 'ibuffer "ibuffer" "List buffers." t)
-
-(use-package switch-window
-:ensure t
-:bind
-		(
-				("C-M-Z" . switch-window)
-		)
-)
-
-
-(use-package auto-complete
-:ensure t
-:config
-(ac-config-default)
-)
-
-(use-package ido
-  :ensure t
-  :config
-  (setq org-completion-use-ido t)
-  (ido-mode 1)
-  (ido-everywhere 1)
-)
-
-(use-package ido-vertical-mode
-:ensure t
-:config
-(set-face-attribute 'ido-vertical-first-match-face nil
-                    :background nil
-                    :foreground nil)
-(set-face-attribute 'ido-vertical-only-match-face nil
-                    :background nil
-                    :foreground nil)
-(set-face-attribute 'ido-vertical-match-face nil
-                    :background nil
-                    :foreground nil)
-(ido-vertical-mode 1)
-)
-
-;;(setq ido-vertical-define-keys 'C-n-and-C-p-only)
-
-(setq ido-use-faces nil)
-
-
-
-(use-package ido-ubiquitous
-:ensure t
-:config
-(ido-ubiquitous-mode 1)
-)
-
-(use-package auto-fill
-:config
-(setq-default fill-column 80)
-(setq auto-fill-mode t)
-(add-hook 'text-mode-hook 'turn-on-auto-fill)
-(setq-default auto-fill-function 'do-auto-fill)
-)
-
-
-(use-package ag
-:bind
-(("C-c SPC" . ag-project))
-:config
-(setq ag-highlight-search t)
-)
-
-
-;;(use-package focus
-;;:ensure t
-;;:config
-;;(focus-mode 1)
-;;)
-
-(use-package yasnippet
-:config
-(yas-global-mode 1)
-)
+(require 'saveplace)
+(setq-default save-place t)
 
 
 ;;************************************************************************
@@ -221,15 +82,44 @@ Return a list of installed packages or nil for every skipped package."
 (or (file-exists-p package-user-dir)
     (package-refresh-contents))
 
-(ensure-package-installed  
-			   'powerline 'smart-mode-line
-			    			   'htmlize 
-			  )
-			  ;  --> (nil nil) if
-			  ;  iedit and magit are already installed
+(ensure-package-installed 'undo-tree 'neotree 'elpy 'smex 'ido-ubiquitous 
+			  'ido-vertical-mode 'powerline 'smart-mode-line
+			  'auto-complete 'python-django 'htmlize 
+			  'switch-window 'ace-jump-mode 'evil 'ag) ;  --> (nil nil) if
+										;  iedit and magit are already installed
 
 ;; activate installed packages
-;;(package-initialize)
+(package-initialize)
+
+;;************************************************************************
+;;			      python Django
+;;************************************************************************
+
+(global-set-key (kbd "C-x j") 'python-django-open-project)
+
+;;************************************************************************
+;;				   ibuffer
+;;************************************************************************
+
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+(autoload 'ibuffer "ibuffer" "List buffers." t)
+
+;;************************************************************************
+;;				   Undo-tree
+;;************************************************************************
+
+(global-undo-tree-mode)
+
+;;************************************************************************
+;;				 NeoTree
+;;************************************************************************
+(require 'neotree)
+(global-set-key [f8] 'neotree-toggle)
+
+;;************************************************************************
+;;				 Switch Window
+;;************************************************************************
+(global-set-key (kbd "C-M-z") 'switch-window)
 
 
 ;;************************************************************************
@@ -274,29 +164,29 @@ Return a list of installed packages or nil for every skipped package."
 
 (setq org-refile-targets '((org-agenda-files . (:maxlevel . 6))))
 
-(require 'org-publish)
-(cond
- ((string-equal system-type "windows-nt") ; Microsoft Windows
-  (progn
-    (setq org-publish-project-alist
-	  '(("site"
-	     :base-directory (concat orgdir "/blog")
-	     :publishing-directory (concat orgdir "/blog")
-	     :section-numbers nil
-	     :table-of-contents nil
-	     :publishing-function org-html-publish-to-html
-	     )))
-    ))
- ((string-equal system-type "gnu/linux") ; GNU/Linux
-  (progn
-    (setq org-publish-project-alist
-	  '(("site"
-	     :base-directory "~/Projeler/umtmu.github.io"
-	     :publishing-directory "~/Projeler/umtmu.github.io"
-	     :publishing-function org-publish-org-to-html
-	     )))
-    ))
- )
+;;(require 'org-publish)
+;;(cond
+;; ((string-equal system-type "windows-nt") ; Microsoft Windows
+;;  (progn
+;;    (setq org-publish-project-alist
+;;	  '(("site"
+;;	     :base-directory (concat orgdir "/blog")
+;;	     :publishing-directory (concat orgdir "/blog")
+;;	     :section-numbers nil
+;;	     :table-of-contents nil
+;;	     :publishing-function org-html-publish-to-html
+;;	     )))
+;;    ))
+;; ((string-equal system-type "gnu/linux") ; GNU/Linux
+;;  (progn
+;;    (setq org-publish-project-alist
+;;	  '(("site"
+;;	     :base-directory "~/Projeler/umtmu.github.io"
+;;	     :publishing-directory "~/Projeler/umtmu.github.io"
+;;	     :publishing-function org-publish-org-to-html
+;;	     )))
+;;    ))
+;; )
 
 ;;(setq org-agenda-diary-file (concat orgdir "\\diary.org"))
 
@@ -334,7 +224,194 @@ Return a list of installed packages or nil for every skipped package."
 	 (file+headline (concat orgdir "/notlar.org") "Readings") "* TODO %c\n  %a")
 	)
       )
+;;;;************************************************************************
+;;;;                            Org-Mobile
+;;;;************************************************************************
+;;
+;; (when (string-equal system-type "gnu/linux") ; GNU/Linux
+;;  (progn
+;;    (defun webdav_sync()
+;;      (interactive)
+;;      (shell-command "sync")
+;;      )
+;;    )
+;;)
+;;;; Set to <your Dropbox root directory>/MobileOrg.
+;;;(setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
+;;(setq org-mobile-directory "/mnt/webdav/org")
+;;(setq org-mobile-inbox-for-pull "~/.frommobileorg")
+;;(if (file-exists-p org-mobile-directory)
+;;    (progn
+;;      (add-hook 'after-init-hook 'org-mobile-pull)
+;;      (add-hook 'kill-emacs-hook 'org-mobile-push)
+;;      (add-hook 'kill-emacs-hook 'webdav_sync)
+;;      )
+;;    (message "WebDav sunucusuna bağlanılamadı....")
+;;)
+;;************************************************************************
+;;				   Org-Alert
+;;************************************************************************
+;;(require 'org-alert)
+;;(setq alert-default-style 'mode-line)
 
+;;************************************************************************
+;;                          Auto Complete
+;;************************************************************************
+
+(ac-config-default)
+
+;;************************************************************************
+;;                            Auto-Completion
+;;************************************************************************
+(ido-mode 1)
+(ido-everywhere 1)
+(setq org-completion-use-ido t)
+
+(require 'ido-vertical-mode)
+;; Color codes can be used to customize
+(set-face-attribute 'ido-vertical-first-match-face nil
+                    :background nil
+                    :foreground nil)
+(set-face-attribute 'ido-vertical-only-match-face nil
+                    :background nil
+                    :foreground nil)
+(set-face-attribute 'ido-vertical-match-face nil
+                    :background nil
+                    :foreground nil)
+
+;; optionally
+(setq ido-use-faces nil)
+
+(ido-vertical-mode 1)
+(setq ido-vertical-define-keys 'C-n-and-C-p-only)
+
+(require 'ido-ubiquitous)
+(ido-ubiquitous-mode 1)
+
+;;************************************************************************
+;;                               Smex
+;;************************************************************************
+
+(require 'smex) ; Not needed if you use package.el
+(smex-initialize) ; Can be omitted. This might cause a (minimal) delay
+                  ; when Smex is auto-initialized on its first run.
+
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+;; This is your old M-x.
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+
+;;************************************************************************
+;;                               Auto-Fill
+;;************************************************************************
+
+(setq-default fill-column 80)
+(setq auto-fill-mode t)
+(add-hook 'text-mode-hook 'turn-on-auto-fill)
+(setq-default auto-fill-function 'do-auto-fill)
+
+;;;;************************************************************************
+;;;;                              Newsticker 
+;;;;************************************************************************
+;;
+;;(require 'newsticker)
+;;
+;;;; W3M HTML renderer isn't essential, but it's pretty useful.
+;;(require 'w3m)
+;;(setq newsticker-html-renderer 'w3m-region)
+;;
+;;;; We want our feeds pulled every 10 minutes.
+;;(setq newsticker-retrieval-interval 600)
+;;
+;;;; Setup the feeds. We'll have a look at these in just a second.
+;;(setq newsticker-url-list-defaults nil)
+;;(setq newsticker-url-list
+;;      '(
+;;	 ("Hacker News"
+;;         "http://feeds.feedburner.com/hacker-news-feed-50?format=xml"
+;;         nil nil nil)
+;;	 ("Python Planet"
+;;	 "http://planetpython.org/rss20.xml"
+;;	 nil nil nil)
+;;
+;;	 ("Cumhuriyet - Dünya"
+;;	 "http://www.cumhuriyet.com.tr/rss/5.xml"
+;;	 nil nil nil)
+;;	 ("Planet Emacsen"
+;;	 "http://planet.emacsen.org/atom.xml"
+;;	 nil nil nil)
+;;	 ("Cumhuriyet - Türkiye"
+;;	 "http://www.cumhuriyet.com.tr/rss/4.xml"
+;;	 nil nil nil)
+;;	 ("CNN-Turk"		
+;;	 "http://www.cnnturk.com/feed/rss/news"
+;;	 nil nil nil)
+;;	 ("Odatv" 
+;;	 "http://odatv.com/rss.php"
+;;	 nil nil nil)
+;;     )
+;;;;	 ("Dipnottv"
+;;;;	  "http://www.dipnot.tv/feed"
+;;;;	 nil nil nil
+;;;;	 )
+;;	  
+;;)
+;;;; Optionally bind a shortcut for your new RSS reader.
+;;(global-set-key (kbd "C-c r") 'newsticker-treeview)
+;;
+;;;; Don't forget to start it!
+;;(newsticker-start)
+
+
+;;;;************************************************************************
+;;;;                          EMMS Media Player
+;;;;************************************************************************
+;;
+;;
+;;(add-to-list 'load-path "~/.elisp/emms/lisp")
+;;(require 'emms-setup)
+;;(emms-standard)
+;;(emms-default-players)
+
+;;************************************************************************
+;;                                  W3M
+;;************************************************************************
+
+;;(add-to-list 'load-path "~/.elisp/emacs-w3m/")
+;;(require 'w3m-load)
+;;************************************************************************
+;;                               El-Py
+;;************************************************************************
+
+(package-initialize)
+(elpy-enable)
+(elpy-use-ipython)
+;; Fixing a key binding bug in elpy
+(define-key yas-minor-mode-map (kbd "C-c k") 'yas-expand)
+;; Fixing another key binding bug in iedit mode
+(define-key global-map (kbd "C-c o") 'iedit-mode)
+(setenv "PYTHONPATH" "/usr/bin/python")
+(add-hook 'python-mode-hook 'jedi:setup)
+ 
+
+;;************************************************************************
+;;                               Tema
+;;************************************************************************
+
+;;************************************************************************
+;;                            Php-Mode
+;;************************************************************************
+(autoload 'php-mode "php-mode" "Major mode for editing php code" t)
+(add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
+(add-to-list 'auto-mode-alist '("\\.inc$" . php-mode))
+
+;;************************************************************************
+;;                            Winner-Mode
+;;************************************************************************
+;; With C-x left and C-x right buttons you can switch between window layouts
+;; Usefull with newsticker :D
+(when (fboundp 'winner-mode)
+  (winner-mode 1))
 
 
 ;;************************************************************************
@@ -450,6 +527,13 @@ Return a list of installed packages or nil for every skipped package."
  '(mode-line ((t (:foreground "#030303" :background "#bdbdbd" :box nil))))
  '(mode-line-inactive ((t (:foreground "#f9f9f9" :background "#666666" :box nil)))))
 
+;;;;************************************************************************
+;;;;                        Ace Jump
+;;;;************************************************************************
+;;
+;;(require 'ace-jump-mode)
+;;(global-set-key (kbd "C-c SPC") 'ace-jump-mode)
+
 ;;************************************************************************
 ;;                        active Babel languages
 ;;************************************************************************
@@ -461,7 +545,13 @@ Return a list of installed packages or nil for every skipped package."
     )
  )
 
+;;************************************************************************
+;;                        Silver Searcher
+;;************************************************************************
 
+(require 'ag)
+(setq ag-highlight-search t)
+(global-set-key (kbd "C-c SPC") 'ag-project)
 
 ;;************************************************************************
 ;;                        Make windmove work in org-mode
@@ -471,7 +561,3 @@ Return a list of installed packages or nil for every skipped package."
 (add-hook 'org-shiftleft-final-hook 'windmove-left)
 (add-hook 'org-shiftdown-final-hook 'windmove-down)
 (add-hook 'org-shiftright-final-hook 'windmove-right)
-
-
-
-
