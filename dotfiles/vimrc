@@ -33,6 +33,9 @@ set autoindent      " Copy indent from current line when starting a new line
                     " (typing <CR> in Insert mode or when using the "o" or "O"
                     " command).
 
-set mouse=a         " Enable the use of the mouse.
+"set mouse=a         " Enable the use of the mouse.
+set paste
+set diffopt+=iwhite
 filetype plugin indent on
+set shell=/bin/bash
 syntax on
