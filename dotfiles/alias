@@ -13,17 +13,17 @@ alias cp="cp -i"
 alias e="exit"
 alias c="clear"
 
-alias ll="ls -al"
+alias ll="ls -alhX --group-directories-first"
 
 alias grep="grep --color"
 
-alias 1.="cd .."
-alias 2.="1.; 1."
-alias 3.="1.;2."
+alias ..="cd .."
+alias ...="..; .."
+alias ....="..;..."
 
 alias alert_sound="mpg123 ~/.red_alert.mp3 >> /dev/null 2>&1"
 
-alias sag="sudo apt-get"
+alias sag="sudo apt"
 alias agi="sag install"
 alias agu="sag update && sag -u upgrade"
 alias agr="sag remove --purge"
@@ -41,6 +41,7 @@ agil()
 }
 
 alias ~ruby="cd ~/Proje/ruby/abd_sunny/"
+alias ~python="cd ~/Proje/python"
 alias ~blog="cd ~/Proje/umtmu.github.io/"
 
 alias sv="sudo vim"
@@ -55,6 +56,9 @@ gitgs()
 {
     find ~ -name ".git" 2> /dev/null | sed 's/\/.git/\//g' | awk '{print "-------------------------\n\033[1;32mGit Repo:\033[0m " $1;system("git --git-dir="$1".git --work-tree="$1" status")}'
 }
+
+
+alias chopiny="google-chrome https://www.youtube.com/watch?v=wygy721nzRc"
 
 vUp() 
 { 
