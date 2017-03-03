@@ -1,12 +1,39 @@
-(setq auto-revert-interval 1					 ; Refresh buffers fast
-      custom-file (make-temp-file "")			 ; Discard customization's
-      echo-keystrokes 0.1               		 ; Show keystrokes asap
-      inhibit-startup-message t         		 ; No splash screen please
-      initial-scratch-message nil       		 ; Clean scratch buffer
-      recentf-max-saved-items 100       		 ; Show more recent files
-      ring-bell-function 'ignore        		 ; Quiet
-      sentence-end-double-space nil     		 ; No double space
-)
+(setq auto-revert-interval 1)					 ; Refresh buffers fast
+(setq custom-file (make-temp-file ""))			 ; Discard customization's
+(setq echo-keystrokes 0.1)               		 ; Show keystrokes asap
+(setq inhibit-startup-message t)         		 ; No splash screen please
+(setq initial-scratch-message nil)       		 ; Clean scratch buffer
+(setq recentf-max-saved-items 100)       		 ; Show more recent files
+(setq ring-bell-function 'ignore)        		 ; Quiet
+(setq sentence-end-double-space nil)     		 ; No double space
+
+
+(setq browse-url-generic-program "chromium-browser")
+
+;; backup files(~filename) will be created in this dir
+(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
+
+;; Sacha says "disk space is cheap, lets use it :)"
+(setq delete-old-versions -1)
+(setq version-control t)
+(setq vc-make-backup-files t)
+(setq auto-save-file-name-transforms '((".*" "~/.emacs.d/auto-save-list/" t)))
+
+;; http://www.wisdomandwonder.com/wp-content/uploads/2014/03/C3F.html
+;; Save everything to history
+(setq savehist-file "~/.emacs.d/savehist")
+(savehist-mode +1)
+(setq savehist-save-minibuffer-history +1)
+(setq savehist-additional-variables
+      '(kill-ring
+        search-ring
+        regexp-search-ring))
+
+;; don't blink cursor !
+(blink-cursor-mode 0)
+(when (display-graphic-p)
+  (setq-default cursor-type 'box))
+(setq x-stretch-cursor 1)
 
 (setq inhibit-startup-message t)
 
@@ -19,7 +46,12 @@
 (set-default-font "Droid Sans Mono 9")
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
-(show-paren-mode 1)
+
+(setq blink-matching-paren nil)
+(show-paren-mode t)
+(setq show-paren-delay 0)
+(setq show-paren-style 'expression)
+
 (display-time-mode 1)
 (global-linum-mode 1)
 (column-number-mode 1)
@@ -51,7 +83,8 @@
   (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
   (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
   (add-to-list 'package-archives '("elpy"  . "http://jorgenschaefer.github.io/packages/") t)
-  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/") t)	
+
+(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/") t)	
   )
 
 (setq tramp-default-method "ssh")
@@ -85,8 +118,8 @@ Return a list of installed packages or nil for every skipped package."
 (ensure-package-installed 'undo-tree 'neotree 'elpy 'smex 'ido-ubiquitous 
 			  'ido-vertical-mode 'powerline 'smart-mode-line
 			  'auto-complete 'python-django 'htmlize 
-			  'switch-window 'ace-jump-mode 'evil 'ag) ;  --> (nil nil) if
-										;  iedit and magit are already installed
+			  'switch-window 'ace-jump-mode 'evil 'ag
+			  'iedit 'magit) ;  --> (nil nil) if
 
 ;; activate installed packages
 (package-initialize)
@@ -154,11 +187,10 @@ Return a list of installed packages or nil for every skipped package."
 (setq org-agenda-files (list (concat orgdir "/is.org")
 			     (concat orgdir "/kisisel.org")
 			     (concat orgdir "/gunluk.org")
-			     (concat orgdir "/pc.org")
 			     (concat orgdir "/notlar.org")
-			     (concat orgdir "/izlenecekler.org")
 ))
 
+(setq org-log-into-drawer "LOGBOOK")
 (setq org-default-notes-file (concat orgdir "/notlar.org"))
 (define-key global-map "\C-cc" 'org-capture)
 
@@ -217,13 +249,17 @@ Return a list of installed packages or nil for every skipped package."
 (setq org-capture-templates
       '(
 	("t" "Todo" entry
-	 (file+headline (concat orgdir "/notlar.org") "Tasks") "* TODO %? %^G\n  %i\n  %a")
+	 (file+headline (concat orgdir "/notlar.org") "Tasks") "* TODO %?
+      %^G\n:PROPERTIES:\n:CREATED: %U\n:END:  %i\n  %a")
         ("j" "Journal" entry
-	 (file+datetree (concat orgdir "/journal.org") "Journal")	"* %? \nEntered on %U\n  %i\n  %a")
+	 (file+datetree (concat orgdir "/journal.org") "Journal")	"* %?  \n \nEntered on %U\n  %i")
 	("r" "Read" entry
 	 (file+headline (concat orgdir "/notlar.org") "Readings") "* TODO %c\n  %a")
 	)
       )
+
+(setq org-src-fontify-natively t)
+
 ;;;;************************************************************************
 ;;;;                            Org-Mobile
 ;;;;************************************************************************
@@ -248,17 +284,26 @@ Return a list of installed packages or nil for every skipped package."
 ;;      )
 ;;    (message "WebDav sunucusuna bağlanılamadı....")
 ;;)
+
 ;;************************************************************************
 ;;				   Org-Alert
 ;;************************************************************************
-;;(require 'org-alert)
-;;(setq alert-default-style 'mode-line)
+(require 'org-alert)
+;;(setq alert-default-style 'message)
+(setq alert-default-style 'libnotify)
 
 ;;************************************************************************
 ;;                          Auto Complete
 ;;************************************************************************
 
 (ac-config-default)
+
+
+;;************************************************************************
+;;                          Undo Save
+;;************************************************************************
+(setq undo-tree-auto-save-history t)
+
 
 ;;************************************************************************
 ;;                            Auto-Completion
@@ -390,6 +435,7 @@ Return a list of installed packages or nil for every skipped package."
 (define-key yas-minor-mode-map (kbd "C-c k") 'yas-expand)
 ;; Fixing another key binding bug in iedit mode
 (define-key global-map (kbd "C-c o") 'iedit-mode)
+(global-set-key [f7] 'elpy-occur-definitions)
 (setenv "PYTHONPATH" "/usr/bin/python")
 (add-hook 'python-mode-hook 'jedi:setup)
  
