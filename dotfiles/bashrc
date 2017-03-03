@@ -1,3 +1,7 @@
 PS1="\[\033[38;5;9m\]\u\[$(tput sgr0)\]\[\033[38;5;10m\]@\[$(tput sgr0)\]\[\033[38;5;9m\]\h\[$(tput sgr0)\]\[\033[38;5;6m\][\w]\[$(tput sgr0)\]\[\033[38;5;15m\] \A \\$ \n-> \[$(tput sgr0)\]"
 
+alias ls='ls --color=auto'
+#LS_COLORS='di=1;37:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*.rpm=90'
+#export LS_COLORS
+
 source ~/.alias
