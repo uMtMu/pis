@@ -8,7 +8,8 @@
 (setq sentence-end-double-space nil)     		 ; No double space
 
 
-(setq browse-url-generic-program "chromium-browser")
+;; make emacs always use its own browser for opening URL links
+(setq browse-url-browser-function 'eww-browse-url)
 
 ;; backup files(~filename) will be created in this dir
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
@@ -197,28 +198,28 @@ Return a list of installed packages or nil for every skipped package."
 (setq org-refile-targets '((org-agenda-files . (:maxlevel . 6))))
 
 ;;(require 'org-publish)
-;;(cond
-;; ((string-equal system-type "windows-nt") ; Microsoft Windows
-;;  (progn
-;;    (setq org-publish-project-alist
-;;	  '(("site"
-;;	     :base-directory (concat orgdir "/blog")
-;;	     :publishing-directory (concat orgdir "/blog")
-;;	     :section-numbers nil
-;;	     :table-of-contents nil
-;;	     :publishing-function org-html-publish-to-html
-;;	     )))
-;;    ))
-;; ((string-equal system-type "gnu/linux") ; GNU/Linux
-;;  (progn
-;;    (setq org-publish-project-alist
-;;	  '(("site"
-;;	     :base-directory "~/Projeler/umtmu.github.io"
-;;	     :publishing-directory "~/Projeler/umtmu.github.io"
-;;	     :publishing-function org-publish-org-to-html
-;;	     )))
-;;    ))
-;; )
+(cond
+ ((string-equal system-type "windows-nt") ; Microsoft Windows
+  (progn
+    (setq org-publish-project-alist
+	  '(("site"
+	     :base-directory (concat orgdir "/blog")
+	     :publishing-directory (concat orgdir "/blog")
+	     :section-numbers nil
+	     :table-of-contents nil
+	     :publishing-function org-html-publish-to-html
+	     )))
+    ))
+ ((string-equal system-type "gnu/linux") ; GNU/Linux
+  (progn
+    (setq org-publish-project-alist
+	  '(("site"
+	     :base-directory "~/Proje/umtmu.github.io"
+	     :publishing-directory "~/Proje/umtmu.github.io"
+	     :publishing-function org-html-publish-to-html
+	     )))
+    ))
+ )
 
 ;;(setq org-agenda-diary-file (concat orgdir "\\diary.org"))
 
@@ -249,8 +250,7 @@ Return a list of installed packages or nil for every skipped package."
 (setq org-capture-templates
       '(
 	("t" "Todo" entry
-	 (file+headline (concat orgdir "/notlar.org") "Tasks") "* TODO %?
-      %^G\n:PROPERTIES:\n:CREATED: %U\n:END:  %i\n  %a")
+	 (file+headline (concat orgdir "/notlar.org") "Tasks") "* TODO %? %^G\n   :PROPERTIES:\n   :CREATED: %U\n   :END:  %i\n  %a")
         ("j" "Journal" entry
 	 (file+datetree (concat orgdir "/journal.org") "Journal")	"* %?  \n \nEntered on %U\n  %i")
 	("r" "Read" entry
