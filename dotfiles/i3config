@@ -197,6 +197,8 @@ exec --no-startup-id i3-msg 'workspace $workspace2; exec terminator'
 exec --no-startup-id i3-msg 'workspace $workspace1; exec emacs'
 
 assign [class="Google-chrome"] $workspace3
+assign [class="Min"] $workspace3
+assign [class="Dillo"] $workspace3
 #assign [class="Thunar"] $workspace4
 assign [class="Pcmanfm"] $workspace4
 #assign [class="Spotify"] $workspace10
