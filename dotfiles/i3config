@@ -190,10 +190,11 @@ exec_always --no-startup-id xrandr --output LVDS1 --mode 1366x768 --right-of VGA
 
 exec "dropbox start"
 exec "kupfer"
+exec "radiotray"
 
-exec --no-startup-id i3-msg 'workspace $workspace1; exec emacs'
-exec --no-startup-id i3-msg 'workspace $workspace2; exec terminator'
 #exec --no-startup-id i3-msg 'workspace $workspace3; exec google-chrome'
+exec --no-startup-id i3-msg 'workspace $workspace2; exec terminator'
+exec --no-startup-id i3-msg 'workspace $workspace1; exec emacs'
 
 assign [class="Google-chrome"] $workspace3
 #assign [class="Thunar"] $workspace4
