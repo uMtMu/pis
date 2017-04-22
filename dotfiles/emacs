@@ -285,12 +285,12 @@ Return a list of installed packages or nil for every skipped package."
 ;;    (message "WebDav sunucusuna bağlanılamadı....")
 ;;)
 
-;;************************************************************************
-;;				   Org-Alert
-;;************************************************************************
-(require 'org-alert)
-;;(setq alert-default-style 'message)
-(setq alert-default-style 'libnotify)
+;;;;************************************************************************
+;;;;				   Org-Alert
+;;;;************************************************************************
+;;(require 'org-alert)
+;;;;(setq alert-default-style 'message)
+;;(setq alert-default-style 'libnotify)
 
 ;;************************************************************************
 ;;                          Auto Complete
@@ -350,10 +350,16 @@ Return a list of installed packages or nil for every skipped package."
 ;;                               Auto-Fill
 ;;************************************************************************
 
-(setq-default fill-column 80)
-(setq auto-fill-mode t)
-(add-hook 'text-mode-hook 'turn-on-auto-fill)
-(setq-default auto-fill-function 'do-auto-fill)
+;;(setq-default fill-column 80)
+;;(setq auto-fill-mode t)
+;;(add-hook 'text-mode-hook 'turn-on-auto-fill)
+;;(setq-default auto-fill-function 'do-auto-fill)
+
+;;************************************************************************
+;;                               Visual Line Mode
+;;************************************************************************
+
+(global-visual-line-mode 1)
 
 ;;;;************************************************************************
 ;;;;                              Newsticker 
@@ -424,32 +430,33 @@ Return a list of installed packages or nil for every skipped package."
 
 ;;(add-to-list 'load-path "~/.elisp/emacs-w3m/")
 ;;(require 'w3m-load)
-;;************************************************************************
-;;                               El-Py
-;;************************************************************************
 
-(package-initialize)
-(elpy-enable)
-(elpy-use-ipython)
-;; Fixing a key binding bug in elpy
-(define-key yas-minor-mode-map (kbd "C-c k") 'yas-expand)
-;; Fixing another key binding bug in iedit mode
-(define-key global-map (kbd "C-c o") 'iedit-mode)
-(global-set-key [f7] 'elpy-occur-definitions)
-(setenv "PYTHONPATH" "/usr/bin/python")
-(add-hook 'python-mode-hook 'jedi:setup)
- 
+;;;;************************************************************************
+;;;;                               El-Py
+;;;;************************************************************************
+;;
+;;(package-initialize)
+;;(elpy-enable)
+;;(elpy-use-ipython)
+;;;; Fixing a key binding bug in elpy
+;;(define-key yas-minor-mode-map (kbd "C-c k") 'yas-expand)
+;;;; Fixing another key binding bug in iedit mode
+;;(define-key global-map (kbd "C-c o") 'iedit-mode)
+;;(global-set-key [f7] 'elpy-occur-definitions)
+;;(setenv "PYTHONPATH" "/usr/bin/python")
+;;(add-hook 'python-mode-hook 'jedi:setup)
+
 
 ;;************************************************************************
 ;;                               Tema
 ;;************************************************************************
 
-;;************************************************************************
-;;                            Php-Mode
-;;************************************************************************
-(autoload 'php-mode "php-mode" "Major mode for editing php code" t)
-(add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
-(add-to-list 'auto-mode-alist '("\\.inc$" . php-mode))
+;;;;************************************************************************
+;;;;                            Php-Mode
+;;;;************************************************************************
+;;(autoload 'php-mode "php-mode" "Major mode for editing php code" t)
+;;(add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
+;;(add-to-list 'auto-mode-alist '("\\.inc$" . php-mode))
 
 ;;************************************************************************
 ;;                            Winner-Mode
@@ -461,38 +468,6 @@ Return a list of installed packages or nil for every skipped package."
 
 
 ;;************************************************************************
-;;                            Dikey Yatay Pencere
-;;************************************************************************
-;; Deneme sürecindeki kod
-(defun toggle-window-split ()
-  (interactive)
-  (if (= (count-windows) 2)
-      (let* ((this-win-buffer (window-buffer))
-             (next-win-buffer (window-buffer (next-window)))
-             (this-win-edges (window-edges (selected-window)))
-             (next-win-edges (window-edges (next-window)))
-             (this-win-2nd (not (and (<= (car this-win-edges)
-                                         (car next-win-edges))
-                                     (<= (cadr this-win-edges)
-                                         (cadr next-win-edges)))))
-             (splitter
-              (if (= (car this-win-edges)
-                     (car (window-edges (next-window))))
-                  'split-window-horizontally
-                'split-window-vertically)))
-        (delete-other-windows)
-        (let ((first-win (selected-window)))
-          (funcall splitter)
-          (if this-win-2nd (other-window 1))
-          (set-window-buffer (selected-window) this-win-buffer)
-          (set-window-buffer (next-window) next-win-buffer)
-          (select-window first-win)
-          (if this-win-2nd (other-window 1))))))
-
-(global-set-key [f9] 'toggle-window-split)
-
-
-;;************************************************************************
 ;;                            GIT
 ;;************************************************************************
 ;; GIT windows makinada terminalden değil popup üzerinde kullanıcı/parola
@@ -500,6 +475,7 @@ Return a list of installed packages or nil for every skipped package."
 (if (string-equal system-type "windows-nt")
     (setenv "GIT_ASKPASS" "git-gui--askpass")
   )
+
 
 ;;************************************************************************
 ;;                            Move Lines Up And Down
