@@ -3,14 +3,17 @@ i3 featue
 - i3config dosyası olması gereken yere yazılacak
 
 dotfiles
-- dotfiles klasörü oluşturuldu
-- dotfiles klasöre taşınacak
++ dotfiles klasörü oluşturuldu
++ dotfiles klasöre taşınacak
 	vim
 	emacs
 	i3
 	git ??
 	rtorrent
-- taşınan dotfiles ile ilgili kodlar eklenecek/düzeltilecek
++ taşınan dotfiles ile ilgili kodlar eklenecek/düzeltilecek
+
+alias
+- gitgs komutu fonksiyona çevirilecek
 
 
 gelecek planları
