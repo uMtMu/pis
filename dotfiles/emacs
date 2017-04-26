@@ -6,7 +6,7 @@
 (setq recentf-max-saved-items 100)       		 ; Show more recent files
 (setq ring-bell-function 'ignore)        		 ; Quiet
 (setq sentence-end-double-space nil)     		 ; No double space
-
+(setq next-line-add-newlines t)
 
 ;; make emacs always use its own browser for opening URL links
 (setq browse-url-browser-function 'eww-browse-url)
