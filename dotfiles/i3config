@@ -204,6 +204,8 @@ assign [class="Dillo"] $workspace3
 assign [class="Pcmanfm"] $workspace4
 #assign [class="Spotify"] $workspace10
 
-exec_always --no-startup-id feh --bg-scale ~/Pictures/bg.jpg
+exec_always --no-startup-id feh --bg-scale `ls ~/Pictures/bg/*.jpg | sort -R | tail -1`
+
+exec_always --no-startup-id setxkbmap tr
 
 workspace_layout tabbed
