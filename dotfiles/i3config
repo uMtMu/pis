@@ -188,9 +188,9 @@ bindsym $mod+l exec i3lock --color "$bg-color"
 exec_always --no-startup-id xrandr --output VGA1 --mode 1920x1080
 exec_always --no-startup-id xrandr --output LVDS1 --mode 1366x768 --right-of VGA1
 
-exec "dropbox start"
-exec "kupfer"
-exec "radiotray"
+exec "sleep 5s;kupferi --no-splash"
+exec "sleep 15s; dropbox start"
+exec "sleep 20s;radiotray"
 
 #exec --no-startup-id i3-msg 'workspace $workspace3; exec google-chrome'
 exec --no-startup-id i3-msg 'workspace $workspace2; exec terminator'
