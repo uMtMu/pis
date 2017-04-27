@@ -3,5 +3,5 @@
 *.swp
 *.py#
 emacs~
-fehbg
+*fehbg
 *.~undo-tree~
