@@ -188,19 +188,20 @@ bindsym $mod+l exec i3lock --color "$bg-color"
 exec_always --no-startup-id xrandr --output VGA1 --mode 1920x1080
 exec_always --no-startup-id xrandr --output LVDS1 --mode 1366x768 --right-of VGA1
 
-exec "sleep 5s;kupferi --no-splash"
+exec "kupfer --no-splash"
 exec "sleep 15s; dropbox start"
-exec "sleep 20s;radiotray"
+#exec "sleep 20s; radiotray"
 
 #exec --no-startup-id i3-msg 'workspace $workspace3; exec google-chrome'
 exec --no-startup-id i3-msg 'workspace $workspace2; exec terminator'
 exec --no-startup-id i3-msg 'workspace $workspace1; exec emacs'
 
 assign [class="Emacs24"] $workspace1
+assign [class="X-terminal-emulator"] $workspace2
 assign [class="Google-chrome"] $workspace3
 assign [class="Min"] $workspace3
 assign [class="Dillo"] $workspace3
-#assign [class="Thunar"] $workspace4
+assign [class="Thunar"] $workspace4
 assign [class="Pcmanfm"] $workspace4
 #assign [class="Spotify"] $workspace10
 
@@ -209,3 +210,5 @@ exec_always --no-startup-id feh --bg-scale `ls ~/Pictures/bg/*.jpg | sort -R | t
 exec_always --no-startup-id setxkbmap tr
 
 workspace_layout tabbed
+
+workspace_auto_back_and_forth yes

@@ -25,9 +25,11 @@ alias alert_sound="mpg123 ~/.red_alert.mp3 >> /dev/null 2>&1"
 
 alias sag="sudo apt"
 alias agi="sag install"
-alias agu="sag update && sag -u upgrade"
+alias agu="sag update && sag upgrade"
 alias agr="sag remove --purge"
 alias acs="apt-cache search"
+
+alias kapat='shutdown now'
 
 agil() 
 {
@@ -46,12 +48,19 @@ alias ~blog="cd ~/Proje/umtmu.github.io/"
 
 alias sv="sudo vim"
 alias emacs='emacs -nw'
+alias pycharm='~/apps/pycharm-community-2016.2.2/bin/./pycharm.sh'
 
 alias gitc="git commit -a -m"
 alias gita="git add"
 alias gitp="git push -u origin master"
+alias gitph="git push -u heroku master"
 alias gits="git status"
 alias gitd="git diff"
+alias gitn="git notes add -m"
+
+# must be repaired
+alias ipython3="LC_ALL=C ipython3"
+
 gitgs()
 {
     find ~ -name ".git" 2> /dev/null | sed 's/\/.git/\//g' | awk '{print "-------------------------\n\033[1;32mGit Repo:\033[0m " $1;system("git --git-dir="$1".git --work-tree="$1" status")}'
@@ -95,6 +104,14 @@ wDown()
     nmcli nm wifi off && echo "Wireless closed"
 }
 
+# /usr/share/X11/xorg.conf.d/20-intel.conf
+#Section "Device"
+#        Identifier  "card0"
+#        Driver      "intel"
+#        Option      "Backlight"  "intel_backlight"
+#        BusID       "PCI:0:2:0"
+#EndSection
+
 bUp()
 {
     xbacklight -inc 10
@@ -114,3 +131,5 @@ bDown()
 {
 	sleep 15m && mpg123 ~/.24.mp3  > /dev/null 2>&1 &
 }
+
+alias last_venv='. ~/Proje/python/virtualenvs/`ls -t Proje/python/virtualenvs/ | head -1`/bin/activate'

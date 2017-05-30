@@ -54,7 +54,7 @@
 (setq show-paren-style 'expression)
 
 (display-time-mode 1)
-(global-linum-mode 1)
+;; (global-linum-mode 1)
 (column-number-mode 1)
 (display-battery-mode 1)
 (delete-selection-mode 1)
@@ -163,6 +163,11 @@ Return a list of installed packages or nil for every skipped package."
 (require 'org-install)
 (require 'org-mobile)
 
+(require 'epa-file)
+(epa-file-enable)
+
+(require 'table)
+
 (cond
  ((string-equal system-type "windows-nt") ; Microsoft Windows
   (progn
@@ -242,7 +247,7 @@ Return a list of installed packages or nil for every skipped package."
 ;; only. But when switching from WAIT back to TODO, the ‘/!’ in the WAIT setting
 ;; now triggers a timestamp even though TODO has no logging configured.
 (setq org-todo-keywords
-       '((sequence "TODO(t)" "WAIT(w@/!)" "REVIVED(r@/!)" "|" "DONE(d!)"
+       '((sequence "TODO(t)" "WAIT(w@/!)" "REVIVED(r@/!)" "NEXT(n@)" "|" "DONE(d!)"
 		   "CANCELED(c@)")))
 ;; TODO -> DONE as for TIME
 (setq org-log-done 'time)

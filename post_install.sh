@@ -14,7 +14,7 @@
 # media
 # mpg123 feh(masa üstü arka planı için) 
 #uygulamalar=('build-essential' 'python-dev' 'default-jdk' 'terminator' 'guake' 'chromium-browser' 'pepperflashplugin-nonfree' 'bpython' 'mutt' 'w3m' 'newsbauter' 'wget' 'mc' 'mpg123' 'feh')
-uygulamalar=('build-essential' 'python-dev' 'terminator' 'mutt' 'w3m' 'newsbauter' 'wget' 'mc' 'mpg123' 'feh' 'silversearcher-ag')
+uygulamalar=('build-essential' 'python-dev' 'terminator' 'mutt' 'w3m' 'newsbauter' 'wget' 'mc' 'mpg123' 'feh' 'silversearcher-ag' 'bash-completion')
 
 yukle_apt(){
   sudo apt-get install -y -q $1
@@ -44,7 +44,7 @@ yukle_apt "vim"
 yukle_apt "emacs"
 
 # i3
-i3wm=('i3wm' 'i3lock' 'i3status' 'kupfer')
+i3wm=('i3-wm' 'i3lock' 'i3status' 'kupfer')
 cok_yukle i3wm[@]
 
 #git
