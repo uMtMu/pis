@@ -132,4 +132,4 @@ bDown()
 	sleep 15m && mpg123 ~/.24.mp3  > /dev/null 2>&1 &
 }
 
-alias last_venv='. ~/Proje/python/virtualenvs/`ls -t Proje/python/virtualenvs/ | head -1`/bin/activate'
+alias last_venv='. ~/Proje/python/virtualenvs/`ls -t ~/Proje/python/virtualenvs/ | head -1`/bin/activate'
