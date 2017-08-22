@@ -8,8 +8,8 @@
 (setq sentence-end-double-space nil)     		 ; No double space
 (setq next-line-add-newlines t)
 
-;; make emacs always use its own browser for opening URL links
-(setq browse-url-browser-function 'eww-browse-url)
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "google-chrome")
 
 ;; backup files(~filename) will be created in this dir
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
@@ -186,14 +186,14 @@ Return a list of installed packages or nil for every skipped package."
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 
 (define-key global-map "\C-cl" 'org-store-link)
-(global-set-key (kbd "C-c C-s") 'calendar)
-(define-key global-map "\C-ca" 'org-agenda)
+(global-set-key (kbd "C-c C-s") 'calendar)(define-key global-map "\C-ca" 'org-agenda)
 (setq org-log-done t)
 (setq org-directory orgdir)
 (setq org-agenda-files (list (concat orgdir "/is.org")
 			     (concat orgdir "/kisisel.org")
 			     (concat orgdir "/gunluk.org")
 			     (concat orgdir "/notlar.org")
+			     (concat orgdir "/yazi.org")
 ))
 
 (setq org-log-into-drawer "LOGBOOK")
@@ -247,7 +247,7 @@ Return a list of installed packages or nil for every skipped package."
 ;; only. But when switching from WAIT back to TODO, the ‘/!’ in the WAIT setting
 ;; now triggers a timestamp even though TODO has no logging configured.
 (setq org-todo-keywords
-       '((sequence "TODO(t)" "WAIT(w@/!)" "REVIVED(r@/!)" "NEXT(n@)" "|" "DONE(d!)"
+       '((sequence "TODO(t!)" "WAIT(w@/!)" "REVIVED(r@/!)" "NEXT(n@)" "|" "DONE(d!)"
 		   "CANCELED(c@)")))
 ;; TODO -> DONE as for TIME
 (setq org-log-done 'time)
