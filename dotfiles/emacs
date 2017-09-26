@@ -182,6 +182,9 @@ Return a list of installed packages or nil for every skipped package."
   (progn
     (defvar orgdir "~/Dropbox/org/")))
  )
+ 
+ ;; source satırlarına autoindent
+(setq org-src-tab-acts-natively t)
 
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 
