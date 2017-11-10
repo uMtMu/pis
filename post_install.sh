@@ -44,7 +44,7 @@ yukle_apt "vim"
 yukle_apt "emacs"
 
 # i3
-i3wm=('i3-wm' 'i3lock' 'i3status' 'kupfer')
+i3wm=('i3-wm' 'i3lock' 'i3blocks' 'kupfer')
 cok_yukle i3wm[@]
 
 #git
