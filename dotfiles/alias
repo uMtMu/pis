@@ -6,6 +6,8 @@ EDITOR="/usr/local/bin/vim"
 LC_ALL=C
 
 
+dolar()
+{
 # Dolar kuru gosterme
 curl -s http://www.tcmb.gov.tr/kurlar/today.xml | \
 awk 'BEGIN {p=0}; /<Currency.*USD/ { p = 1 ; next }; /<\/Currency>/{ p = 0 ; next}; p { print }' | \
@@ -15,6 +17,9 @@ function red(s) {return "\033[1;31m" s "\033[0m "}\
 function green(s) {return "\033[1;32m" s "\033[0m "}\
 function blue(s) {return "\033[1;34m" s "\033[0m "}\
 {print "-> " strftime("%Y-%m-%d %H:%M") " Dolar Kuru\n-> " red("Alis:") $1 " " green("Satis:") " " $3 " " red("Efektif Alis:") " " $3 " " green("Efektif Satis:") " " $4}'
+}
+
+dolar
 
 alias rm="rm -i"
 alias mv="mv -i"
