@@ -8,15 +8,20 @@ LC_ALL=C
 
 dolar()
 {
-# Dolar kuru gosterme
-curl -s http://www.tcmb.gov.tr/kurlar/today.xml | \
-awk 'BEGIN {p=0}; /<Currency.*USD/ { p = 1 ; next }; /<\/Currency>/{ p = 0 ; next}; p { print }' | \
-head -7 | tail -4 | grep -o '>.*<' | tr -d "<" | tr -d ">" | tr '\n' ' ' | \
-awk '\
-function red(s) {return "\033[1;31m" s "\033[0m "}\
-function green(s) {return "\033[1;32m" s "\033[0m "}\
-function blue(s) {return "\033[1;34m" s "\033[0m "}\
-{print "-> " strftime("%Y-%m-%d %H:%M") " Dolar Kuru\n-> " red("Alis:") $1 " " green("Satis:") " " $3 " " red("Efektif Alis:") " " $3 " " green("Efektif Satis:") " " $4}'
+	# Dolar kuru gosterme
+	# Dün
+	
+	[ -f ~/dolar_kuru.txt ] && tac dolar_kuru.txt | uniq -w 13 | tac | tail -2 | head -1
+	# Bugün
+	curl -s http://www.tcmb.gov.tr/kurlar/today.xml | \
+	awk 'BEGIN {p=0}; /<Currency.*USD/ { p = 1 ; next }; /<\/Currency>/{ p = 0 ; next}; p { print }' | \
+	head -7 | tail -4 | grep -o '>.*<' | tr -d "<" | tr -d ">" | tr '\n' ' ' | \
+	awk '\
+	function red(s) {return "\033[1;31m" s "\033[0m "}\
+	function green(s) {return "\033[1;32m" s "\033[0m "}\
+	function blue(s) {return "\033[1;34m" s "\033[0m "}\
+	{print "// " strftime("%Y-%m-%d %H:%M") " Dolar Kuru -> " red("Alis:") $1 "\t" green("Satis:") "\t" $3 "\t" red("Efektif Alis:") "\t" $3 "\t" green("Efektif Satis:") "\t" $4}'\
+	| tee -a ~/dolar_kuru.txt
 }
 
 dolar
