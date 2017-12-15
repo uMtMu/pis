@@ -1,19 +1,22 @@
 set -g default-terminal "screen-256color"
 set -g base-index 1
-# Mouse
-# Make mouse useful on copying
-# Kullanışlı olmadığı için kapattım
-#setw -g mode-mouse off
+setw -g pane-base-index 1   # make pane numbering consistent with windows
 
-# select pane with mouse
-# Kullanışlı olmadığı için kapattım
-#setw -g mouse-select-pane off
-
+setw -g xterm-keys on
+set -s escape-time 10                     # faster command sequences
+set -sg repeat-time 600                   # increase repeat timeout
+set -s focus-events on
 set -g history-limit 30000
+
+setw -g automatic-rename on # rename window to reflect current program
+set -g renumber-windows on  # renumber windows when a window is closed
 
 # Automatically set window title
 set-window-option -g automatic-rename on
 set-option -g set-titles on
+
+set -g set-titles on                        # set terminal title
+set -g set-titles-string '#h ❐ #S ● #I #W'
 
 # THEME
 set -g status-bg black
