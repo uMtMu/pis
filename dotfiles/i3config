@@ -171,7 +171,15 @@ hide_edge_borders both
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-	status_command i3blocks
+        status_command i3status -c ~/.i3status.conf
+	colors {
+	       background $bg-color
+	       separator #757575
+	       #			border			background		text
+	       focused_workspace	$bg-color		$bg-color		$text-color
+	       inactive_workspace	$ianactive-bg-color	$inactive-bg-color	$inactive-text-color
+	       urgent_workspace		$urgent-bg-color	$urgent-bg-color	$text-color
+	}	
 }
 
 bindsym $mod+l exec i3lock --color "$bg-color"
@@ -189,12 +197,17 @@ exec --no-startup-id i3-msg 'workspace $workspace2; exec terminator'
 exec --no-startup-id i3-msg 'workspace $workspace1; exec emacs'
 
 assign [class="Emacs24"] $workspace1
+
 assign [class="X-terminal-emulator"] $workspace2
+
 assign [class="Google-chrome"] $workspace3
+assign [class="Opera"] $workspace3
 assign [class="Min"] $workspace3
 assign [class="Dillo"] $workspace3
+
 assign [class="Thunar"] $workspace4
 assign [class="Pcmanfm"] $workspace4
+
 #assign [class="Spotify"] $workspace10
 
 exec_always --no-startup-id feh --bg-scale `ls ~/Pictures/bg/*.jpg | sort -R | tail -1`
