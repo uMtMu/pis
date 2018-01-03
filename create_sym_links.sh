@@ -6,8 +6,10 @@ do
     if $file=="i3config"
     then
         mkdir "$HOME/i3"
+	rm -f $HOME/.i3/config
         ln -s "$(pwd)/dotfiles/$file" "$HOME/.i3/config"
     else
+	rm -f "$HOME/.$file"
         ln -s "$(pwd)/dotfiles/$file" "$HOME/.$file"
     fi
 done

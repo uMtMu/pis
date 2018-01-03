@@ -25,6 +25,18 @@ dolar()
 }
 dolar
 
+quote()
+{
+	shuf -n 1 quotes_app/quotes.txt |\
+	awk '\
+	BEGIN {FS="|"}\
+	function white(s) {return "\033[1;97m" s "\033[0m "}\
+	function green(s) {return "\033[1;32m" s "\033[0m "}\
+	{print white($1)"\n\t\t\t\t\t\t\t\t"green($2)}'
+}
+quote
+
+
 alias rm="rm -i"
 alias mv="mv -i"
 alias cp="cp -i"

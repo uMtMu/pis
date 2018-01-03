@@ -8,6 +8,8 @@
 (setq sentence-end-double-space nil)     		 ; No double space
 (setq next-line-add-newlines t)
 
+(set-default-font "Ubuntu Mono-11")
+
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "google-chrome")
 
@@ -44,7 +46,6 @@
 (global-hl-line-mode 1)
 (cua-mode 1)
 (menu-bar-mode -1)
-(set-default-font "Droid Sans Mono 9")
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 
@@ -116,20 +117,14 @@ Return a list of installed packages or nil for every skipped package."
 (or (file-exists-p package-user-dir)
     (package-refresh-contents))
 
-(ensure-package-installed 'undo-tree 'neotree 'elpy 'smex 'ido-ubiquitous 
-			  'ido-vertical-mode 'powerline 'smart-mode-line
-			  'auto-complete 'python-django 'htmlize 
-			  'switch-window 'ace-jump-mode 'evil 'ag
-			  'iedit 'magit) ;  --> (nil nil) if
+(ensure-package-installed 'undo-tree 'smex 'ido-ubiquitous 
+			  'ido-vertical-mode
+			  'auto-complete
+			  'switch-window 'ace-jump-mode
+			  'iedit) ;  --> (nil nil) if
 
 ;; activate installed packages
 (package-initialize)
-
-;;************************************************************************
-;;			      python Django
-;;************************************************************************
-
-(global-set-key (kbd "C-x j") 'python-django-open-project)
 
 ;;************************************************************************
 ;;				   ibuffer
@@ -143,12 +138,6 @@ Return a list of installed packages or nil for every skipped package."
 ;;************************************************************************
 
 (global-undo-tree-mode)
-
-;;************************************************************************
-;;				 NeoTree
-;;************************************************************************
-(require 'neotree)
-(global-set-key [f8] 'neotree-toggle)
 
 ;;************************************************************************
 ;;				 Switch Window
@@ -267,38 +256,6 @@ Return a list of installed packages or nil for every skipped package."
 
 (setq org-src-fontify-natively t)
 
-;;;;************************************************************************
-;;;;                            Org-Mobile
-;;;;************************************************************************
-;;
-;; (when (string-equal system-type "gnu/linux") ; GNU/Linux
-;;  (progn
-;;    (defun webdav_sync()
-;;      (interactive)
-;;      (shell-command "sync")
-;;      )
-;;    )
-;;)
-;;;; Set to <your Dropbox root directory>/MobileOrg.
-;;;(setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
-;;(setq org-mobile-directory "/mnt/webdav/org")
-;;(setq org-mobile-inbox-for-pull "~/.frommobileorg")
-;;(if (file-exists-p org-mobile-directory)
-;;    (progn
-;;      (add-hook 'after-init-hook 'org-mobile-pull)
-;;      (add-hook 'kill-emacs-hook 'org-mobile-push)
-;;      (add-hook 'kill-emacs-hook 'webdav_sync)
-;;      )
-;;    (message "WebDav sunucusuna bağlanılamadı....")
-;;)
-
-;;;;************************************************************************
-;;;;				   Org-Alert
-;;;;************************************************************************
-;;(require 'org-alert)
-;;;;(setq alert-default-style 'message)
-;;(setq alert-default-style 'libnotify)
-
 ;;************************************************************************
 ;;                          Auto Complete
 ;;************************************************************************
@@ -368,122 +325,6 @@ Return a list of installed packages or nil for every skipped package."
 
 (global-visual-line-mode 1)
 
-;;;;************************************************************************
-;;;;                              Newsticker 
-;;;;************************************************************************
-;;
-;;(require 'newsticker)
-;;
-;;;; W3M HTML renderer isn't essential, but it's pretty useful.
-;;(require 'w3m)
-;;(setq newsticker-html-renderer 'w3m-region)
-;;
-;;;; We want our feeds pulled every 10 minutes.
-;;(setq newsticker-retrieval-interval 600)
-;;
-;;;; Setup the feeds. We'll have a look at these in just a second.
-;;(setq newsticker-url-list-defaults nil)
-;;(setq newsticker-url-list
-;;      '(
-;;	 ("Hacker News"
-;;         "http://feeds.feedburner.com/hacker-news-feed-50?format=xml"
-;;         nil nil nil)
-;;	 ("Python Planet"
-;;	 "http://planetpython.org/rss20.xml"
-;;	 nil nil nil)
-;;
-;;	 ("Cumhuriyet - Dünya"
-;;	 "http://www.cumhuriyet.com.tr/rss/5.xml"
-;;	 nil nil nil)
-;;	 ("Planet Emacsen"
-;;	 "http://planet.emacsen.org/atom.xml"
-;;	 nil nil nil)
-;;	 ("Cumhuriyet - Türkiye"
-;;	 "http://www.cumhuriyet.com.tr/rss/4.xml"
-;;	 nil nil nil)
-;;	 ("CNN-Turk"		
-;;	 "http://www.cnnturk.com/feed/rss/news"
-;;	 nil nil nil)
-;;	 ("Odatv" 
-;;	 "http://odatv.com/rss.php"
-;;	 nil nil nil)
-;;     )
-;;;;	 ("Dipnottv"
-;;;;	  "http://www.dipnot.tv/feed"
-;;;;	 nil nil nil
-;;;;	 )
-;;	  
-;;)
-;;;; Optionally bind a shortcut for your new RSS reader.
-;;(global-set-key (kbd "C-c r") 'newsticker-treeview)
-;;
-;;;; Don't forget to start it!
-;;(newsticker-start)
-
-
-;;;;************************************************************************
-;;;;                          EMMS Media Player
-;;;;************************************************************************
-;;
-;;
-;;(add-to-list 'load-path "~/.elisp/emms/lisp")
-;;(require 'emms-setup)
-;;(emms-standard)
-;;(emms-default-players)
-
-;;************************************************************************
-;;                                  W3M
-;;************************************************************************
-
-;;(add-to-list 'load-path "~/.elisp/emacs-w3m/")
-;;(require 'w3m-load)
-
-;;;;************************************************************************
-;;;;                               El-Py
-;;;;************************************************************************
-;;
-;;(package-initialize)
-;;(elpy-enable)
-;;(elpy-use-ipython)
-;;;; Fixing a key binding bug in elpy
-;;(define-key yas-minor-mode-map (kbd "C-c k") 'yas-expand)
-;;;; Fixing another key binding bug in iedit mode
-;;(define-key global-map (kbd "C-c o") 'iedit-mode)
-;;(global-set-key [f7] 'elpy-occur-definitions)
-;;(setenv "PYTHONPATH" "/usr/bin/python")
-;;(add-hook 'python-mode-hook 'jedi:setup)
-
-
-;;************************************************************************
-;;                               Tema
-;;************************************************************************
-
-;;;;************************************************************************
-;;;;                            Php-Mode
-;;;;************************************************************************
-;;(autoload 'php-mode "php-mode" "Major mode for editing php code" t)
-;;(add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
-;;(add-to-list 'auto-mode-alist '("\\.inc$" . php-mode))
-
-;;************************************************************************
-;;                            Winner-Mode
-;;************************************************************************
-;; With C-x left and C-x right buttons you can switch between window layouts
-;; Usefull with newsticker :D
-(when (fboundp 'winner-mode)
-  (winner-mode 1))
-
-
-;;************************************************************************
-;;                            GIT
-;;************************************************************************
-;; GIT windows makinada terminalden değil popup üzerinde kullanıcı/parola
-;; istiyor
-(if (string-equal system-type "windows-nt")
-    (setenv "GIT_ASKPASS" "git-gui--askpass")
-  )
-
-
 ;;************************************************************************
 ;;                            Move Lines Up And Down
 ;;************************************************************************
@@ -500,17 +341,6 @@ Return a list of installed packages or nil for every skipped package."
 
 (global-set-key (kbd "M-<up>") 'move-line-up)
 (global-set-key (kbd "M-<down>") 'move-line-down)
-
-(require 'powerline)
-(powerline-center-theme)
-
-;; These two lines are just examples
-(setq powerline-arrow-shape 'curve)
-(setq powerline-default-separator-dir '(right . left))
-;; These two lines you really need.
-(setq sml/no-confirm-load-theme t)
-(setq sml/theme 'powerline)
-(sml/setup)
 
 (require 'org-bullets)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
@@ -574,14 +404,6 @@ Return a list of installed packages or nil for every skipped package."
    (sh . t)
     )
  )
-
-;;************************************************************************
-;;                        Silver Searcher
-;;************************************************************************
-
-(require 'ag)
-(setq ag-highlight-search t)
-(global-set-key (kbd "C-c SPC") 'ag-project)
 
 ;;************************************************************************
 ;;                        Make windmove work in org-mode
