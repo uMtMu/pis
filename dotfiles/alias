@@ -27,7 +27,7 @@ dolar
 
 quote()
 {
-	shuf -n 1 quotes_app/quotes.txt |\
+	shuf -n 1 ~/quotes.txt |\
 	awk '\
 	BEGIN {FS="|"}\
 	function white(s) {return "\033[1;97m" s "\033[0m "}\

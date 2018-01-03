@@ -17,4 +17,5 @@ done
 echo "source ~/.alias" >> ~/.bashrc
 
 ln -s "$(pwd)/bg_rnd.sh" "$HOME/.bg_rnd.sh"
+ln -s "$(pwd)/quotes_app/quotes.txt" "$HOME/quotes.txt"
 
