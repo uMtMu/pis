@@ -35,9 +35,11 @@ set autoindent      " Copy indent from current line when starting a new line
 set copyindent    " copy the previous indentation on autoindenting
 set smartindent
 
+" set tabstop=4 shiftwidth=4 expandtab smarttab number showmatch hlsearch incsearch ignorecase smartcase autoindent copyindent smartindent pastetoggle=<F2> foldmethod=indent | colorscheme desert
+
 set backspace=indent,eol,start  " allow backspacing over everything in insert mode
-set mouse=a         " Enable the use of the mouse.
-set paste
+" set mouse=a         " Enable the use of the mouse.
+" set paste
 set diffopt+=iwhite
 filetype plugin indent on
 set shell=/bin/bash
@@ -47,7 +49,7 @@ syntax on
 au Filetype python set foldmethod=indent
 
 " highlight tabs and trailing spaces
-set listchars=tab:>-,trail:-
+set listchars=tab:>-,trail:-,space:.
 set list
 
 nnoremap <C-J> <C-W><C-J>
@@ -96,5 +98,3 @@ set statusline+=\[%{&fileformat}\]
 set statusline+=\ %p%%
 set statusline+=\ %l:%c
 set statusline+=\ 
-
-:setlocal foldmethod=syntax
