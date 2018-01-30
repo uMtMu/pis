@@ -42,7 +42,7 @@ A diamond is just a piece of charcoal that handled stress exceptionally well.|Un
 Think like a man of action; act like a man of thought.|Henri L. Bergson
 If you get up one more time than you fall, you will make it through|Chinese Proverb
 He is able who thinks he is able.|Buddha
-No matter how hard the past, you can always begin again.|Buddha
+*No matter how hard the past, you can always begin again.|Buddha
 Life is like riding a bicycle. To keep your balance you must keep moving.|Einstein
 Excellence can be obtained if you care more than others think is wise, risk more than others think is safe, dream more than others think is practical, expect more than others think is possible.|Unknown
 Don't fear failure so much that you refuse to try new things. The saddest summary of life contains three descriptions: could have, might have, and should have.|Unknown
@@ -91,7 +91,7 @@ Our greatest weakness lies in giving up. The most certain way to succeed is alwa
 Don't go around saying the world owes you a living. The world owes you nothing. It was here first|Mark Twain
 We keep moving forward, opening new doors, and doing new things, because we're curious and curiosity keeps leading us down new paths|Walt Disney
 Nothing exterior to me will ever take command of me.|Walt Whitman
-Nothing is impossible to him who will try.|Alexander The Great
+*Nothing is impossible to him who will try.|Alexander The Great
 If there are no struggles, there is no progress.|Frederick Douglas
 We are what we repeatedly do. Excellence, then, is not an act, but a habit.|Aristotle
 If you want to achieve greatness stop asking for permission.|Unknown
@@ -181,7 +181,7 @@ There is no chance, no destiny, no fate, that can hinder or control the firm res
 Our greatest fear should not be of failure but of succeeding at things in life that don't really matter.|Francis Chan
 You've got to get up every morning with determination if you're going to go to bed with satisfaction.|George Lorimer
 A goal is not always meant to be reached; it often serves simply as something to aim at.|Bruce Lee
-Success is ... knowing your purpose in life, growing to reach your maximum potential, and sowing seeds that benefit others.|John C. Maxwell
+*Success is ... knowing your purpose in life, growing to reach your maximum potential, and sowing seeds that benefit others.|John C. Maxwell
 Be miserable. Or motivate yourself. Whatever has to be done, it's always your choice.|Wayne Dyer
 To accomplish great things, we must not only act, but also dream, not only plan, but also believe.|Anatole France
 Most of the important things in the world have been accomplished by people who have kept on trying when there seemed to be no help at all.|Dale Carnegie
@@ -219,14 +219,14 @@ There is no easy way from the earth to the stars|Seneca
 It is the power of the mind to be unconquerable.|Seneca
 What man actually needs is not a tensionless state but rather the striving and struggling for some goal worthy of him.|Viktor Frankl
 If you find something very difficult to achieve yourself, don't imagine it impossible-for anything possible and proper for another person can be achieved as easily by you.|Marcus Aurelius
-First say to yourself what you would be; and then do what you have to do.|Epictetus
+*First say to yourself what you would be; and then do what you have to do.|Epictetus
 To be like the rock that the waves keep crashing over. It stands unmoved and the raging of the sea falls still around it.|Marcus Aurelius
 Many are harmed by fear itself, and many may have come to their fate while dreading fate|Seneca
 If it's endurable, then endure it. Stop complaining.|Marcus Aurelius
 To bear trials with a calm mind robs misfortune of its strength and burden.|Seneca
-If you would be a good reader, read; if a writer, write.|Epictetus
+*If you would be a good reader, read; if a writer, write.|Epictetus
 ...but if a thing is humanly possible, consider it to be within your reach.|Marcus Aurelius
-How long are you going to wait before you demand the best for yourself|Epictetus
+*How long are you going to wait before you demand the best for yourself|Epictetus
 Fire tries gold, misfortune tries brave men.|Seneca
 True good fortune is what you make for yourself. Good fortune: good character, good intentions, good actions.|Marcus Aurelius
 The impediment to action advances action. What stands in the way becomes the way.|Marcus Aurelius
@@ -236,9 +236,9 @@ It is a rough road that leads to the heights of greatness.|Seneca
 Never let the future disturb you. You will meet it, if you have to, with the same weapons of reason which today arm you against the present.|Marcus Aurelius
 Choose not to be harmed, and you won't feel harmed. Don't feel harmed, and you haven't been.|Marcus Aurelius
 No man is more unhappy than he who never faces adversity. For he is not permitted to prove himself|Seneca
-It's not what happens to you, but how you react to it that matters.|Epictetus
-No great thing is created suddenly.|Epictetus
-There is no shame in making an honest effort.|Epictetus
+*It's not what happens to you, but how you react to it that matters.|Epictetus
+*No great thing is created suddenly.|Epictetus
+*There is no shame in making an honest effort.|Epictetus
 The Way Get Started Is To Quit Talking And Begin Doing.|Walt Disney
 The Pessimist Sees Difficulty In Every Opportunity. The Optimist Sees Opportunity In Every Difficulty.|Winston Churchill
 Don't Let Yesterday Take Up Too Much Of Today.|Will Rogers
@@ -632,7 +632,7 @@ Today is the only day. Yesterday is gone.|John Wooden
 Happiness resides not in possessions, and not in gold, happiness dwells in the soul.|Democritus
 Happiness is not something you postpone for the future; it is something you design for the present.|Jim Rohn
 Love the moment and the energy of that moment will spread beyond all boundaries.|Corita Kent
-However difficult life may seem, there is always something you can do and succeed at.|Stephen Hawking
+*However difficult life may seem, there is always something you can do and succeed at.|Stephen Hawking
 Success breeds success, and failure leads to a sort of fallow period.|Felicity Kendal
 One fails forward toward success.|Charles Kettering
 Can you imagine what I would do if I could do all I can?|Jeff Rich
@@ -864,7 +864,7 @@ I used to make up stuff in my bio all the time, that I used to be a professional
 Let every dawn be to you as the beginning of life, and every setting sun be to you as its close.|John Ruskin
 There are people out there who hate me and who say I'm arrogant, vain, and whatever. That's all part of my success. I am made to be the best.|Cristiano Ronaldo
 Be kind whenever possible. It is always possible.|Dalai Lama
-Only the educated are free.|Epictetus
+*Only the educated are free.|Epictetus
 Nothing makes one feel so strong as a call for help.|Pope Paul VI
 Success is not measured by what you accomplish, but by the opposition you have encountered, and the courage with which you have maintained the struggle against overwhelming odds.|Orison Swett Marden
 Success is not the absence of failure; it's the persistence through failure.|Aisha Tyler
@@ -971,7 +971,6 @@ And when I breathed, my breath was lightning.|Black Elk
 Business gives you a massive high. Doing a great deal, coming up with an inspirational solution... It's very addictive. But it doesn't last long. In isolation, it's a bit sterile. It doesn't reward the soul.|John Caudwell
 Give light and people will find the way.|Ella Baker
 There is a loftier ambition than merely to stand high in the world. It is to stoop down and lift mankind a little higher.|Henry Van Dyke
-I look up to a strong woman; maybe that's why I fell for Gaga. She works incredibly hard and is very strong and inspirational like Mom, with a great work ethic.|Taylor Kinney
 Man never made any material as resilient as the human spirit.|Bernard Williams
 The success combination in business is: Do what you do better... and: do more of what you do.|David Joseph Schwartz
 Success is not the key to happiness. Happiness is the key to success. If you love what you do, you'll be successful.|Tyga
@@ -1171,7 +1170,7 @@ In the United States there's a Puritan ethic and a mythology of success. He who 
 If I have seen further than others, it is by standing upon the shoulders of giants.|Isaac Newton
 I think the biggest challenge is to continue on the same path. I think it's easy to become complacent from the success you've had.|Jason Derulo
 The dog that trots about finds a bone.|Golda Meir
-The key is to keep company only with people who uplift you, whose presence calls forth your best.|Epictetus
+*The key is to keep company only with people who uplift you, whose presence calls forth your best.|Epictetus
 Flaming enthusiasm, backed up by horse sense and persistence, is the quality that most frequently makes for success.|Dale Carnegie
 Every day we should hear at least one little song, read one good poem, see one exquisite picture, and, if possible, speak a few sensible words.|Johann Wolfgang von Goethe
 Noble deeds that are concealed are most esteemed.|Blaise Pascal
@@ -1790,7 +1789,7 @@ When I grew up here, there was no T-Hub. Probably, the closest to T was the Tank
 Possessed with a full confidence of the certain success which British valor must gain over such enemies, I have led you up these steep and dangerous rocks, only solicitous to show you the foe within your reach.|James Wolfe
 Success is almost totally dependent upon drive and persistence. The extra energy required to make another effort or try another approach is the secret of winning.|Denis Waitley
 A long apprenticeship is the most logical way to success. The only alternative is overnight stardom, but I can't give you a formula for that.|Chet Atkins
-Not every difficult and dangerous thing is suitable for training, but only that which is conducive to success in achieving the object of our effort.|Epictetus
+*Not every difficult and dangerous thing is suitable for training, but only that which is conducive to success in achieving the object of our effort.|Epictetus
 Success is achieved and maintained by those who try and keep trying.|W. Clement Stone
 The truth is on the march and nothing will stop it.|Emile Zola
 'All in With Laila Ali' is educational, inspirational, compelling programming profiling individuals that have reached for the sky, pushed themselves to the limit and did things that you would think were impossible.|Laila Ali
@@ -2206,7 +2205,7 @@ A guitar is like an old friend that is there with me.|B.B. King
 To achieve great things, two things are needed; a plan, and not quite enough time.|Leonard Bernstein
 I am hitting my head against the walls, but the walls are giving way.|Gustav Mahler
 I can't understand why people are frightened of new ideas. I'm frightened of the old ones.|John Cage
-Imagination creates reality.|Richard Wagner
+*Imagination creates reality.|Richard Wagner
 Please, no matter how we advance technologically, please don't abandon the book. There is nothing in our material world more beautiful than the book.|Patti Smith
 Music is my religion.| Jimi Hendrix
 There is nothing permanent except change.|Heraclitus
