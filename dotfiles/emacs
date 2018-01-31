@@ -413,3 +413,6 @@ Return a list of installed packages or nil for every skipped package."
 (add-hook 'org-shiftleft-final-hook 'windmove-left)
 (add-hook 'org-shiftdown-final-hook 'windmove-down)
 (add-hook 'org-shiftright-final-hook 'windmove-right)
+
+(require 'org-alert)
+(setq alert-default-style 'libnotify)
