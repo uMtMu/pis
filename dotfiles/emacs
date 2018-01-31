@@ -416,3 +416,19 @@ Return a list of installed packages or nil for every skipped package."
 
 (require 'org-alert)
 (setq alert-default-style 'libnotify)
+
+
+;;************************************************************************
+;;                        Google-IT
+;;************************************************************************
+;; source: http://batsov.com/articles/2011/11/19/why-emacs/
+
+(defun prelude-google ()
+  "Googles a query or region if any."
+  (interactive)
+  (browse-url
+   (concat
+    "http://www.google.com/search?ie=utf-8&oe=utf-8&q="
+    (if mark-active
+        (buffer-substring (region-beginning) (region-end))
+      (read-string "Google: ")))))
