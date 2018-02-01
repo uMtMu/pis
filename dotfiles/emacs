@@ -445,6 +445,7 @@ Return a list of installed packages or nil for every skipped package."
 (require 'popup)
 
 (global-pabbrev-mode t)
+(setq pabbrev-idle-timer-verbose nil)
 
 (define-key pabbrev-mode-map [tab] 'pabbrev-expand-maybe)
 
