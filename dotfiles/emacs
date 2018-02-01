@@ -121,7 +121,7 @@ Return a list of installed packages or nil for every skipped package."
     (package-refresh-contents))
 
 (ensure-package-installed 'undo-tree 'smex 'ido-ubiquitous 
-			  'ido-vertical-mode
+			  'ido-vertical-mode 'pabbrev
 			  'auto-complete
 			  'switch-window 'ace-jump-mode
 			  'iedit) ;  --> (nil nil) if
@@ -435,3 +435,38 @@ Return a list of installed packages or nil for every skipped package."
     (if mark-active
         (buffer-substring (region-beginning) (region-end))
       (read-string "Google: ")))))
+
+
+;;************************************************************************
+;;                        pabbrew
+;;************************************************************************
+
+(require 'pabbrev)
+(require 'popup)
+
+(global-pabbrev-mode t)
+
+(define-key pabbrev-mode-map [tab] 'pabbrev-expand-maybe)
+
+(defun pabbrevx-suggestions-goto-buffer (suggestions)
+  (let* ((candidates (mapcar 'car suggestions))
+         (bounds (pabbrev-bounds-of-thing-at-point))
+         (selection (popup-menu* candidates
+                                 :point (car bounds)
+                                 :scroll-bar t)))
+    (when selection
+      ;; modified version of pabbrev-suggestions-insert
+      (let ((point))
+        (save-excursion
+          (progn
+            (delete-region (car bounds) (cdr bounds))
+            (insert selection)
+            (setq point (point))))
+        (if point
+            (goto-char point))
+        ;; need to nil this so pabbrev-expand-maybe-full won't try
+        ;; pabbrev expansion if user hits another TAB after ac aborts
+        (setq pabbrev-last-expansion-suggestions nil)
+        ))))
+      
+(fset 'pabbrev-suggestions-goto-buffer 'pabbrevx-suggestions-goto-buffer)
