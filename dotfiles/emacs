@@ -10,8 +10,11 @@
 
 (set-default-font "Ubuntu Mono-11")
 
+;;(setq browse-url-browser-function 'browse-url-generic
+;;      browse-url-generic-program "google-chrome")
+
 (setq browse-url-browser-function 'browse-url-generic
-      browse-url-generic-program "google-chrome")
+      browse-url-generic-program "opera")
 
 ;; backup files(~filename) will be created in this dir
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
