@@ -35,6 +35,9 @@
         search-ring
         regexp-search-ring))
 
+;; selected region background color
+(set-face-attribute 'region nil :background "#777")
+
 ;; don't blink cursor !
 (blink-cursor-mode 0)
 (when (display-graphic-p)
