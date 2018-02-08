@@ -43,14 +43,17 @@ set backspace=indent,eol,start  " allow backspacing over everything in insert mo
 set diffopt+=iwhite
 filetype plugin indent on
 set shell=/bin/bash
-color desert
 syntax on
+
+color desert
+set cursorline
+hi CursorLine cterm=NONE ctermbg=LightGreen ctermfg=black
 
 au Filetype python set foldmethod=indent
 
-" highlight tabs and trailing spaces
-set listchars=tab:>-,trail:-,space:.
-set list
+"" highlight tabs and trailing spaces
+"set listchars=tab:>-,trail:-,space:.
+"set list
 
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
