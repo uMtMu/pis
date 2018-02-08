@@ -101,3 +101,6 @@ set statusline+=\[%{&fileformat}\]
 set statusline+=\ %p%%
 set statusline+=\ %l:%c
 set statusline+=\ 
+
+"" diff buffer and original file
+map <F2> :w !diff % - <cr>
