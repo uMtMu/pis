@@ -506,7 +506,7 @@ We do not admire the man of timid peace. We admire the man who embodies victorio
 It is not what he has, or even what he does which expresses the worth of a man, but what he is.|Henri-Frédéric Amiel
 The way of a superior man is three-fold: virtuous, he is free from anxieties; wise, he is free from perplexities; bold, he is free from fear.|Confucius
 A man should be able to hear, and to bear, the worst that could be said of him.|Saul Bellow
-Nobody can give you freedom. Nobody can give you equality or justice or anything. If you're a man, you take it|Malcolm X
+*Nobody can give you freedom. Nobody can give you equality or justice or anything. If you're a man, you take it|Malcolm X
 To be a man requires that you accept everything life has to give you, beginning with your name|Burl Ives
 Gardens are not made by singing 'Oh, how beautiful,' and sitting in the shade.|Rudyard Kipling
 Man needs his difficulties because they are necessary to enjoy success.|A. P. J. Abdul Kalam
@@ -899,7 +899,7 @@ A good plan violently executed now is better than a perfect plan executed next w
 I think that my biggest attribute to any success that I have had is hard work. There really is no substitute for working hard.|Maria Bartiromo
 Part of being a man is learning to take responsibility for your successes and for your failures. You can't go blaming others or being jealous. Seeing somebody else's success as your failure is a cancerous way to live.|Kevin Bacon
 On the recollection of so many and great favours and blessings, I now, with a high sense of gratitude, presume to offer up my sincere thanks to the Almighty, the Creator and Preserver.|William Bartram
-Failure is success if we learn from it.|Malcolm Forbes
+*Failure is success if we learn from it.|Malcolm Forbes
 Good planning is important. I've also regarded a sense of humor as one of the most important things on a big expedition. When you're in a difficult or dangerous situation, or when you're depressed about the chances of success, someone who can make you laugh eases the tension.|Edmund Hillary
 The one thing that makes me feel super lucky about my financial success is that I have a housekeeper.|Gwen Stefani
 Every man's life is a fairy tale written by God's fingers.|Hans Christian Andersen
@@ -1378,7 +1378,7 @@ In my forties, my optimism was boundless. I had really good health and tremendou
 Evolution acts slowly. Our psychological characteristics today are those that promoted reproductive success in the ancestral environment.|Keith Henson
 The level of our success is limited only by our imagination and no act of kindness, however small, is ever wasted.|Aesop
 I look at where I'm at today and realize that most of my success is owed to the mentors that was in my life.|Kendrick Lamar
-In all our deeds, the proper value and respect for time determines success or failure.|Malcolm X
+*In all our deeds, the proper value and respect for time determines success or failure.|Malcolm X
 Earl Nightingale has inspired more people toward success and fortune than any other motivational speaker on the planet.|Zig Ziglar
 My proudest achievement has been the success of the shows and artists I have been involved with, because they were made in Britain.|Simon Cowell
 Success is no accident. It is hard work, perseverance, learning, studying, sacrifice and most of all, love of what you are doing or learning to do.|Pele
