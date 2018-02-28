@@ -477,3 +477,6 @@ Return a list of installed packages or nil for every skipped package."
         ))))
       
 (fset 'pabbrev-suggestions-goto-buffer 'pabbrevx-suggestions-goto-buffer)
+
+;; auto refresh buffer
+(global-auto-revert-mode t)
