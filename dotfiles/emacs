@@ -130,7 +130,7 @@ Return a list of installed packages or nil for every skipped package."
 			  'ido-vertical-mode 'pabbrev
 			  'auto-complete
 			  'switch-window 'ace-jump-mode
-			  'iedit) ;  --> (nil nil) if
+			  'iedit 'org-mind-map) ;  --> (nil nil) if
 
 ;; activate installed packages
 (package-initialize)
@@ -160,6 +160,9 @@ Return a list of installed packages or nil for every skipped package."
 (require 'org)
 (require 'org-install)
 (require 'org-mobile)
+;; org-mind-map
+;; install graphviz
+(require 'ox-org)
 
 (require 'epa-file)
 (epa-file-enable)
