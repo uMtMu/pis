@@ -255,14 +255,16 @@ Return a list of installed packages or nil for every skipped package."
 ;; TODO -> DONE as for TIME
 (setq org-log-done 'time)
 
+(setq note_file (concat orgdir "/notlar.org"))
+(setq journal_file (concat orgdir "/journal.org"))
 (setq org-capture-templates
       '(
 	("t" "Todo" entry
-	 (file+headline (concat orgdir "/notlar.org") "Tasks") "* TODO %? %^G\n   :PROPERTIES:\n   :CREATED: %U\n   :END:  %i\n  %a")
+	 (file+headline note_file "Tasks") "* TODO %? %^G\n   :PROPERTIES:\n   :CREATED: %U\n   :END:  %i\n  %a")
         ("j" "Journal" entry
-	 (file+datetree (concat orgdir "/journal.org") "Journal")	"* %?  \n \nEntered on %U\n  %i")
+	 (file+olp+datetree journal_file )	"* %?  \n \nEntered on %U\n  %i")
 	("r" "Read" entry
-	 (file+headline (concat orgdir "/notlar.org") "Readings") "* TODO %c\n  %a")
+	 (file+headline note_file "Readings") "* TODO %c\n  %a")
 	)
       )
 
