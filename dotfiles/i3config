@@ -197,6 +197,7 @@ exec --no-startup-id i3-msg 'workspace $workspace2; exec terminator'
 exec --no-startup-id i3-msg 'workspace $workspace1; exec emacs'
 
 assign [class="Emacs24"] $workspace1
+assign [class="Emacs"] $workspace1
 
 assign [class="X-terminal-emulator"] $workspace2
 
@@ -217,3 +218,4 @@ exec_always --no-startup-id setxkbmap tr
 workspace_layout tabbed
 
 workspace_auto_back_and_forth yes
+
