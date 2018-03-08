@@ -126,9 +126,9 @@ Return a list of installed packages or nil for every skipped package."
 (or (file-exists-p package-user-dir)
     (package-refresh-contents))
 
-(ensure-package-installed 'undo-tree 'smex 'ido-ubiquitous 
-			  'ido-vertical-mode 'pabbrev
-			  'auto-complete
+(ensure-package-installed 'undo-tree 'smex 'ido-completing-read+
+			  'ido-vertical-mode 'pabbrev 
+			  'auto-complete 'org-bullets 'org-alert
 			  'switch-window 'ace-jump-mode
 			  'iedit 'org-mind-map) ;  --> (nil nil) if
 
@@ -290,6 +290,9 @@ Return a list of installed packages or nil for every skipped package."
 (ido-everywhere 1)
 (setq org-completion-use-ido t)
 
+(require 'ido-completing-read+)
+(ido-ubiquitous-mode 1)
+
 (require 'ido-vertical-mode)
 ;; Color codes can be used to customize
 (set-face-attribute 'ido-vertical-first-match-face nil
@@ -307,9 +310,6 @@ Return a list of installed packages or nil for every skipped package."
 
 (ido-vertical-mode 1)
 (setq ido-vertical-define-keys 'C-n-and-C-p-only)
-
-(require 'ido-ubiquitous)
-(ido-ubiquitous-mode 1)
 
 ;;************************************************************************
 ;;                               Smex
