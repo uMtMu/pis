@@ -485,3 +485,5 @@ Return a list of installed packages or nil for every skipped package."
 
 ;; auto refresh buffer
 (global-auto-revert-mode t)
+
+(global-set-key (kbd "C-c C-3 C-1") 'toggle-rot13-mode)
