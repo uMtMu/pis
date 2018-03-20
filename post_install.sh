@@ -59,3 +59,6 @@ yukle_apt "easy_install"
 yukle_apt "python-pip"
 
 ./create_sym_links.sh
+
+# history kayıtlarına tarih ekleme
+echo 'export HISTTIMEFORMAT="%d/%m/%y %T "' | sudo tee -a /etc/bash.bashrc
