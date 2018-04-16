@@ -255,6 +255,9 @@ Return a list of installed packages or nil for every skipped package."
 ;; TODO -> DONE as for TIME
 (setq org-log-done 'time)
 
+;; Log repeated tasks
+(setq org-log-repeat t)
+
 (setq note_file (concat orgdir "/notlar.org"))
 (setq journal_file (concat orgdir "/journal.org"))
 (setq org-capture-templates
