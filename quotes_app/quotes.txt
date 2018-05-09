@@ -76,31 +76,62 @@ Urgent points before big points|Go principle
 Play away from thickness|Go principle
 Don't use thickness to make territory|Go principle
 Make territory while attacking|Go principle
-A ponnuki is worth thirty points
-Make a fist before striking
-Do not defend territories open on two sides (Don't try to enclose when you have an open skirt)
-Attach to the stronger stone in a pincer
-Make a feint to the east while attacking in the west
-A rich man should not pick quarrels
-Play kikashi before living
-Reduction Is Worth As Much As An Invasion
-Invade a moyo one move before it becomes territory
-Don't attach when attacking or Don't touch weak stones
-Make weak walk along with weak, Korean proverb
-Five groups might live but the sixth will die
-Big dragons never die
-Grab the shape points in kikashi
-Give your opponent what he wants
-Avoid ippoji
-Sacrifice plums for peaches and Don't trade a dollar for a penny
-Don't throw an egg at a wall
-There are no ko threats in the opening
-Strengthening your own weak group makes your opponent's weaker
-Don't go fishing while your house is on fire
-Never upset your star-point stones
-Greed for the win takes the win away
-High move (4th line) for influence, low move (3rd line) for territory
-If you have lost four corners, resign
-Don't push from behind.
-Don't push along the second line (bugcat: I've heard this rendered nicely by Michael Redmond as "the second line is the emergency line" -- though he was discussing a good AlphaGo move on the second line at the time...)
-Riding the tiger it is difficult to get off or be aware of amarigatachi
+A ponnuki is worth thirty points|Go principle
+Make a fist before striking|Go principle
+Do not defend territories open on two sides (Don't try to enclose when you have an open skirt)|Go principle
+Attach to the stronger stone in a pincer|Go principle
+Make a feint to the east while attacking in the west|Go principle
+A rich man should not pick quarrels|Go principle
+Play kikashi before living|Go principle
+Reduction Is Worth As Much As An Invasion|Go principle
+Invade a moyo one move before it becomes territory|Go principle
+Don't attach when attacking or Don't touch weak stones|Go principle
+Make weak walk along with weak, Korean proverb|Go principle
+Five groups might live but the sixth will die|Go principle
+Big dragons never die|Go principle
+Grab the shape points in kikashi|Go principle
+Give your opponent what he wants|Go principle
+Avoid ippoji|Go principle
+Sacrifice plums for peaches and Don't trade a dollar for a penny|Go principle
+Don't throw an egg at a wall|Go principle
+There are no ko threats in the opening|Go principle
+Strengthening your own weak group makes your opponent's weaker|Go principle
+Don't go fishing while your house is on fire|Go principle
+Never upset your star-point stones|Go principle
+Greed for the win takes the win away|Go principle
+High move (4th line) for influence, low move (3rd line) for territory|Go principle
+If you have lost four corners, resign|Go principle
+Don't push from behind.|Go principle
+Don't push along the second line (bugcat: I've heard this rendered nicely by Michael Redmond as "the second line is the emergency line" -- though he was discussing a good AlphaGo move on the second line at the time...)|Go principle
+Riding the tiger it is difficult to get off or be aware of amarigatachi|Go principle
+Don't follow proverbs blindly|Go principle
+Proverbs do not apply to White|Go principle
+If It Has a Name Know It|Go principle
+Use Go to meet friends ("Yi Qi Hui You")|Go principle
+Learning Joseki loses two stones strength|Go principle
+Black should resign if one player has four corners|Go principle
+If you don't know ladders, don't play go|Go principle
+You can play Go but don't let Go play you|Go principle
+If you don't like Ko don't Play Go|Go principle
+Lose Your First 50 Games as Quickly as Possible|Go principle
+The Threat Is Stronger Than Its Execution|Go principle
+Only after the 10th punch will you see the fist - and only after the 20th will you block it.|Go principle
+Kill two birds with one stone|Go principle
+You need half the points + 1|Go principle
+Never wrestle with a pig - you'll both get dirty, and the pig will love it.|Go principle
+A bird in the hand is worth two in the bush|Go principle
+Rice eaten in haste chokes.|Go principle
+If you want to catch a tiger, you have to go into a tiger's cave.|Go principle
+Though the heavens fall, there will be a hole to escape through.|Go principle
+Butcher the donkey after it finished his job on the mill.|Go principle
+Distant water won't help to put out a fire close at hand.|Go principle
+When you want to test the depths of a stream, don't use both feet.|Go principle
+You can't win a fight without attacking|Go principle
+It's all in the mind|Go principle
+Fear stops the anxious|Go principle
+If you aim for something, you are turning away from it.|Go principle
+Spirit strengthens the hand of the just.|Go principle
+The fearful suffer a thousand deaths, the brave only one.|Go principle
+
+
+
