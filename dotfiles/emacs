@@ -67,7 +67,6 @@
 (delete-selection-mode 1)
 (setq indent-tabs-mode nil)
 
-
 (load "~/.emacs.secrets" t)
 
 ;; Unique Buffer Names
@@ -486,7 +485,41 @@ Return a list of installed packages or nil for every skipped package."
       
 (fset 'pabbrev-suggestions-goto-buffer 'pabbrevx-suggestions-goto-buffer)
 
+
+
+;; display of certain characters and control codes to UTF-8
+(defun my-term-use-utf8 ()
+  (set-buffer-process-coding-system 'utf-8-unix 'utf-8-unix))
+(add-hook 'term-exec-hook 'my-term-use-utf8)
+
 ;; auto refresh buffer
 (global-auto-revert-mode t)
 
+(setq erc-autojoin-channels-alist '(("freenode.net" "#emacs" "#erc")))
+
 (global-set-key (kbd "C-c C-3 C-1") 'toggle-rot13-mode)
+
+(defun json-format ()
+  (interactive)
+  (save-excursion
+    (shell-command-on-region (mark) (point) "python -m json.tool" (buffer-name) t)
+    )
+  )
+
+(defun xah-new-empty-buffer ()
+  "Create a new empty buffer.
+New buffer will be named “untitled” or “untitled<2>”, “untitled<3>”, etc.
+
+It returns the buffer (for elisp programing).
+
+URL `http://ergoemacs.org/emacs/emacs_new_empty_buffer.html'
+Version 2017-11-01"
+  (interactive)
+  (let (($buf (generate-new-buffer "untitled")))
+    (switch-to-buffer $buf)
+    (funcall initial-major-mode)
+    (setq buffer-offer-save t)
+    $buf
+    ))
+
+(setq initial-buffer-choice 'xah-new-empty-buffer)
