@@ -47,7 +47,8 @@ syntax on
 
 color desert
 set cursorline
-hi CursorLine cterm=NONE ctermbg=LightGreen ctermfg=black
+hi CursorLine cterm=NONE ctermbg=Green ctermfg=black
+hi Search cterm=NONE ctermfg=red ctermbg=blue
 
 au Filetype python set foldmethod=indent
 
