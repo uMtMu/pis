@@ -52,45 +52,9 @@ hi Search cterm=NONE ctermfg=red ctermbg=blue
 
 au Filetype python set foldmethod=indent
 
-"" highlight tabs and trailing spaces
-"set listchars=tab:>-,trail:-,space:.
-"set list
-
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
-execute pathogen#infect()
-
-
-""" nerdTree
-autocmd StdinReadPre * let s:std_in=1
-" How can I open a NERDTree automatically when vim starts up if no files were specified?
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-map <C-n> :NERDTreeToggle<CR>
-" How can I close vim if the only window left open is a NERDTree?
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-""" undoTree
-nnoremap <F5> :UndotreeToggle<cr>
-
-""" diff
-nnoremap <expr> <C-J> &diff ? ']c' : '<C-W>j'
-
-function! GitBranch()
-  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
-endfunction
-
-function! StatuslineGit()
-  let l:branchname = GitBranch()
-  return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
-endfunction
-
 set laststatus=2
 set statusline=
 set statusline+=%#PmenuSel#
-set statusline+=%{StatuslineGit()}
 set statusline+=%#LineNr#
 set statusline+=\ %f
 set statusline+=%m\
