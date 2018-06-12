@@ -13,7 +13,7 @@ alias cp="cp -i"
 alias e="exit"
 alias c="clear"
 
-alias ll="ls -alhX --group-directories-first"
+alias ll="ls -alhXt --group-directories-first"
 
 alias grep="grep --color"
 
