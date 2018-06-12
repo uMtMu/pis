@@ -14,6 +14,7 @@ alias e="exit"
 alias c="clear"
 
 alias ll="ls -alhXt --group-directories-first"
+alias more="less"
 
 alias grep="grep --color"
 
