@@ -13,7 +13,7 @@ alias cp="cp -i"
 alias e="exit"
 alias c="clear"
 
-alias ll="ls -alhXt --group-directories-first"
+alias ll="ls -AlhXt --group-directories-first"
 alias more="less"
 
 alias grep="grep --color"
@@ -30,6 +30,7 @@ alias agu="sag update && sag upgrade"
 alias agr="sag purge"
 alias acs="apt-cache search"
 
+alias sor='echo "???"; read RESP; [[ $RESP == "e" ]] && echo "1" || echo "0";'
 alias kapat='shutdown now'
 
 agil() 
