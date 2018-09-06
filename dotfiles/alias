@@ -1,6 +1,6 @@
-PAGER="/usr/bin/less"
-BROWSER="/usr/bi/w3m"
-EDITOR="/usr/local/bin/vim"
+export PAGER="/usr/bin/most"
+export BROWSER="/usr/bi/w3m"
+export EDITOR="/usr/local/bin/vim"
 
 
 LC_ALL=C

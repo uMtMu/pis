@@ -14,7 +14,7 @@
 # media
 # mpg123 feh(masa üstü arka planı için) 
 #uygulamalar=('build-essential' 'python-dev' 'default-jdk' 'terminator' 'guake' 'chromium-browser' 'pepperflashplugin-nonfree' 'bpython' 'mutt' 'w3m' 'newsbauter' 'wget' 'mc' 'mpg123' 'feh')
-uygulamalar=('build-essential' 'python-dev' 'terminator' 'mutt' 'w3m' 'newsbauter' 'wget' 'mc' 'mpg123' 'feh' 'silversearcher-ag' 'bash-completion')
+uygulamalar=('build-essential' 'python-dev' 'terminator' 'mutt' 'w3m' 'newsbauter' 'wget' 'mc' 'mpg123' 'feh' 'silversearcher-ag' 'bash-completion' 'most')
 
 yukle_apt(){
   sudo apt-get install -y -q $1
