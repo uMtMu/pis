@@ -50,7 +50,7 @@ set cursorline
 hi CursorLine cterm=NONE ctermbg=Green ctermfg=black
 hi Search cterm=NONE ctermfg=red ctermbg=blue
 
-au Filetype python set foldmethod=indent
+"au Filetype python set foldmethod=indent
 
 set laststatus=2
 set statusline=
