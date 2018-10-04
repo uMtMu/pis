@@ -1,6 +1,6 @@
 export PAGER="/usr/bin/most"
 export BROWSER="/usr/bi/w3m"
-export EDITOR="/usr/local/bin/vim"
+export EDITOR="/usr/bin/vim"
 
 
 LC_ALL=C
@@ -9,6 +9,8 @@ LC_ALL=C
 alias rm="rm -i"
 alias mv="mv -i"
 alias cp="cp -i"
+
+alias tailf="tail -f"
 
 alias e="exit"
 alias c="clear"
