@@ -2,6 +2,11 @@ export PAGER="/usr/bin/most"
 export BROWSER="/usr/bi/w3m"
 export EDITOR="/usr/bin/vim"
 
+HISTCONTROL=ignoreboth
+shopt -s histappend
+HISTFILESIZE=
+HISTSIZE=
+
 
 LC_ALL=C
 
@@ -166,4 +171,4 @@ quote()
 	function green(s) {return "\033[1;32m" s "\033[0m "}\
 	{print white($1)"\n\t\t\t\t\t\t\t\t"green($2)}'
 }
-quote
+quote | xargs -0 cowsay
