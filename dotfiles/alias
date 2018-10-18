@@ -2,10 +2,11 @@ export PAGER="/usr/bin/most"
 export BROWSER="/usr/bi/w3m"
 export EDITOR="/usr/bin/vim"
 
-HISTCONTROL=ignoreboth
+export HISTTIMEFORMAT="%d/%m/%y %T "
+export HISTCONTROL=ignoreboth
 shopt -s histappend
-HISTFILESIZE=
-HISTSIZE=
+export HISTFILESIZE=
+export HISTSIZE=
 
 
 LC_ALL=C
