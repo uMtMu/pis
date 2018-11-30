@@ -3,7 +3,7 @@
 dotfiles=$(ls $(pwd)/dotfiles)
 for file in $dotfiles
 do
-    if $file=="i3config"
+    if [ "$file" == "i3config" ]
     then
         mkdir "$HOME/i3"
 	rm -f $HOME/.i3/config
