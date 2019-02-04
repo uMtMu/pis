@@ -8,6 +8,7 @@ shopt -s histappend
 export HISTFILESIZE=
 export HISTSIZE=
 
+PS1="\[\033[38;5;9m\]\u\[$(tput sgr0)\]\[\033[38;5;10m\]@\[$(tput sgr0)\]\[\033[38;5;9m\]\h\[$(tput sgr0)\]\[\033[38;5;6m\][\w]\[$(tput sgr0)\]\[\033[38;5;15m\] \t \\$ \n-> \[$(tput sgr0)\]"
 
 LC_ALL=C
 
@@ -172,4 +173,4 @@ quote()
 	function green(s) {return "\033[1;32m" s "\033[0m "}\
 	{print white($1)"\n\t\t\t\t\t\t\t\t"green($2)}'
 }
-quote | xargs -0 cowsay
+quote | xargs -0 cowsay -f `ls -d /usr/share/cowsay/cows/* | shuf -n 1`
