@@ -174,3 +174,18 @@ quote()
 	{print white($1)"\n\t\t\t\t\t\t\t\t"green($2)}'
 }
 quote | xargs -0 cowsay -f `ls -d /usr/share/cowsay/cows/* | shuf -n 1`
+
+rand_show()
+{
+    rand_dir="$HOME/Pictures/rand/"
+    if [ -d "$rand_dir" ]; then
+    while :
+        do
+
+            seq 4 10 | shuf -n 1 | xargs -i sleep {}m
+            ls -d "$rand_dir"* | shuf -n 1 | xargs feh -g 400x300
+        done
+    fi
+}
+
+rand_show &
