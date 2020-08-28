@@ -32,9 +32,16 @@ set smartcase       " Override the 'ignorecase' option if the search pattern
 set autoindent      " Copy indent from current line when starting a new line
                     " (typing <CR> in Insert mode or when using the "o" or "O"
                     " command).
-set copyindent    " copy the previous indentation on autoindenting
+set copyindent      " copy the previous indentation on autoindenting
 set smartindent
 
+set showcmd         " shows the last command entered in the very bottom right of Vim.
+
+set wildmenu        " visual autocomplete for command menu
+
+set lazyredraw      " redraw only when we need to.
+
+let mapleader=","
 " set tabstop=4 shiftwidth=4 expandtab smarttab number showmatch hlsearch incsearch ignorecase smartcase autoindent copyindent smartindent pastetoggle=<F2> foldmethod=indent | colorscheme desert
 
 set backspace=indent,eol,start  " allow backspacing over everything in insert mode
@@ -45,7 +52,8 @@ filetype plugin indent on
 set shell=/bin/bash
 syntax on
 
-color desert
+" color desert
+color badwolf
 set cursorline
 hi CursorLine cterm=NONE ctermbg=Green ctermfg=black
 hi Search cterm=NONE ctermfg=red ctermbg=blue
@@ -69,3 +77,12 @@ set statusline+=\
 
 "" diff buffer and original file
 map <F2> :w !diff % - <cr>
+
+let mapleader = ","
+"" nerdtree
+set runtimepath^=~/.vim/bundle/nerdtree
+nmap <leader>ne :NERDTree<cr>
+
+"" undotree
+set runtimepath^=~/.vim/bundle/undotree
+nmap <leader>u :UndotreeToggle<cr>
