@@ -1,1 +1,16 @@
 . ~/.bashrc
+
+rand_show()
+{
+    rand_dir="$HOME/Pictures/rand/smiling/"
+    if [ -d "$rand_dir" ]; then
+    while :
+        do
+
+            seq 4 10 | shuf -n 1 | xargs -i sleep {}m
+            ls -d "$rand_dir"* | shuf -n 1 | xargs feh -N -g 400x300
+        done
+    fi
+}
+
+rand_show &
