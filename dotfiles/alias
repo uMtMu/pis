@@ -1,14 +1,15 @@
 export PAGER="/usr/bin/most"
-export BROWSER="/usr/bi/w3m"
+#export BROWSER="/usr/bin/w3m"
+export BROWSER="/usr/bin/lynx"
 export EDITOR="/usr/bin/vim"
 
 export HISTTIMEFORMAT="%d/%m/%y %T "
 export HISTCONTROL=ignoreboth
 shopt -s histappend
+export PROMPT_COMMAND='history -a'
 export HISTFILESIZE=
 export HISTSIZE=
 
-PS1="\[\033[38;5;9m\]\u\[$(tput sgr0)\]\[\033[38;5;10m\]@\[$(tput sgr0)\]\[\033[38;5;9m\]\h\[$(tput sgr0)\]\[\033[38;5;6m\][\w]\[$(tput sgr0)\]\[\033[38;5;15m\] \t \\$ \n-> \[$(tput sgr0)\]"
 
 LC_ALL=C
 
@@ -68,6 +69,7 @@ alias gitph="git push -u heroku master"
 alias gits="git status"
 alias gitd="git diff"
 alias gitn="git notes add -m"
+alias gittree="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
 
 # must be repaired
 alias ipython3="LC_ALL=C ipython3"
@@ -176,15 +178,38 @@ quote()
 	{print white($1)"\n\t\t\t\t\t\t\t\t"green($2)}'
 }
 
-if (( $RANDOM % 2 == 1 )); 
-then 
-    quote | xargs -0 cowsay -f `ls -d /usr/share/cowsay/cows/* | shuf -n 1`
-else 
-    tldr -r -t ocean
-fi
+quote | xargs -0 cowsay -f `ls -d /usr/share/cowsay/cows/* | shuf -n 1`
+
+#if (( $RANDOM % 2 == 1 )); 
+#then 
+#    quote | xargs -0 cowsay -f `ls -d /usr/share/cowsay/cows/* | shuf -n 1`
+#else 
+#    tldr -r -t ocean
+#fi
 
 
 
 alias ducks='du -cks * | sort -rn | head'
 
 alias sil='shred -n 100 -z -u $1'
+
+srvsts() { 
+    sudo service $1 status 
+}
+
+srvstp() { 
+    sudo service $1 stop 
+}
+
+srvstrt() { 
+    sudo service $1 start 
+}
+
+srvres() { 
+    sudo service $1 restart 
+}
+
+alias please='sudo'
+
+# sudo apt-get install python-pygments 
+alias pcat="pygmentize -f terminal256 -O style=native -g"
