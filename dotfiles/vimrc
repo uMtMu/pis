@@ -88,6 +88,9 @@ color desert
 set cursorline
 hi CursorLine cterm=NONE ctermbg=Green ctermfg=black
 hi Search cterm=NONE ctermfg=red ctermbg=blue
+" Change color when insert mode activated
+autocmd InsertEnter * highlight CursorLine ctermbg=Red ctermfg=White
+autocmd InsertLeave * highlight CursorLine ctermbg=Green ctermfg=black
 
 "au Filetype python set foldmethod=indent
 
